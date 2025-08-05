@@ -22,7 +22,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/owner-pet")
+@RequestMapping("/api/v1/owners-pets")
 public class OwnerPetRestController {
 
     private final UpdateOwnerPetUseCase updateOwnerPetUseCase;

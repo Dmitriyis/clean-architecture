@@ -1,5 +1,6 @@
 package com.course.cleanarchitecture.entity.appointment.model;
 
+import com.course.cleanarchitecture.entity.analysis.model.AnalysisEntity;
 import com.course.cleanarchitecture.entity.doctor.model.DoctorEntity;
 import com.course.cleanarchitecture.entity.pet.model.PetEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -8,6 +9,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -19,6 +22,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -45,13 +50,13 @@ public class AppointmentEntity {
     @JoinColumn(name = "doctor_id")
     private DoctorEntity doctor;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "appointment___analysis",
-//            joinColumns = @JoinColumn(name = "appointment_id"),
-//            inverseJoinColumns = @JoinColumn(name = "analysis_id")
-//    )
-//    private List<AnalysisEntity> analysis = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "appointment___analysis",
+            joinColumns = @JoinColumn(name = "appointment_id"),
+            inverseJoinColumns = @JoinColumn(name = "analysis_id")
+    )
+    private List<AnalysisEntity> analysis = new ArrayList<>();
 
     @Column(name = "create_date_time")
     private LocalDateTime createDateTime;

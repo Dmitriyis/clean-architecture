@@ -17,4 +17,5 @@ import java.util.UUID;
 @AllArgsConstructor
 public class AppointmentRequestDto {
     private UUID petId;
+    private UUID doctorId;
 }

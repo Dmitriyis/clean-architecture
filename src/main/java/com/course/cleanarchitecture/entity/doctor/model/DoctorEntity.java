@@ -49,4 +49,18 @@ public class DoctorEntity {
 
     @OneToMany(mappedBy = "doctor")
     private List<AppointmentEntity> appointments = new ArrayList<>();
+
+    public void updateName(String name) {
+        GenerateDoctorEntity.validateName(name);
+        this.name = name;
+    }
+
+    public void updateProfession(TypeProfession profession) {
+        this.profession = profession;
+    }
+
+    public void updateWorkExperience(Integer workExperience) {
+        GenerateDoctorEntity.validateWorkExperience(workExperience);
+        this.workExperience = workExperience;
+    }
 }

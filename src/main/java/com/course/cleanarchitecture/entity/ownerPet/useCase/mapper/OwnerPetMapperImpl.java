@@ -22,7 +22,9 @@ public class OwnerPetMapperImpl implements OwnerPetMapper {
     @Override
     public OwnerPetEntity toPetEntity(OwnerPetUpdateDto ownerPet, OwnerPetEntity ownerPetEntity) {
         Address address = Address.from(ownerPet.getCity(), ownerPet.getStreet(), ownerPet.getNumberHouse());
-        return GenerateOwnerPetEntity.generate(ownerPetEntity.getId(), ownerPet.getName(), ownerPetEntity.getRegistrationDate(), address);
+        ownerPetEntity.updateName(ownerPet.getName());
+        ownerPetEntity.updateAddress(address);
+        return ownerPetEntity;
     }
 
     @Override

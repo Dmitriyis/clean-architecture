@@ -58,6 +58,7 @@ public class OwnerPetEntity {
     }
 
     public void updateAddress(Address address) {
+        Address.validate(address.getCity(), address.getStreet(), address.getNumberHouse());
         this.address = address;
     }
 }

@@ -1,5 +1,6 @@
 package com.course.cleanarchitecture.entity.pet.useCase.mapper;
 
+import com.course.cleanarchitecture.entity.ownerPet.model.OwnerPetEntity;
 import com.course.cleanarchitecture.entity.pet.model.GeneratePetEntity;
 import com.course.cleanarchitecture.entity.pet.model.PetEntity;
 import com.course.cleanarchitecture.entity.pet.plugins.database.repository.PetSearchParamsSpecification;
@@ -16,12 +17,18 @@ public class PetMapperImpl implements PetMapper {
     @Override
     public PetEntity toPetEntity(PetRequestDto pet, UUID petId) {
         return GeneratePetEntity.generate(petId, pet.getName(), pet.getWeight(), pet.getAge(), pet.getRegistrationDate(), pet.getOwnerId());
-//        return GeneratePetEntity.generate(pet.getId(), pet.getName(), pet.getWeight(), pet.getAge(), pet.getRegistrationDate(), pet.getOwnerId(), null, null);
     }
 
     @Override
-    public PetEntity toPetEntity(PetUpdateDto pet, PetEntity petEntity) {
-        return GeneratePetEntity.generate(petEntity.getId(), pet.getName(), pet.getWeight(), pet.getAge(), petEntity.getRegistrationDate(), pet.getOwnerId());
+    public PetEntity toPetEntity(PetUpdateDto petUpdateDto, PetEntity petEntity) {
+        petEntity.updateName(petUpdateDto.getName());
+        petEntity.updateAge(petUpdateDto.getAge());
+        petEntity.updateWeight(petUpdateDto.getWeight());
+
+        OwnerPetEntity ownerPetEntity = new OwnerPetEntity(petUpdateDto.getOwnerId(), null, null, null, null);
+        petEntity.updateOwnerPet(ownerPetEntity);
+
+        return petEntity;
     }
 
     @Override

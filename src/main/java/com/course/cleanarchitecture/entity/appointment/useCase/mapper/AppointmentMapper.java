@@ -14,7 +14,7 @@ public interface AppointmentMapper {
 
     AppointmentEntity toAppointmentEntity(AppointmentUpdateDto appointmentUpdateDto, AppointmentEntity appointmentEntity);
 
-    AppointmentResponseDto toResponseDto(AppointmentEntity appointmentEntity);
+    AppointmentResponseDto toAppointmentResponseDto(AppointmentEntity appointmentEntity);
 
     AppointmentSearchParamsSpecification toAppointmentSearchParamsSpecification(AppointmentSearchParamsDto appointmentSearchParamsDto);
 }

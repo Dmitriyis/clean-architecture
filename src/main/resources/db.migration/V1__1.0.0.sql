@@ -24,9 +24,29 @@ create table if not exists pet (
 create table if not exists appointment (
     id uuid,
     pet_id uuid,
+    doctor_id uuid,
     create_date_time timestamp not null,
 
     FOREIGN KEY (pet_id) REFERENCES pet(id),
+    primary key (id)
+);
+
+create table if not exists doctor (
+    id uuid,
+    name varchar(255) not null,
+    profession varchar(255) not null,
+    work_experience integer not null,
+
+    primary key (id)
+);
+
+create table if not exists appointment___analysis (
+    id uuid,
+    appointment_id uuid,
+    analysis_id uuid,
+
+    FOREIGN KEY (appointment_id) REFERENCES appointment(id),
+    FOREIGN KEY (analysis_id) REFERENCES analysis(id),
     primary key (id)
 );
 

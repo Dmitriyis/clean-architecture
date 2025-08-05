@@ -32,7 +32,7 @@ public class Address {
         return new Address(city, street, numberHouse);
     }
 
-    private static void validate(String city, String street, String numberHouse) {
+    public static void validate(String city, String street, String numberHouse) {
         if (city == null) {
             String message = OwnerPetInvalidFieldException.prepareMessage("city", null, "Не можеть быть null");
             throw new OwnerPetInvalidFieldException(message);

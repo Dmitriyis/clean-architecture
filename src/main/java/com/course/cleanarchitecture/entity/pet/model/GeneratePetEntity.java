@@ -8,9 +8,7 @@ import java.util.UUID;
 
 public class GeneratePetEntity {
 
-    public static com.course.cleanarchitecture.entity.pet.model.PetEntity generate(UUID id, String name, Double weight, Integer age,
-                                                                                   LocalDate registrationDate, UUID ownerPetId) {
-
+    public static PetEntity generate(UUID id, String name, Double weight, Integer age, LocalDate registrationDate, UUID ownerPetId) {
 
         validateField(id, name, weight, age, registrationDate, ownerPetId);
 

@@ -21,7 +21,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/appointment")
+@RequestMapping("/api/v1/appointments")
 public class AppointmentRestController {
 
     private final UpdateAppointmentUseCase updateAppointmentUseCase;

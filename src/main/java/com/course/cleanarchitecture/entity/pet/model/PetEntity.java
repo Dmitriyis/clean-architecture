@@ -85,8 +85,8 @@ public class PetEntity {
         GeneratePetEntity.validateWeight(weight);
         this.weight = weight;
     }
-    public void updateRegistrationDate(LocalDate registrationDate) {
-        GeneratePetEntity.validateRegistrationDate(registrationDate);
-        this.registrationDate = registrationDate;
+
+    public void updateOwnerPet(OwnerPetEntity ownerPet){
+        this.ownerPet = ownerPet;
     }
 }

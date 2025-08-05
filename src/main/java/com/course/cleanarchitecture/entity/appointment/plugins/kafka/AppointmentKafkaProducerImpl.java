@@ -1,6 +1,6 @@
 package com.course.cleanarchitecture.entity.appointment.plugins.kafka;
 
-import com.course.cleanarchitecture.entity.appointment.useCase.AppointmentKafkaProducer;
+import com.course.cleanarchitecture.entity.appointment.useCase.ProducerKafkaAppointmentUseCase;
 
-public class AppointmentKafkaProducerImpl implements AppointmentKafkaProducer {
+public class AppointmentKafkaProducerImpl implements ProducerKafkaAppointmentUseCase {
 }
