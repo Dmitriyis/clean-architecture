@@ -32,22 +32,22 @@ public class OwnerPetRestController {
     private final FindAllOwnerPetBySearchParamsUseCase findAllOwnerPetBySearchParamsUseCase;
 
     @PostMapping
-    public UUID savePet(@RequestBody OwnerPetRequestDto ownerPetRequestDto) {
+    public UUID saveOwnerPet(@RequestBody OwnerPetRequestDto ownerPetRequestDto) {
         return createNewOwnerPetUseCase.execute(ownerPetRequestDto);
     }
 
     @PutMapping
-    public UUID updatePet(@RequestBody OwnerPetUpdateDto ownerPetUpdateDto) {
+    public UUID updateOwnerPet(@RequestBody OwnerPetUpdateDto ownerPetUpdateDto) {
         return updateOwnerPetUseCase.execute(ownerPetUpdateDto);
     }
 
     @DeleteMapping("/{id}")
-    public UUID updatePet(@PathVariable(name = "id") UUID petId) {
+    public UUID deleteOwnerPet(@PathVariable(name = "id") UUID petId) {
         return deleteOwnerPetByIdUseCase.execute(petId);
     }
 
     @GetMapping("/{id}")
-    public OwnerPetEntity getPetEntityById(@PathVariable(name = "id") UUID id) {
+    public OwnerPetEntity getOwnerPetById(@PathVariable(name = "id") UUID id) {
         return getOwnerPetByIdUseCase.execute(id);
     }
 }

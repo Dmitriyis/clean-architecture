@@ -47,7 +47,7 @@ public class PetRestController {
     }
 
     @GetMapping("/{id}")
-    public PetEntity getPetEntityById(@PathVariable(name = "id") UUID id) {
+    public PetEntity getPetById(@PathVariable(name = "id") UUID id) {
         return getPetByIdUseCase.execute(id);
     }
 }

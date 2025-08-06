@@ -17,7 +17,7 @@ public class GeneratePetEntity {
         return new PetEntity(id, name, weight, age, registrationDate, ownerPetEntity, null);
     }
 
-    public static void validateField(UUID id, String name, Double weight, Integer age, LocalDate registrationDate, UUID ownerPetId) {
+    private static void validateField(UUID id, String name, Double weight, Integer age, LocalDate registrationDate, UUID ownerPetId) {
         validateId(id);
         validateName(name);
         validateWeight(weight);

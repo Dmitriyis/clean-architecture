@@ -40,15 +40,24 @@ create table if not exists doctor (
     primary key (id)
 );
 
-create table if not exists appointment___analysis (
+create table if not exists analysis (
     id uuid,
+    name varchar(255) not null,
+    lead_time integer not null,
+    price numeric(19, 4) not null,
+    recommendations text,
+
+    primary key (id)
+);
+
+create table if not exists appointment___analysis (
     appointment_id uuid,
     analysis_id uuid,
 
     FOREIGN KEY (appointment_id) REFERENCES appointment(id),
-    FOREIGN KEY (analysis_id) REFERENCES analysis(id),
-    primary key (id)
+    FOREIGN KEY (analysis_id) REFERENCES analysis(id)
 );
+
 
 
 

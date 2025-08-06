@@ -26,5 +26,6 @@ public class DoctorResponseDto {
 
     private Integer workExperience;
 
+    @Builder.Default
     private List<AppointmentResponseDto> appointments = new ArrayList<>();
 }

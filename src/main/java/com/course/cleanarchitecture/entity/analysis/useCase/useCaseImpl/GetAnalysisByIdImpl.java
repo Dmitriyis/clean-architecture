@@ -1,6 +1,12 @@
 package com.course.cleanarchitecture.entity.analysis.useCase.useCaseImpl;
 
 import com.course.cleanarchitecture.common.exceptions.NotFoundException;
+import com.course.cleanarchitecture.entity.analysis.exceptions.AnalysisNotFoundException;
+import com.course.cleanarchitecture.entity.analysis.model.AnalysisEntity;
+import com.course.cleanarchitecture.entity.analysis.useCase.GetAnalysisByIdUseCase;
+import com.course.cleanarchitecture.entity.analysis.useCase.dto.AnalysisResponseDto;
+import com.course.cleanarchitecture.entity.analysis.useCase.mapper.AnalysisMapper;
+import com.course.cleanarchitecture.entity.analysis.useCase.provider.GetAnalysisByIdProvider;
 import com.course.cleanarchitecture.entity.doctor.exceptions.DoctorNotFoundException;
 import com.course.cleanarchitecture.entity.doctor.model.DoctorEntity;
 import com.course.cleanarchitecture.entity.doctor.useCase.GetDoctorByIdUseCase;
@@ -16,19 +22,19 @@ import java.util.UUID;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class GetDoctorByIdImpl implements GetDoctorByIdUseCase {
+public class GetAnalysisByIdImpl implements GetAnalysisByIdUseCase {
 
-    private final DoctorMapper doctorMapper;
-    private final GetDoctorByIdProvider getDoctorByIdProvider;
+    private final AnalysisMapper analysisMapper;
+    private final GetAnalysisByIdProvider getAnalysisByIdProvider;
 
     @Override
-    public DoctorResponseDto execute(UUID id) {
-        DoctorEntity doctorEntity = getDoctorByIdProvider.execute(id)
+    public AnalysisResponseDto execute(UUID id) {
+        AnalysisEntity analysisEntity = getAnalysisByIdProvider.execute(id)
                 .orElseThrow(() -> {
                     String message = NotFoundException.prepareMessage("DoctorEntity", "id", id.toString());
-                    return new DoctorNotFoundException(message);
+                    return new AnalysisNotFoundException(message);
                 });
 
-        return doctorMapper.toDoctorResponseDto(doctorEntity);
+        return analysisMapper.toAnalysisResponseDto(analysisEntity);
     }
 }

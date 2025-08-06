@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Setter
@@ -18,4 +19,5 @@ import java.util.UUID;
 public class AppointmentRequestDto {
     private UUID petId;
     private UUID doctorId;
+    private List<UUID> analysisIds;
 }

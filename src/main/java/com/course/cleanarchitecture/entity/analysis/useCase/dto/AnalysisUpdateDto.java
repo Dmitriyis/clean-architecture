@@ -1,11 +1,14 @@
 package com.course.cleanarchitecture.entity.analysis.useCase.dto;
 
 import com.course.cleanarchitecture.entity.doctor.model.TypeProfession;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Setter
@@ -13,11 +16,14 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnalysisUpdateDto {
+
     private UUID id;
 
     private String name;
 
-    private TypeProfession profession;
+    private Integer leadTime;
 
-    private Integer workExperience;
+    private BigDecimal price;
+
+    private String recommendations;
 }

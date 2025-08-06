@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Getter
@@ -20,7 +21,9 @@ public class AnalysisSearchParamsDto {
 
     private String name;
 
-    private TypeProfession profession;
+    private Integer leadTime;
 
-    private Integer workExperience;
+    private BigDecimal price;
+
+    private String recommendations;
 }
