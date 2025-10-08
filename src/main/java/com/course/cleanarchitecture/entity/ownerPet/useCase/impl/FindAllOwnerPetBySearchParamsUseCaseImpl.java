@@ -4,8 +4,6 @@ import com.course.cleanarchitecture.entity.ownerPet.model.OwnerPetEntity;
 import com.course.cleanarchitecture.entity.ownerPet.useCase.FindAllOwnerPetBySearchParamsUseCase;
 import com.course.cleanarchitecture.entity.ownerPet.useCase.dto.OwnerPetSearchParamsDto;
 import com.course.cleanarchitecture.entity.ownerPet.useCase.provider.FindAllOwnerPetBySearchParamsProvider;
-import com.course.cleanarchitecture.entity.pet.useCase.FindAllPetBySearchParamsUseCase;
-import com.course.cleanarchitecture.entity.pet.useCase.dto.PetSearchParamsDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

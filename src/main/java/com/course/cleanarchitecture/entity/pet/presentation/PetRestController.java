@@ -7,6 +7,7 @@ import com.course.cleanarchitecture.entity.pet.useCase.FindAllPetBySearchParamsU
 import com.course.cleanarchitecture.entity.pet.useCase.GetPetByIdUseCase;
 import com.course.cleanarchitecture.entity.pet.useCase.UpdatePetUseCase;
 import com.course.cleanarchitecture.entity.pet.useCase.dto.PetRequestDto;
+import com.course.cleanarchitecture.entity.pet.useCase.dto.PetSearchParamsDto;
 import com.course.cleanarchitecture.entity.pet.useCase.dto.PetUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -49,5 +51,10 @@ public class PetRestController {
     @GetMapping("/{id}")
     public PetEntity getPetEntityById(@PathVariable(name = "id") UUID id) {
         return getPetByIdUseCase.execute(id);
+    }
+
+    @GetMapping("/{id}")
+    public List<PetEntity> getPetEntityById(@RequestBody PetSearchParamsDto petSearchParamsDto) {
+        return findAllPetBySearchParamsUseCase.execute(petSearchParamsDto);
     }
 }

@@ -1,5 +1,6 @@
 package com.course.cleanarchitecture.entity.pet.model;
 
+import com.course.cleanarchitecture.common.hibernate.converter.MapToArrayConverter;
 import com.course.cleanarchitecture.entity.appointment.model.AppointmentEntity;
 import com.course.cleanarchitecture.entity.ownerPet.model.OwnerPetEntity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -8,6 +9,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Converter;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -25,6 +28,7 @@ import lombok.ToString;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Entity
@@ -55,6 +59,10 @@ public class PetEntity {
 
     @Column(name = "registration_date")
     private LocalDate registrationDate;
+
+    @Convert(converter = MapToArrayConverter.class)
+    @Column(name = "old_owner")
+    private Map<String, String> oldOwner;
 
     @ManyToOne
     @JoinColumn(name = "owner_pet_id")

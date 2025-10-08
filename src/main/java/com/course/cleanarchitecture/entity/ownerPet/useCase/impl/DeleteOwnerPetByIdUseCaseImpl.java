@@ -2,7 +2,6 @@ package com.course.cleanarchitecture.entity.ownerPet.useCase.impl;
 
 import com.course.cleanarchitecture.entity.ownerPet.useCase.DeleteOwnerPetByIdUseCase;
 import com.course.cleanarchitecture.entity.ownerPet.useCase.provider.DeleteOwnerPetByIdProvider;
-import com.course.cleanarchitecture.entity.pet.useCase.DeletePetByIdUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

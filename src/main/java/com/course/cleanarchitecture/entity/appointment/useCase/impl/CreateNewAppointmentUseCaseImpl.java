@@ -7,7 +7,7 @@ import com.course.cleanarchitecture.entity.appointment.useCase.dto.AppointmentRe
 import com.course.cleanarchitecture.entity.appointment.useCase.mapper.AppointmentMapper;
 import com.course.cleanarchitecture.entity.appointment.useCase.provider.SaveAppointmentProvider;
 import com.course.cleanarchitecture.entity.pet.exceptions.PetNotFoundException;
-import com.course.cleanarchitecture.entity.pet.useCase.provider.GetPetByIdProvider;
+import com.course.cleanarchitecture.entity.pet.port.GetPetByIdPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,8 +19,8 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CreateNewAppointmentUseCaseImpl implements CreateNewAppointmentUseCase {
 
+    private final GetPetByIdPort getPetByIdPort;
     private final AppointmentMapper appointmentMapper;
-    private final GetPetByIdProvider getPetByIdProvider;
     private final SaveAppointmentProvider saveAppointmentProvider;
 
     public UUID execute(AppointmentRequestDto appointmentRequestDto) {
@@ -33,7 +33,7 @@ public class CreateNewAppointmentUseCaseImpl implements CreateNewAppointmentUseC
     }
 
     private void checkExistPetEntity(AppointmentRequestDto appointmentRequestDto) {
-        getPetByIdProvider.execute(appointmentRequestDto.getPetId())
+        getPetByIdPort.execute(appointmentRequestDto.getPetId())
                 .orElseThrow(() -> {
                     String message = NotFoundException.prepareMessage("PetEntity", "id", appointmentRequestDto.getPetId().toString());
                     return new PetNotFoundException(message);

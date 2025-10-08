@@ -16,12 +16,12 @@ public class AppointmentMapperImpl implements AppointmentMapper {
 
     @Override
     public AppointmentEntity toAppointmentEntity(AppointmentRequestDto appointmentRequestDto, UUID id) {
-        return GenerateAppointmentEntity.generate(id, appointmentRequestDto.getPetId());
+        return GenerateAppointmentEntity.generate(id, appointmentRequestDto.getPetId(), appointmentRequestDto.getDoctorId());
     }
 
     @Override
     public AppointmentEntity toAppointmentEntity(AppointmentUpdateDto appointmentUpdateDto, AppointmentEntity appointmentEntity) {
-        AppointmentEntity appointmentEntityUpdate = new AppointmentEntity(appointmentEntity.getId(), appointmentEntity.getPet(), appointmentUpdateDto.getCreateDateTime());
+        AppointmentEntity appointmentEntityUpdate = new AppointmentEntity(appointmentEntity.getId(), appointmentEntity.getPet(), null, appointmentUpdateDto.getCreateDateTime());
         return appointmentEntityUpdate;
     }
 

@@ -16,6 +16,7 @@ create table if not exists pet (
     weight integer not null,
     name varchar(255) not null,
     registration_date timestamp not null,
+    old_owner text [],
 
     FOREIGN KEY (owner_pet_id) REFERENCES owner_pet(id),
     primary key (id)

@@ -1,10 +1,22 @@
 package com.course.cleanarchitecture.entity.pet.useCase;
 
 import com.course.cleanarchitecture.entity.pet.model.PetEntity;
+import com.course.cleanarchitecture.entity.pet.port.FindAllPetBySearchParamsPort;
 import com.course.cleanarchitecture.entity.pet.useCase.dto.PetSearchParamsDto;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface FindAllPetBySearchParamsUseCase {
-    List<PetEntity> execute(PetSearchParamsDto petSearchParamsDto);
+@Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
+public class FindAllPetBySearchParamsUseCase {
+
+    private final FindAllPetBySearchParamsPort findAllPetBySearchParamsPort;
+
+    public List<PetEntity> execute(PetSearchParamsDto petSearchParamsDto) {
+        return findAllPetBySearchParamsPort.execute(petSearchParamsDto);
+    }
 }

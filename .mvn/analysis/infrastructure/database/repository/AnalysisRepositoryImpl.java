@@ -1,7 +1,7 @@
 package com.course.cleanarchitecture.entity.analysis.infrastructure.database.repository;
 
-import com.course.cleanarchitecture.entity.pet.plugins.database.repository.PetRepositoryJpa;
-import com.course.cleanarchitecture.entity.pet.plugins.database.repository.PetSearchParamsInfra;
+import com.course.cleanarchitecture.entity.pet.adapter.database.repository.PetRepositoryJpa;
+import com.course.cleanarchitecture.entity.pet.adapter.database.repository.PetSearchParamsInfra;
 import com.course.cleanarchitecture.entity.pet.model.OwnerPetEntity;
 import com.course.cleanarchitecture.entity.pet.useCase.PetRepository;
 

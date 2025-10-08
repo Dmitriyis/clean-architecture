@@ -4,19 +4,20 @@ import com.course.cleanarchitecture.entity.ownerPet.model.OwnerPetEntity;
 import com.course.cleanarchitecture.entity.pet.exceptions.PetInvalidFieldException;
 
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.UUID;
 
 public class GeneratePetEntity {
 
     public static com.course.cleanarchitecture.entity.pet.model.PetEntity generate(UUID id, String name, Double weight, Integer age,
-                                                                                   LocalDate registrationDate, UUID ownerPetId) {
+                                                                                   LocalDate registrationDate, UUID ownerPetId, Map<String, String> oldOwner) {
 
 
         validateField(id, name, weight, age, registrationDate, ownerPetId);
 
         OwnerPetEntity ownerPetEntity = new OwnerPetEntity(ownerPetId, null, null, null, null);
 
-        return new PetEntity(id, name, weight, age, registrationDate, ownerPetEntity, null);
+        return new PetEntity(id, name, weight, age, registrationDate, oldOwner, ownerPetEntity, null);
     }
 
     public static void validateField(UUID id, String name, Double weight, Integer age, LocalDate registrationDate, UUID ownerPetId) {
