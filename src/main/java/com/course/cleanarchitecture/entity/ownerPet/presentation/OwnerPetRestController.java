@@ -1,13 +1,13 @@
 package com.course.cleanarchitecture.entity.ownerPet.presentation;
 
 import com.course.cleanarchitecture.entity.ownerPet.model.OwnerPetEntity;
-import com.course.cleanarchitecture.entity.ownerPet.useCase.CreateNewOwnerPetUseCase;
-import com.course.cleanarchitecture.entity.ownerPet.useCase.DeleteOwnerPetByIdUseCase;
-import com.course.cleanarchitecture.entity.ownerPet.useCase.FindAllOwnerPetBySearchParamsUseCase;
-import com.course.cleanarchitecture.entity.ownerPet.useCase.GetOwnerPetByIdUseCase;
-import com.course.cleanarchitecture.entity.ownerPet.useCase.UpdateOwnerPetUseCase;
-import com.course.cleanarchitecture.entity.ownerPet.useCase.dto.OwnerPetRequestDto;
-import com.course.cleanarchitecture.entity.ownerPet.useCase.dto.OwnerPetUpdateDto;
+import com.course.cleanarchitecture.entity.ownerPet.application.useCase.CreateNewOwnerPetUseCase;
+import com.course.cleanarchitecture.entity.ownerPet.application.useCase.DeleteOwnerPetByIdUseCase;
+import com.course.cleanarchitecture.entity.ownerPet.application.useCase.FindAllOwnerPetBySearchParamsUseCase;
+import com.course.cleanarchitecture.entity.ownerPet.application.useCase.GetOwnerPetByIdUseCase;
+import com.course.cleanarchitecture.entity.ownerPet.application.useCase.UpdateOwnerPetUseCase;
+import com.course.cleanarchitecture.entity.ownerPet.application.useCase.dto.OwnerPetRequestDto;
+import com.course.cleanarchitecture.entity.ownerPet.application.useCase.dto.OwnerPetUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

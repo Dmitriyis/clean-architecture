@@ -1,7 +1,7 @@
 package com.course.cleanarchitecture.entity.doctor.presentation;
 
-import com.course.cleanarchitecture.entity.doctor.useCase.dto.DoctorRequestDto;
-import com.course.cleanarchitecture.entity.doctor.useCase.dto.DoctorUpdateDto;
+import com.course.cleanarchitecture.entity.doctor.application.useCase.dto.DoctorRequestDto;
+import com.course.cleanarchitecture.entity.doctor.application.useCase.dto.DoctorUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

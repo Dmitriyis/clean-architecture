@@ -1,12 +1,12 @@
 package com.course.cleanarchitecture.entity.appointment.presentation;
 
-import com.course.cleanarchitecture.entity.appointment.useCase.CreateNewAppointmentUseCase;
-import com.course.cleanarchitecture.entity.appointment.useCase.DeleteAppointmentByIdUseCase;
-import com.course.cleanarchitecture.entity.appointment.useCase.GetAppointmentByIdUseCase;
-import com.course.cleanarchitecture.entity.appointment.useCase.UpdateAppointmentUseCase;
-import com.course.cleanarchitecture.entity.appointment.useCase.dto.AppointmentRequestDto;
-import com.course.cleanarchitecture.entity.appointment.useCase.dto.AppointmentResponseDto;
-import com.course.cleanarchitecture.entity.appointment.useCase.dto.AppointmentUpdateDto;
+import com.course.cleanarchitecture.entity.appointment.application.useCase.CreateNewAppointmentUseCase;
+import com.course.cleanarchitecture.entity.appointment.application.useCase.DeleteAppointmentByIdUseCase;
+import com.course.cleanarchitecture.entity.appointment.application.useCase.GetAppointmentByIdUseCase;
+import com.course.cleanarchitecture.entity.appointment.application.useCase.UpdateAppointmentUseCase;
+import com.course.cleanarchitecture.entity.appointment.application.useCase.dto.AppointmentRequestDto;
+import com.course.cleanarchitecture.entity.appointment.application.useCase.dto.AppointmentResponseDto;
+import com.course.cleanarchitecture.entity.appointment.application.useCase.dto.AppointmentUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,14 +1,14 @@
 package com.course.cleanarchitecture.entity.pet.presentation;
 
 import com.course.cleanarchitecture.entity.pet.model.PetEntity;
-import com.course.cleanarchitecture.entity.pet.useCase.CreateNewPetUseCase;
-import com.course.cleanarchitecture.entity.pet.useCase.DeletePetByIdUseCase;
-import com.course.cleanarchitecture.entity.pet.useCase.FindAllPetBySearchParamsUseCase;
-import com.course.cleanarchitecture.entity.pet.useCase.GetPetByIdUseCase;
-import com.course.cleanarchitecture.entity.pet.useCase.UpdatePetUseCase;
-import com.course.cleanarchitecture.entity.pet.useCase.dto.PetRequestDto;
-import com.course.cleanarchitecture.entity.pet.useCase.dto.PetSearchParamsDto;
-import com.course.cleanarchitecture.entity.pet.useCase.dto.PetUpdateDto;
+import com.course.cleanarchitecture.entity.pet.application.useCase.CreateNewPetUseCase;
+import com.course.cleanarchitecture.entity.pet.application.useCase.DeletePetByIdUseCase;
+import com.course.cleanarchitecture.entity.pet.application.useCase.FindAllPetBySearchParamsUseCase;
+import com.course.cleanarchitecture.entity.pet.application.useCase.GetPetByIdUseCase;
+import com.course.cleanarchitecture.entity.pet.application.useCase.UpdatePetUseCase;
+import com.course.cleanarchitecture.entity.pet.application.useCase.dto.PetRequestDto;
+import com.course.cleanarchitecture.entity.pet.application.useCase.dto.PetSearchParamsDto;
+import com.course.cleanarchitecture.entity.pet.application.useCase.dto.PetUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
