@@ -13,10 +13,8 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class DoctorSaveUseCase {
 
-
     private final DoctorMapper doctorMapper;
     private final CreateNewDoctorProvider createNewDoctorProvider;
-
 
     public UUID execute(DoctorRequestDto doctorRequestDto) {
         DoctorEntity doctorEntity = doctorMapper.toDoctorEntity(doctorRequestDto, UUID.randomUUID());
