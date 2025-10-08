@@ -2,7 +2,7 @@ package com.course.cleanarchitecture.entity.pet.useCase;
 
 import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 import com.course.cleanarchitecture.entity.ownerPet.exceptions.OwnerPetNotFoundException;
-import com.course.cleanarchitecture.entity.ownerPet.useCase.provider.GetOwnerPetByIdProvider;
+import com.course.cleanarchitecture.entity.ownerPet.port.GetOwnerPetByIdPort;
 import com.course.cleanarchitecture.entity.pet.exceptions.PetNotFoundException;
 import com.course.cleanarchitecture.entity.pet.model.PetEntity;
 import com.course.cleanarchitecture.entity.pet.port.GetPetByIdPort;
@@ -23,7 +23,7 @@ public class UpdatePetUseCase {
     private final PetMapper petMapper;
     private final UpdatePetPort updatePetPort;
     private final GetPetByIdPort getPetByIdPort;
-    private final GetOwnerPetByIdProvider getOwnerPetByIdProvider;
+    private final GetOwnerPetByIdPort getOwnerPetByIdPort;
 
 
     public UUID execute(PetUpdateDto petUpdateDto) {
@@ -43,7 +43,7 @@ public class UpdatePetUseCase {
     }
 
     private void checkExistOwnerPetEntity(UUID ownerId) {
-        getOwnerPetByIdProvider.execute(ownerId)
+        getOwnerPetByIdPort.execute(ownerId)
                 .orElseThrow(() -> {
                     String message = NotFoundException.prepareMessage("OwnerPetEntity", "id", ownerId.toString());
                     return new OwnerPetNotFoundException(message);

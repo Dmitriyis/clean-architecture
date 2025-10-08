@@ -53,8 +53,8 @@ public class PetRestController {
         return getPetByIdUseCase.execute(id);
     }
 
-    @GetMapping("/{id}")
-    public List<PetEntity> getPetEntityById(@RequestBody PetSearchParamsDto petSearchParamsDto) {
+    @GetMapping("/by-filter")
+    public List<PetEntity> getAllFilterPetEntityById(@RequestBody PetSearchParamsDto petSearchParamsDto) {
         return findAllPetBySearchParamsUseCase.execute(petSearchParamsDto);
     }
 }

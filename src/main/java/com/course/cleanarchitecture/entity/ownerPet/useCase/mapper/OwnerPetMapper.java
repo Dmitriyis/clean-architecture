@@ -1,18 +1,30 @@
 package com.course.cleanarchitecture.entity.ownerPet.useCase.mapper;
 
+import com.course.cleanarchitecture.entity.ownerPet.model.GenerateOwnerPetEntity;
 import com.course.cleanarchitecture.entity.ownerPet.model.OwnerPetEntity;
-import com.course.cleanarchitecture.entity.ownerPet.plugins.database.repository.OwnerPetSearchParamsSpecification;
+import com.course.cleanarchitecture.entity.ownerPet.model.valueObject.Address;
+import com.course.cleanarchitecture.entity.ownerPet.adapter.database.repository.OwnerPetSearchParamsSpecification;
 import com.course.cleanarchitecture.entity.ownerPet.useCase.dto.OwnerPetRequestDto;
 import com.course.cleanarchitecture.entity.ownerPet.useCase.dto.OwnerPetSearchParamsDto;
 import com.course.cleanarchitecture.entity.ownerPet.useCase.dto.OwnerPetUpdateDto;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Service
+public class OwnerPetMapper {
 
-public interface OwnerPetMapper {
-    OwnerPetEntity toPetEntity(OwnerPetRequestDto ownerPet, UUID ownerPetId);
+    public OwnerPetEntity toPetEntity(OwnerPetRequestDto ownerPet, UUID ownerPetId) {
+        Address address = Address.from(ownerPet.getCity(), ownerPet.getStreet(), ownerPet.getNumberHouse());
+        return GenerateOwnerPetEntity.generate(ownerPetId, ownerPet.getName(), ownerPet.getRegistrationDate(), address);
+    }
 
-    OwnerPetEntity toPetEntity(OwnerPetUpdateDto ownerPet, OwnerPetEntity ownerPetEntity);
 
-    OwnerPetSearchParamsSpecification toOwnerPetSearchParamsInfra(OwnerPetSearchParamsDto ownerPet);
+    public OwnerPetEntity toPetEntity(OwnerPetUpdateDto ownerPet, OwnerPetEntity ownerPetEntity) {
+        Address address = Address.from(ownerPet.getCity(), ownerPet.getStreet(), ownerPet.getNumberHouse());
+        return GenerateOwnerPetEntity.generate(ownerPetEntity.getId(), ownerPet.getName(), ownerPetEntity.getRegistrationDate(), address);
+    }
+    public OwnerPetSearchParamsSpecification toOwnerPetSearchParamsInfra(OwnerPetSearchParamsDto ownerPet) {
+        return null;
+    }
 }
