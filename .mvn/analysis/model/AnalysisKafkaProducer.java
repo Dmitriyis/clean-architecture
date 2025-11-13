@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.analysis.model;
+package com.course.cleanarchitecture.domain.analysis.model;
 
 public interface AnalysisKafkaProducer {
 }

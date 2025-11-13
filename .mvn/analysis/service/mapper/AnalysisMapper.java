@@ -1,7 +1,7 @@
-package com.course.cleanarchitecture.entity.analysis.service.mapper;
+package com.course.cleanarchitecture.domain.analysis.service.mapper;
 
-import com.course.cleanarchitecture.entity.analysis.service.dto.AnalysisRequestDto;
-import com.course.cleanarchitecture.entity.pet.model.OwnerPetEntity;
+import com.course.cleanarchitecture.domain.analysis.service.dto.AnalysisRequestDto;
+import com.course.cleanarchitecture.domain.pet.model.OwnerPetEntity;
 
 public class AnalysisMapper {
     public OwnerPetEntity toPetEntity(AnalysisRequestDto petRequestDto) {

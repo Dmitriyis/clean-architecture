@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.transportOrder.service.dto;
+package com.course.cleanarchitecture.domain.transportOrder.service.dto;
 
 public class TransportOrderDto {
 }

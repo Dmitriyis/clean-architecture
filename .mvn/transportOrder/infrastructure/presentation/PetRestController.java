@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.transportOrder.infrastructure.presentation;
+package com.course.cleanarchitecture.domain.transportOrder.infrastructure.presentation;
 
 public class PetRestController {
 }

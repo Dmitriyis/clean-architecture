@@ -1,6 +1,6 @@
-package com.course.cleanarchitecture.entity.service.infrastructure.kafka;
+package com.course.cleanarchitecture.domain.service.infrastructure.kafka;
 
-import com.course.cleanarchitecture.entity.pet.useCase.PetKafkaProducer;
+import com.course.cleanarchitecture.domain.pet.useCase.PetKafkaProducer;
 
 public class PetKafkaProducerImpl implements PetKafkaProducer {
 }

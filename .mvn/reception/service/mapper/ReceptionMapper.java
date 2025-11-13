@@ -1,10 +1,10 @@
-package com.course.cleanarchitecture.entity.reception.service.mapper;
+package com.course.cleanarchitecture.domain.reception.service.mapper;
 
-import com.course.cleanarchitecture.entity.reception.service.dto.ReceptionRequestDto;
-import com.course.cleanarchitecture.entity.reception.service.dto.ReceptionSearchParamsDto;
-import com.course.cleanarchitecture.entity.reception.service.dto.ReceptionUpdateDto;
-import com.course.cleanarchitecture.entity.reception.infrastructure.database.repository.ReceptionSearchParamsInfra;
-import com.course.cleanarchitecture.entity.reception.model.ReceptionEntity;
+import com.course.cleanarchitecture.domain.reception.service.dto.ReceptionRequestDto;
+import com.course.cleanarchitecture.domain.reception.service.dto.ReceptionSearchParamsDto;
+import com.course.cleanarchitecture.domain.reception.service.dto.ReceptionUpdateDto;
+import com.course.cleanarchitecture.domain.reception.infrastructure.database.repository.ReceptionSearchParamsInfra;
+import com.course.cleanarchitecture.domain.reception.model.ReceptionEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

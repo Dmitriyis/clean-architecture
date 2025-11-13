@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.deiver.model;
+package com.course.cleanarchitecture.domain.deiver.model;
 
 import java.util.List;
 import java.util.UUID;

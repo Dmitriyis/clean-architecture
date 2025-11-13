@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.analysis.service.dto;
+package com.course.cleanarchitecture.domain.analysis.service.dto;
 
 public class AnalysisRequestDto {
 }

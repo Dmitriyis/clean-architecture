@@ -1,11 +1,11 @@
-package com.course.cleanarchitecture.entity.reception.service;
+package com.course.cleanarchitecture.domain.reception.service;
 
-import com.course.cleanarchitecture.entity.reception.service.dto.ReceptionRequestDto;
-import com.course.cleanarchitecture.entity.reception.service.dto.ReceptionSearchParamsDto;
-import com.course.cleanarchitecture.entity.reception.model.ReceptionEntity;
-import com.course.cleanarchitecture.entity.reception.model.ReceptionRepository;
-import com.course.cleanarchitecture.entity.reception.model.useCase.ReceptionServiceUseCase;
-import com.course.cleanarchitecture.entity.reception.service.mapper.ReceptionMapper;
+import com.course.cleanarchitecture.domain.reception.service.dto.ReceptionRequestDto;
+import com.course.cleanarchitecture.domain.reception.service.dto.ReceptionSearchParamsDto;
+import com.course.cleanarchitecture.domain.reception.model.ReceptionEntity;
+import com.course.cleanarchitecture.domain.reception.model.ReceptionRepository;
+import com.course.cleanarchitecture.domain.reception.model.useCase.ReceptionServiceUseCase;
+import com.course.cleanarchitecture.domain.reception.service.mapper.ReceptionMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

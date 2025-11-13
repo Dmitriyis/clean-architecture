@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.service.model;
+package com.course.cleanarchitecture.domain.service.model;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.medicalRecord.exceptions;
+package com.course.cleanarchitecture.domain.medicalRecord.exceptions;
 
 import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 

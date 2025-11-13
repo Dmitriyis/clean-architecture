@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.medicalRecord.model;
+package com.course.cleanarchitecture.domain.medicalRecord.model;
 
 import java.util.List;
 import java.util.UUID;

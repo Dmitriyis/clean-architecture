@@ -1,15 +1,22 @@
 spring:
   application:
     name: clean-architecture
+
   datasource:
     username: myuser
     password: 12345
     url: jdbc:postgresql://localhost:5433/mydb
     driver-class-name: org.postgresql.Driver
+
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  security:
+    user:
+      name: user
+      password: 1234
 
   flyway:
     user: myuser
@@ -20,4 +27,9 @@ spring:
 
 server:
   port: 8080
+
+jwt:
+  secret: wdsfwsfdwsed
+  expiration: 600000
+
 

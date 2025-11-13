@@ -1,10 +1,10 @@
-package com.course.cleanarchitecture.entity.analysis.service;
+package com.course.cleanarchitecture.domain.analysis.service;
 
-import com.course.cleanarchitecture.entity.analysis.service.dto.AnalysisRequestDto;
-import com.course.cleanarchitecture.entity.analysis.service.mapper.AnalysisMapper;
-import com.course.cleanarchitecture.entity.pet.model.OwnerPetEntity;
-import com.course.cleanarchitecture.entity.pet.useCase.PetRepository;
-import com.course.cleanarchitecture.entity.pet.model.useCase.PetSaveUseCase;
+import com.course.cleanarchitecture.domain.analysis.service.dto.AnalysisRequestDto;
+import com.course.cleanarchitecture.domain.analysis.service.mapper.AnalysisMapper;
+import com.course.cleanarchitecture.domain.pet.model.OwnerPetEntity;
+import com.course.cleanarchitecture.domain.pet.useCase.PetRepository;
+import com.course.cleanarchitecture.domain.pet.model.useCase.PetSaveUseCase;
 
 import java.util.UUID;
 

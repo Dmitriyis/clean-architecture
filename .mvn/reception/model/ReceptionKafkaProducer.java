@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.reception.model;
+package com.course.cleanarchitecture.domain.reception.model;
 
 public interface ReceptionKafkaProducer {
 }

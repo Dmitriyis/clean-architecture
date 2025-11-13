@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.service.infrastructure.presentation;
+package com.course.cleanarchitecture.domain.service.infrastructure.presentation;
 
 public class PetRestController {
 }

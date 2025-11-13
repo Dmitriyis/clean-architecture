@@ -1,7 +1,7 @@
-package com.course.cleanarchitecture.entity.transportOrder.model;
+package com.course.cleanarchitecture.domain.transportOrder.model;
 
-import com.course.cleanarchitecture.entity.pet.model.OwnerPetEntity;
-import com.course.cleanarchitecture.entity.deiver.model.DriverEntity;
+import com.course.cleanarchitecture.domain.pet.model.OwnerPetEntity;
+import com.course.cleanarchitecture.domain.deiver.model.DriverEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.Column;

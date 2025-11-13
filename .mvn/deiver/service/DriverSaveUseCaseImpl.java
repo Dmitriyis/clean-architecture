@@ -1,10 +1,10 @@
-package com.course.cleanarchitecture.entity.deiver.service;
+package com.course.cleanarchitecture.domain.deiver.service;
 
-import com.course.cleanarchitecture.entity.pet.model.OwnerPetEntity;
-import com.course.cleanarchitecture.entity.pet.useCase.PetRepository;
-import com.course.cleanarchitecture.entity.pet.model.useCase.PetSaveUseCase;
-import com.course.cleanarchitecture.entity.deiver.service.dto.DriverDto;
-import com.course.cleanarchitecture.entity.deiver.service.mapper.DriverMapper;
+import com.course.cleanarchitecture.domain.pet.model.OwnerPetEntity;
+import com.course.cleanarchitecture.domain.pet.useCase.PetRepository;
+import com.course.cleanarchitecture.domain.pet.model.useCase.PetSaveUseCase;
+import com.course.cleanarchitecture.domain.deiver.service.dto.DriverDto;
+import com.course.cleanarchitecture.domain.deiver.service.mapper.DriverMapper;
 
 import java.util.UUID;
 

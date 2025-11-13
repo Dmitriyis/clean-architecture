@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.medicalRecord.service.dto;
+package com.course.cleanarchitecture.domain.medicalRecord.service.dto;
 
 public class PetRequestDto {
 }

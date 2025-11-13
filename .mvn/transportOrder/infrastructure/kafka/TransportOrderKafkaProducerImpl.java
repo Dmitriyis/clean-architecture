@@ -1,7 +1,7 @@
-package com.course.cleanarchitecture.entity.transportOrder.infrastructure.kafka;
+package com.course.cleanarchitecture.domain.transportOrder.infrastructure.kafka;
 
-import com.course.cleanarchitecture.entity.transportOrder.model.TransportOrderNotification;
-import com.course.cleanarchitecture.entity.transportOrder.model.event.TransportOrderNotificationDto;
+import com.course.cleanarchitecture.domain.transportOrder.model.TransportOrderNotification;
+import com.course.cleanarchitecture.domain.transportOrder.model.event.TransportOrderNotificationDto;
 
 public class TransportOrderKafkaProducerImpl implements TransportOrderNotification {
     @Override

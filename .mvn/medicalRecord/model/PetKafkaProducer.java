@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.medicalRecord.model;
+package com.course.cleanarchitecture.domain.medicalRecord.model;
 
 public interface PetKafkaProducer {
 }

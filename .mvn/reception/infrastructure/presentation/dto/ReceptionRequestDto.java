@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.reception.infrastructure.presentation.dto;
+package com.course.cleanarchitecture.domain.reception.infrastructure.presentation.dto;
 
 public class ReceptionRequestDto {
 

@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.medicalRecord.infrastructure.presentation;
+package com.course.cleanarchitecture.domain.medicalRecord.infrastructure.presentation;
 
 public class PetGraphqlController {
 }

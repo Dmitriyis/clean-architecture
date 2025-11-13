@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.transportOrder.model;
+package com.course.cleanarchitecture.domain.transportOrder.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

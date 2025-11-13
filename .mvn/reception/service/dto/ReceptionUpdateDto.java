@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.reception.service.dto;
+package com.course.cleanarchitecture.domain.reception.service.dto;
 
 public class ReceptionUpdateDto {
 }

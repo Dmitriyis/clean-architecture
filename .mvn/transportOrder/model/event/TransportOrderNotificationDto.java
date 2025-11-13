@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.transportOrder.model.event;
+package com.course.cleanarchitecture.domain.transportOrder.model.event;
 
 import lombok.Builder;
 import lombok.Getter;

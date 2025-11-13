@@ -1,6 +1,6 @@
-package com.course.cleanarchitecture.entity.medicalRecord.model.useCase;
+package com.course.cleanarchitecture.domain.medicalRecord.model.useCase;
 
-import com.course.cleanarchitecture.entity.medicalRecord.model.PetEntity;
+import com.course.cleanarchitecture.domain.medicalRecord.model.PetEntity;
 
 import java.util.List;
 

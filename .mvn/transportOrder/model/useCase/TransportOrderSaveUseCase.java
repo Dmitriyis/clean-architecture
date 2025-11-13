@@ -1,6 +1,6 @@
-package com.course.cleanarchitecture.entity.transportOrder.model.useCase;
+package com.course.cleanarchitecture.domain.transportOrder.model.useCase;
 
-import com.course.cleanarchitecture.entity.pet.useCase.dto.PetRequestDto;
+import com.course.cleanarchitecture.domain.pet.useCase.dto.PetRequestDto;
 
 import java.util.UUID;
 

@@ -1,6 +1,6 @@
-package com.course.cleanarchitecture.entity.analysis.model.useCase;
+package com.course.cleanarchitecture.domain.analysis.model.useCase;
 
-import com.course.cleanarchitecture.entity.analysis.model.AnalysisEntity;
+import com.course.cleanarchitecture.domain.analysis.model.AnalysisEntity;
 
 import java.util.List;
 

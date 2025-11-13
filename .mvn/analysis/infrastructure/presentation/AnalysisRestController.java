@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.analysis.infrastructure.presentation;
+package com.course.cleanarchitecture.domain.analysis.infrastructure.presentation;
 
 public class AnalysisRestController {
 }

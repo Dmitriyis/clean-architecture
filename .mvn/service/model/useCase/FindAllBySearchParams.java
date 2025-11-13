@@ -1,6 +1,6 @@
-package com.course.cleanarchitecture.entity.service.model.useCase;
+package com.course.cleanarchitecture.domain.service.model.useCase;
 
-import com.course.cleanarchitecture.entity.service.model.ServiceEntity;
+import com.course.cleanarchitecture.domain.service.model.ServiceEntity;
 
 import java.util.List;
 

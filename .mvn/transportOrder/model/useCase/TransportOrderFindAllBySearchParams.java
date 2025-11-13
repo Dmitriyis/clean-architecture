@@ -1,6 +1,6 @@
-package com.course.cleanarchitecture.entity.transportOrder.model.useCase;
+package com.course.cleanarchitecture.domain.transportOrder.model.useCase;
 
-import com.course.cleanarchitecture.entity.transportOrder.model.TransportOrderEntity;
+import com.course.cleanarchitecture.domain.transportOrder.model.TransportOrderEntity;
 
 import java.util.List;
 

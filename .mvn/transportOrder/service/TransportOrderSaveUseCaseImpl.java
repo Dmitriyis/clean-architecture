@@ -1,10 +1,10 @@
-package com.course.cleanarchitecture.entity.transportOrder.service;
+package com.course.cleanarchitecture.domain.transportOrder.service;
 
-import com.course.cleanarchitecture.entity.pet.model.OwnerPetEntity;
-import com.course.cleanarchitecture.entity.pet.useCase.PetRepository;
-import com.course.cleanarchitecture.entity.pet.model.useCase.PetSaveUseCase;
-import com.course.cleanarchitecture.entity.transportOrder.service.dto.TransportOrderDto;
-import com.course.cleanarchitecture.entity.transportOrder.service.mapper.TransportOrderMapper;
+import com.course.cleanarchitecture.domain.pet.model.OwnerPetEntity;
+import com.course.cleanarchitecture.domain.pet.useCase.PetRepository;
+import com.course.cleanarchitecture.domain.pet.model.useCase.PetSaveUseCase;
+import com.course.cleanarchitecture.domain.transportOrder.service.dto.TransportOrderDto;
+import com.course.cleanarchitecture.domain.transportOrder.service.mapper.TransportOrderMapper;
 
 import java.util.UUID;
 

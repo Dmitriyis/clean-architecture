@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.transportOrder.model;
+package com.course.cleanarchitecture.domain.transportOrder.model;
 
 import java.util.List;
 import java.util.UUID;

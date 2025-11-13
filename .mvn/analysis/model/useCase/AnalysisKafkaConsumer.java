@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.analysis.model.useCase;
+package com.course.cleanarchitecture.domain.analysis.model.useCase;
 
 public interface AnalysisKafkaConsumer {
 }

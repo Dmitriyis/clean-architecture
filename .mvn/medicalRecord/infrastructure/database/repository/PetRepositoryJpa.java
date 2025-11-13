@@ -1,6 +1,6 @@
-package com.course.cleanarchitecture.entity.medicalRecord.infrastructure.database.repository;
+package com.course.cleanarchitecture.domain.medicalRecord.infrastructure.database.repository;
 
-import com.course.cleanarchitecture.entity.pet.model.OwnerPetEntity;
+import com.course.cleanarchitecture.domain.pet.model.OwnerPetEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

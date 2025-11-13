@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.service.exceptions;
+package com.course.cleanarchitecture.domain.service.exceptions;
 
 import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 

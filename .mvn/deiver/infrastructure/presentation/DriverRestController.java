@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.deiver.infrastructure.presentation;
+package com.course.cleanarchitecture.domain.deiver.infrastructure.presentation;
 
 public class DriverRestController {
 }

@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.deiver.service.dto;
+package com.course.cleanarchitecture.domain.deiver.service.dto;
 
 public class DriverDto {
 }

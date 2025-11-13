@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.transportOrder.exceptions;
+package com.course.cleanarchitecture.domain.transportOrder.exceptions;
 
 import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 

@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.analysis.model;
+package com.course.cleanarchitecture.domain.analysis.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

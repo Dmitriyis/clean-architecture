@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.service.model;
+package com.course.cleanarchitecture.domain.service.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

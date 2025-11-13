@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.entity.reception.infrastructure.database.dto;
+package com.course.cleanarchitecture.domain.reception.infrastructure.database.dto;
 
 public class ReceptionSearchParamsDto {
 

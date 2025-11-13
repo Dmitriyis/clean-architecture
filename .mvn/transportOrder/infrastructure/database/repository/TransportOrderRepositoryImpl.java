@@ -1,9 +1,9 @@
-package com.course.cleanarchitecture.entity.transportOrder.infrastructure.database.repository;
+package com.course.cleanarchitecture.domain.transportOrder.infrastructure.database.repository;
 
-import com.course.cleanarchitecture.entity.pet.adapter.database.repository.PetRepositoryJpa;
-import com.course.cleanarchitecture.entity.pet.adapter.database.repository.PetSearchParamsInfra;
-import com.course.cleanarchitecture.entity.pet.model.OwnerPetEntity;
-import com.course.cleanarchitecture.entity.pet.useCase.PetRepository;
+import com.course.cleanarchitecture.domain.pet.adapter.database.repository.PetRepositoryJpa;
+import com.course.cleanarchitecture.domain.pet.adapter.database.repository.PetSearchParamsInfra;
+import com.course.cleanarchitecture.domain.pet.model.OwnerPetEntity;
+import com.course.cleanarchitecture.domain.pet.useCase.PetRepository;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,8 +1,8 @@
-package com.course.cleanarchitecture.entity.medicalRecord.service;
+package com.course.cleanarchitecture.domain.medicalRecord.service;
 
-import com.course.cleanarchitecture.entity.pet.model.OwnerPetEntity;
-import com.course.cleanarchitecture.entity.pet.useCase.PetRepository;
-import com.course.cleanarchitecture.entity.pet.model.useCase.PetFindAllBySearchParams;
+import com.course.cleanarchitecture.domain.pet.model.OwnerPetEntity;
+import com.course.cleanarchitecture.domain.pet.useCase.PetRepository;
+import com.course.cleanarchitecture.domain.pet.model.useCase.PetFindAllBySearchParams;
 
 import java.util.List;
 
