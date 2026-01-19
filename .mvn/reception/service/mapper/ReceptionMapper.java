@@ -4,7 +4,6 @@ import com.course.cleanarchitecture.domain.reception.service.dto.ReceptionReques
 import com.course.cleanarchitecture.domain.reception.service.dto.ReceptionSearchParamsDto;
 import com.course.cleanarchitecture.domain.reception.service.dto.ReceptionUpdateDto;
 import com.course.cleanarchitecture.domain.reception.infrastructure.database.repository.ReceptionSearchParamsInfra;
-import com.course.cleanarchitecture.domain.reception.model.ReceptionEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

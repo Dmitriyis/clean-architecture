@@ -1,7 +1,6 @@
 package com.course.cleanarchitecture.domain.reception.infrastructure.database.repository;
 
 import com.course.cleanarchitecture.domain.reception.service.dto.ReceptionSearchParamsDto;
-import com.course.cleanarchitecture.domain.reception.model.ReceptionEntity;
 import com.course.cleanarchitecture.domain.reception.model.ReceptionRepository;
 import com.course.cleanarchitecture.domain.reception.service.mapper.ReceptionMapper;
 import lombok.RequiredArgsConstructor;

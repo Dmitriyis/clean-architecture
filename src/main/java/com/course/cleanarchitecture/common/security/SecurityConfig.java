@@ -5,7 +5,6 @@ import com.course.cleanarchitecture.domain.user.CustomPermissionEvaluator;
 import com.course.cleanarchitecture.domain.user.JwtRequestFilter;
 import com.course.cleanarchitecture.domain.user.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
@@ -19,22 +18,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 @Configuration
 @RequiredArgsConstructor
-//@EnableWebSecurity(debug = true)
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
 
     private final JwtRequestFilter jwtRequestFilter;
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -49,9 +43,8 @@ public class SecurityConfig {
                         sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize ->
                         authorize
-                                .requestMatchers("/api/authenticated").permitAll()
+                                .requestMatchers("/api/login").permitAll()
                                 .requestMatchers("/api/v1/pet/**").authenticated()
-                                .requestMatchers("/test/**").authenticated()
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)

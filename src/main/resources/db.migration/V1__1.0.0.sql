@@ -9,6 +9,13 @@ create table if not exists owner_pet (
     primary key (id)
 );
 
+create table if not exists medical_card (
+    id uuid,
+    update_time timestamp not null,
+
+    primary key (id)
+);
+
 create table if not exists pet (
     id uuid,
     owner_pet_id uuid,
@@ -16,20 +23,64 @@ create table if not exists pet (
     weight integer not null,
     name varchar(255) not null,
     registration_date timestamp not null,
-    old_owner text [],
+    medical_card_id uuid,
 
     foreign key (owner_pet_id) references owner_pet(id),
+    foreign key (medical_card_id) references medical_card(id),
     primary key (id)
 );
 
-create table if not exists appointment (
+
+create table if not exists doctor (
     id uuid,
-    pet_id uuid,
-    create_date_time timestamp not null,
+    name varchar(255) not null,
+    profession varchar(255) not null,
+    work_experience integer not null,
 
-    foreign key (pet_id) references pet(id),
     primary key (id)
 );
+
+create table if not exists reception (
+    id uuid,
+    medical_card_id uuid,
+    doctor_id uuid,
+    conclusions varchar(255) not null,
+    start_reception timestamp not null,
+    end_reception timestamp not null,
+    analyses text[],
+
+    foreign key (medical_card_id) references medical_card(id),
+    foreign key (doctor_id) references doctor(id),
+    primary key (id)
+);
+
+create table if not exists outbox (
+    id uuid,
+    event_type varchar(255) not null,
+    aggregate_id varchar(255) not null,
+    aggregate_type varchar(255) not null,
+    payload varchar(255) not null,
+    occurred_on_utc timestamp not null,
+    processed_on_utc timestamp,
+    primary key (id)
+);
+
+create table if not exists analysis (
+    id uuid,
+    name varchar(255),
+    description varchar(255),
+    execution_time integer,
+    medical_card_id UUID,
+
+    foreign key (medical_card_id) references medical_card(id),
+    primary key (id)
+);
+
+
+
+
+
+
 
 create table users (
     email varchar(255) not null primary key,

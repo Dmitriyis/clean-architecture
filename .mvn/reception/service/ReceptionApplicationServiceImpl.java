@@ -2,7 +2,6 @@ package com.course.cleanarchitecture.domain.reception.service;
 
 import com.course.cleanarchitecture.domain.reception.service.dto.ReceptionRequestDto;
 import com.course.cleanarchitecture.domain.reception.service.dto.ReceptionSearchParamsDto;
-import com.course.cleanarchitecture.domain.reception.model.ReceptionEntity;
 import com.course.cleanarchitecture.domain.reception.model.ReceptionRepository;
 import com.course.cleanarchitecture.domain.reception.model.useCase.ReceptionServiceUseCase;
 import com.course.cleanarchitecture.domain.reception.service.mapper.ReceptionMapper;

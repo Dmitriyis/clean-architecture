@@ -1,6 +1,5 @@
 package com.course.cleanarchitecture.domain.user;
 
-import com.sun.security.auth.UserPrincipal;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

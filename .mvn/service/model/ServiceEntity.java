@@ -1,6 +1,6 @@
 package com.course.cleanarchitecture.domain.service.model;
 
-import com.course.cleanarchitecture.domain.appointment.model.AppointmentEntity;
+import com.course.cleanarchitecture.domain.reception.model.AppointmentEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.Column;

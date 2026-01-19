@@ -1,6 +1,5 @@
 package com.course.cleanarchitecture.domain.reception.infrastructure.database.repository;
 
-import com.course.cleanarchitecture.domain.reception.model.ReceptionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
