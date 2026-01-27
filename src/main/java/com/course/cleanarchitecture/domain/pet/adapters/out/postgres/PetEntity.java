@@ -1,7 +1,7 @@
 package com.course.cleanarchitecture.domain.pet.adapters.out.postgres;
 
 
-import com.course.cleanarchitecture.domain.ownerPet.adapters.out.OwnerPetEntity;
+import com.course.cleanarchitecture.domain.ownerPet.adapters.out.postgres.OwnerPetEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,7 +34,7 @@ public class PetEntity {
     private String name;
 
     @Column(name = "weight")
-    private Double weight;
+    private Integer weight;
 
     @Column(name = "age")
     private Integer age;

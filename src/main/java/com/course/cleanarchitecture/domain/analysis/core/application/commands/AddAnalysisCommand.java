@@ -1,13 +1,12 @@
 package com.course.cleanarchitecture.domain.analysis.core.application.commands;
 
+import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils;
 import lombok.Getter;
 
 import java.util.UUID;
 
 @Getter
 public class AddAnalysisCommand {
-    private UUID id;
-
     private String name;
 
     private String description;
@@ -20,8 +19,12 @@ public class AddAnalysisCommand {
 
     }
 
-    public AddAnalysisCommand(UUID id, String name, String description, Integer executionTime, UUID medicalCard) {
-        this.id = id;
+    public AddAnalysisCommand(String name, String description, Integer executionTime, UUID medicalCard) {
+        ValidationValueUtils.againstNull(name, "name");
+        ValidationValueUtils.againstNull(description, "description");
+        ValidationValueUtils.againstNull(executionTime, "executionTime");
+        ValidationValueUtils.againstNull(medicalCard, "medicalCard");
+
         this.name = name;
         this.description = description;
         this.executionTime = executionTime;

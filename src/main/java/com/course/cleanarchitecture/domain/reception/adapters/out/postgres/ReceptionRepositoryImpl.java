@@ -2,6 +2,8 @@ package com.course.cleanarchitecture.domain.reception.adapters.out.postgres;
 
 import com.course.cleanarchitecture.domain.reception.core.model.Reception;
 import com.course.cleanarchitecture.domain.reception.core.ports.ReceptionRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +18,8 @@ public class ReceptionRepositoryImpl implements ReceptionRepository {
 
     private final ReceptionRepositoryJpa receptionRepositoryJpa;
 
+    @PersistenceContext
+    private final EntityManager entityManager;
     @Override
     public UUID save(Reception reception) {
         ReceptionEntity receptionEntity = receptionToReceptionEntity(reception);

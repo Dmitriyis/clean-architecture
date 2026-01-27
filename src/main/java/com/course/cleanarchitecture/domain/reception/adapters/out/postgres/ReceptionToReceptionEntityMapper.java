@@ -1,6 +1,6 @@
 package com.course.cleanarchitecture.domain.reception.adapters.out.postgres;
 
-import com.course.cleanarchitecture.domain.doctor.adapters.out.DoctorEntity;
+import com.course.cleanarchitecture.domain.doctor.adapters.out.postgres.DoctorEntity;
 import com.course.cleanarchitecture.domain.pet.adapters.out.postgres.MedicalCardEntity;
 import com.course.cleanarchitecture.domain.reception.core.model.Reception;
 

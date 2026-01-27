@@ -1,21 +1,22 @@
 package com.course.cleanarchitecture.domain.pet.core.model;
 
-import com.course.cleanarchitecture.common.checkingvalueerrors.ValidationValueUtils;
+import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils;
 import com.course.cleanarchitecture.ddd.BaseEntity;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Getter
 public class MedicalCard extends BaseEntity<UUID> {
 
-    public List<UUID> receptionsId;
+    public List<UUID> receptionsId = new ArrayList<>();
 
     private LocalDateTime updateTime;
 
-    private List<UUID> analyses;
+    private List<UUID> analyses = new ArrayList<>();
 
     private MedicalCard() {
 

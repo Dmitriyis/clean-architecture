@@ -5,6 +5,7 @@ create table if not exists owner_pet (
     street varchar(255) not null,
     number_house varchar(255) not null,
     registration_date timestamp not null,
+    phone text not null,
 
     primary key (id)
 );
@@ -44,7 +45,7 @@ create table if not exists reception (
     id uuid,
     medical_card_id uuid,
     doctor_id uuid,
-    conclusions varchar(255) not null,
+    conclusions text not null,
     start_reception timestamp not null,
     end_reception timestamp not null,
     analyses text[],
@@ -56,10 +57,10 @@ create table if not exists reception (
 
 create table if not exists outbox (
     id uuid,
-    event_type varchar(255) not null,
+    event_type text not null,
     aggregate_id varchar(255) not null,
-    aggregate_type varchar(255) not null,
-    payload varchar(255) not null,
+    aggregate_type text not null,
+    payload text not null,
     occurred_on_utc timestamp not null,
     processed_on_utc timestamp,
     primary key (id)
@@ -71,6 +72,7 @@ create table if not exists analysis (
     description varchar(255),
     execution_time integer,
     medical_card_id UUID,
+    create_date timestamp,
 
     foreign key (medical_card_id) references medical_card(id),
     primary key (id)
@@ -82,18 +84,18 @@ create table if not exists analysis (
 
 
 
-create table users (
+create table if not exists users (
     email varchar(255) not null primary key,
     password varchar(255) not null,
     user_type varchar(255) not null
 );
 
-create table permission (
+create table if not exists permission (
     id uuid primary KEY,
     permission varchar(255) NOT NULL
 );
 
-create table user_permission (
+create table if not exists user_permission (
     user_email VARCHAR(255) NOT NULL,
     permission_id UUID NOT NULL,
     PRIMARY KEY (user_email, permission_id),

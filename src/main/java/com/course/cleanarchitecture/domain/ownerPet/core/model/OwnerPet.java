@@ -15,6 +15,8 @@ public class OwnerPet extends Aggregate<UUID> {
 
     private String name;
 
+    private String phone;
+
     private LocalDate registrationDate;
 
     private Address address;

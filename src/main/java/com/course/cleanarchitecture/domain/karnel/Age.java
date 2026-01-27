@@ -1,7 +1,7 @@
 package com.course.cleanarchitecture.domain.karnel;
 
 
-import com.course.cleanarchitecture.common.checkingvalueerrors.ValidationValueUtils;
+import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils;
 import com.course.cleanarchitecture.ddd.ValueObject;
 import lombok.Getter;
 

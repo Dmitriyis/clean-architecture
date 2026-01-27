@@ -7,8 +7,10 @@ import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.UUID;
 
@@ -40,7 +42,7 @@ public class GetPetByIdQueryCommandHandlerImpl implements GetPetByIdQueryCommand
         Query querySqlPet = entityManager.createNativeQuery("select " +
                 "pet.id, pet.name, pet.weight, pet.age, pet.registration_date, " +
                 "med.id, med.update_time, " +
-                "opet.id" +
+                "opet.id " +
                 "from pet as pet " +
                 "left join owner_pet as opet on opet.id = pet.owner_pet_id " +
                 "left join medical_card as med on med.id = pet.medical_card_id " +
@@ -55,12 +57,16 @@ public class GetPetByIdQueryCommandHandlerImpl implements GetPetByIdQueryCommand
                 .map(row -> {
                     UUID id = (UUID) row[0];
                     String name = (String) row[1];
-                    Double weight = (Double) row[2];
+                    Integer weight = (Integer) row[2];
                     Integer age = (Integer) row[3];
-                    LocalDate registrationDate = (LocalDate) row[4];
+                    LocalDate registrationDate = ((Timestamp) row[4]).toInstant()
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDate();
 
-                    LocalDateTime updateTime = (LocalDateTime) row[5];
-                    UUID medicalCardId = (UUID) row[6];
+                    LocalDateTime updateTime = ((Timestamp) row[6]).toInstant()
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDateTime();
+                    UUID medicalCardId = (UUID) row[5];
                     MedicalCardGetPetByIdQueryResponse medicalCard = MedicalCardGetPetByIdQueryResponse
                             .builder()
                             .id(medicalCardId)
@@ -82,27 +88,22 @@ public class GetPetByIdQueryCommandHandlerImpl implements GetPetByIdQueryCommand
     }
 
     private List<UUID> findReceptionByMedicalCardId(UUID medicalCardId) {
-        Query queryReception = entityManager.createNativeQuery("select a.id " +
+        Query queryReception = entityManager.createNativeQuery("select rec.id " +
                 "from reception as rec " +
-                "where rec.id = ?1");
+                "where rec.medical_card_id = ?1");
 
         queryReception.setParameter(1, medicalCardId);
-        List<Object[]> resultsReception = queryReception.getResultList();
-        List<UUID> receptionsId = resultsReception.stream().map(row -> {
-            return (UUID) row[0];
-        }).toList();
+        List<UUID> receptionsId = queryReception.getResultList();
+
         return receptionsId;
     }
 
     private List<UUID> findAnalysisByMedicalCardId(UUID medicalCardId) {
-        Query queryAnalysis = entityManager.createNativeQuery("select a.id " +
+        Query queryAnalysis = entityManager.createNativeQuery("select a.medical_card_id " +
                 "from analysis as a " +
-                "where a.id = ?1");
+                "where a.medical_card_id = ?1");
         queryAnalysis.setParameter(1, medicalCardId);
-        List<Object[]> resultsAnalysis = queryAnalysis.getResultList();
-        List<UUID> analysesId = resultsAnalysis.stream().map(row -> {
-            return (UUID) row[0];
-        }).toList();
+        List<UUID> analysesId = queryAnalysis.getResultList();
 
         return analysesId;
     }

@@ -5,6 +5,8 @@ import com.course.cleanarchitecture.domain.DomainEventPublisher;
 import com.course.cleanarchitecture.ddd.Aggregate;
 import com.course.cleanarchitecture.ddd.AggregateRoot;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +16,8 @@ public class OutboxDomainEventPublisherImpl implements DomainEventPublisher {
 
     private final OutboxJpaRepository jpa;
     private final ObjectMapper objectMapper;
-
+    @PersistenceContext
+    private final EntityManager entityManager;
     @Override
     public void publish(Iterable<Aggregate<?>> aggregates) {
         try {

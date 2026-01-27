@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.common.checkingvalueerrors;
+package com.course.cleanarchitecture.common.utils.checkvalue;
 
 import java.math.BigDecimal;
 import java.util.Collection;

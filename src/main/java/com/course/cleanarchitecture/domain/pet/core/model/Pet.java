@@ -15,7 +15,7 @@ public class Pet extends Aggregate<UUID> {
 
     private String name;
 
-    private Double weight;
+    private Integer weight;
 
     private UUID ownerPetId;
 
@@ -26,7 +26,7 @@ public class Pet extends Aggregate<UUID> {
     private Pet() {
     }
 
-    public Pet(UUID id, Age age, String name, Double weight, UUID ownerPetId, MedicalCard medicalCard, LocalDate registrationDate) {
+    public Pet(UUID id, Age age, String name, Integer weight, UUID ownerPetId, MedicalCard medicalCard, LocalDate registrationDate) {
         this.id = id;
         this.age = age;
         this.name = name;
@@ -40,7 +40,7 @@ public class Pet extends Aggregate<UUID> {
         medicalCard.addReception(id);
     }
 
-    public static Pet reStore(UUID id, Age age, String name, Double weight, UUID ownerPetId, MedicalCard medicalCard, LocalDate registrationDate) {
+    public static Pet reStore(UUID id, Age age, String name, Integer weight, UUID ownerPetId, MedicalCard medicalCard, LocalDate registrationDate) {
         return new Pet(id, age, name, weight, ownerPetId, medicalCard, registrationDate);
     }
 }

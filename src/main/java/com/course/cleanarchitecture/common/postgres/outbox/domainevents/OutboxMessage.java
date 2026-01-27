@@ -2,7 +2,7 @@ package com.course.cleanarchitecture.common.postgres.outbox.domainevents;
 
 
 
-import com.course.cleanarchitecture.common.checkingvalueerrors.ValidationValueUtils;
+import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

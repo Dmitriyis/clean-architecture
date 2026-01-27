@@ -1,6 +1,6 @@
 package com.course.cleanarchitecture.domain.pet.adapters.out.postgres;
 
-import com.course.cleanarchitecture.domain.analysis.adapters.out.AnalysisEntity;
+import com.course.cleanarchitecture.domain.analysis.adapters.out.postgres.AnalysisEntity;
 import com.course.cleanarchitecture.domain.reception.adapters.out.postgres.ReceptionEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

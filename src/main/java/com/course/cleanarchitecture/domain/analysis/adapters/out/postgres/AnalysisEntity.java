@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.domain.analysis.adapters.out;
+package com.course.cleanarchitecture.domain.analysis.adapters.out.postgres;
 
 import com.course.cleanarchitecture.domain.pet.adapters.out.postgres.MedicalCardEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -44,6 +45,9 @@ public class AnalysisEntity {
 
     @Column(name = "execution_time")
     private Integer executionTime;
+
+    @Column(name = "create_date")
+    private LocalDateTime createDate;
 
     @ManyToOne
     @JoinColumn(name = "medical_card_id")

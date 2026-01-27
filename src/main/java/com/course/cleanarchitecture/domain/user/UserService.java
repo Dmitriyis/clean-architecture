@@ -18,8 +18,7 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserDomain userDetails = userRepository.findById(username)
                 .orElseThrow(() -> new RuntimeException("ERRORS USER NOT FOUND"));
-//
-//        userDetails.getAuthorities();
+
         return userDetails;
     }
 }

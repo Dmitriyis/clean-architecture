@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
@@ -17,7 +18,7 @@ public class AddAnalysisCommandHandlerImpl implements AddAnalysisCommandHandler 
     @Override
     @Transactional
     public UUID execute(AddAnalysisCommand addAnalysisCommand) throws NoSuchFieldException {
-        Analysis analysis = new Analysis(addAnalysisCommand.getId(), addAnalysisCommand.getName(), addAnalysisCommand.getDescription(), addAnalysisCommand.getExecutionTime(), addAnalysisCommand.getMedicalCard());
+        Analysis analysis = new Analysis(UUID.randomUUID(), addAnalysisCommand.getName(), addAnalysisCommand.getDescription(), addAnalysisCommand.getExecutionTime(), addAnalysisCommand.getMedicalCard(), LocalDateTime.now());
 
         return analysisRepository.save(analysis);
     }

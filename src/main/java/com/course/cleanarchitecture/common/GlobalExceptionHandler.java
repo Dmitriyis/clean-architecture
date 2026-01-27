@@ -1,5 +1,7 @@
 package com.course.cleanarchitecture.common;
 
+import com.course.cleanarchitecture.common.exceptions.InvalidFieldException;
+import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,13 +13,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleBadCredentialsException(Exception ex) {
-        log.error("Authentication failed: {}", ex.getMessage());
-
-        ErrorResponse errorResponse = ErrorResponse.builder(ex, HttpStatus.BAD_REQUEST, "Invalid username or password").build();
-
+    @ExceptionHandler(InvalidFieldException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidFieldException(InvalidFieldException ex) {
+        ErrorResponse errorResponse = ErrorResponse.builder(ex, HttpStatus.BAD_REQUEST, ex.getMessage()).build();
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNotFoundException(NotFoundException ex) {
+        log.error("Authentication failed: {}", ex.getMessage());
+
+        ErrorResponse errorResponse = ErrorResponse.builder(ex, HttpStatus.NOT_FOUND, ex.getMessage()).build();
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
 }

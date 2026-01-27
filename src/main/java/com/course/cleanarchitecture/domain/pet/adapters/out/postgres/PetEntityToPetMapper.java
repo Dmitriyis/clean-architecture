@@ -1,6 +1,6 @@
 package com.course.cleanarchitecture.domain.pet.adapters.out.postgres;
 
-import com.course.cleanarchitecture.domain.ownerPet.adapters.out.OwnerPetEntity;
+import com.course.cleanarchitecture.domain.ownerPet.adapters.out.postgres.OwnerPetEntity;
 import com.course.cleanarchitecture.domain.pet.core.model.Pet;
 import org.springframework.stereotype.Service;
 

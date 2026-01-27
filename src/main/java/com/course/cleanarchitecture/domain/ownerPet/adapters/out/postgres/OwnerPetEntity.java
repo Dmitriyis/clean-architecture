@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.domain.ownerPet.adapters.out;
+package com.course.cleanarchitecture.domain.ownerPet.adapters.out.postgres;
 
 import com.course.cleanarchitecture.domain.ownerPet.core.model.valueObject.Address;
 import com.course.cleanarchitecture.domain.pet.adapters.out.postgres.PetEntity;
@@ -41,6 +41,9 @@ public class OwnerPetEntity {
     @EqualsAndHashCode.Include
     @Column(name = "id")
     private UUID id;
+
+    @Column(name = "phone")
+    private String phone;
 
     @Column(name = "name")
     private String name;

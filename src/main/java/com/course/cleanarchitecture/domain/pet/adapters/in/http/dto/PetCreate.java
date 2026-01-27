@@ -13,7 +13,7 @@ public class PetCreate {
 
     private String name;
 
-    private Double weight;
+    private Integer weight;
 
     private UUID ownerPetId;
 }

@@ -11,7 +11,7 @@ public class CreatePetCommand {
 
     private String name;
 
-    private Double weight;
+    private Integer weight;
 
     private UUID ownerPetId;
 
@@ -19,7 +19,7 @@ public class CreatePetCommand {
 
     }
 
-    public CreatePetCommand(Integer age, String name, Double weight, UUID ownerPetId) {
+    public CreatePetCommand(Integer age, String name, Integer weight, UUID ownerPetId) {
         this.age = age;
         this.name = name;
         this.weight = weight;

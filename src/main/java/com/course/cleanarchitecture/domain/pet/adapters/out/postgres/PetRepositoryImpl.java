@@ -1,6 +1,6 @@
 package com.course.cleanarchitecture.domain.pet.adapters.out.postgres;
 
-import com.course.cleanarchitecture.domain.analysis.adapters.out.AnalysisEntity;
+import com.course.cleanarchitecture.domain.analysis.adapters.out.postgres.AnalysisEntity;
 import com.course.cleanarchitecture.domain.karnel.Age;
 import com.course.cleanarchitecture.domain.pet.core.model.MedicalCard;
 import com.course.cleanarchitecture.domain.pet.core.model.Pet;
@@ -9,6 +9,7 @@ import com.course.cleanarchitecture.domain.reception.adapters.out.postgres.Recep
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -32,7 +33,7 @@ public class PetRepositoryImpl implements PetRepository {
         PetEntity pet = petRepositoryJpa.findByMedicalCardId(id);
         MedicalCardEntity medicalCardEntity = pet.getMedicalCard();
 
-        List<UUID> receptionsId = null;
+        List<UUID> receptionsId = new ArrayList<>();
         if (medicalCardEntity.getReception() != null) {
             receptionsId = medicalCardEntity.getReception()
                     .stream()
@@ -40,7 +41,7 @@ public class PetRepositoryImpl implements PetRepository {
                     .collect(Collectors.toList());
         }
 
-        List<UUID> analysesId = null;
+        List<UUID> analysesId = new ArrayList<>();
         if (medicalCardEntity.getReception() != null) {
             analysesId = medicalCardEntity.getAnalysis()
                     .stream()

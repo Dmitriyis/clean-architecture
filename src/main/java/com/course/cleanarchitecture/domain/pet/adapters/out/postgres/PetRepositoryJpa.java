@@ -11,6 +11,6 @@ import java.util.UUID;
 @Repository
 public interface PetRepositoryJpa extends JpaRepository<PetEntity, UUID>, JpaSpecificationExecutor<PetEntity> {
 
-    @Query("select p from PetEntity p where p.medicalCard.id = :medicalCardId")
+    @Query("select p from PetEntity as p where p.medicalCard.id = :medicalCardId")
     PetEntity findByMedicalCardId(@Param("medicalCardId") UUID medicalCardId);
 }

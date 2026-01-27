@@ -1,13 +1,9 @@
 package com.course.cleanarchitecture.domain.reception.core.model;
 
 import com.course.cleanarchitecture.ddd.Aggregate;
-import com.course.cleanarchitecture.domain.karnel.Age;
-import com.course.cleanarchitecture.domain.pet.core.model.MedicalCard;
-import com.course.cleanarchitecture.domain.pet.core.model.Pet;
 import com.course.cleanarchitecture.domain.reception.core.model.events.ReceptionCreateDomainEvent;
 import lombok.Getter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;

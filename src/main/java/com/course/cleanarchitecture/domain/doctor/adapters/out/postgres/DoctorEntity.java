@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.domain.doctor.adapters.out;
+package com.course.cleanarchitecture.domain.doctor.adapters.out.postgres;
 
 import com.course.cleanarchitecture.domain.doctor.core.model.TypeProfession;
 import com.course.cleanarchitecture.domain.reception.adapters.out.postgres.ReceptionEntity;
@@ -49,5 +49,5 @@ public class DoctorEntity {
     private Integer workExperience;
 
     @OneToMany(mappedBy = "doctor")
-    private List<ReceptionEntity> appointments = new ArrayList<>();
+    private List<ReceptionEntity> receptions = new ArrayList<>();
 }

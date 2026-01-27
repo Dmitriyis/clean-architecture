@@ -1,14 +1,11 @@
 package com.course.cleanarchitecture.domain.reception.adapters.out.postgres;
 
-import com.course.cleanarchitecture.common.hibernate.converter.ListToArrayConverter;
-import com.course.cleanarchitecture.domain.doctor.adapters.out.DoctorEntity;
+import com.course.cleanarchitecture.domain.doctor.adapters.out.postgres.DoctorEntity;
 import com.course.cleanarchitecture.domain.pet.adapters.out.postgres.MedicalCardEntity;
-import com.course.cleanarchitecture.domain.pet.adapters.out.postgres.PetEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.vladmihalcea.hibernate.type.array.ListArrayType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -20,9 +17,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.Type;
-import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
 import java.util.List;
