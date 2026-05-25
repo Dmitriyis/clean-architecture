@@ -1,5 +1,6 @@
 package com.course.cleanarchitecture.domain.ownerPet.core.model;
 
+import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils;
 import com.course.cleanarchitecture.ddd.Aggregate;
 import com.course.cleanarchitecture.domain.ownerPet.core.model.valueObject.Address;
 import lombok.Getter;
@@ -28,6 +29,15 @@ public class OwnerPet extends Aggregate<UUID> {
 
     public OwnerPet(UUID uuid, String name, LocalDate registrationDate, Address address, List<UUID> petsId) {
         super(uuid);
+
+        ValidationValueUtils.againstNull(uuid, "uuid");
+        ValidationValueUtils.againstNull(name, "name");
+        ValidationValueUtils.againstNull(registrationDate, "registrationDate");
+        ValidationValueUtils.againstNull(address, "address");
+        ValidationValueUtils.againstNull(address.getCity(), "address.city");
+        ValidationValueUtils.againstNull(address.getStreet(), "address.street");
+        ValidationValueUtils.againstNull(address.getNumberHouse(), "address.numberHouse");
+
         this.name = name;
         this.registrationDate = registrationDate;
         this.address = address;
