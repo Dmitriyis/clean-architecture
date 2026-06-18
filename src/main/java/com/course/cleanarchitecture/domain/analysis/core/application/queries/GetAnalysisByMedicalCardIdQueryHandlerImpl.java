@@ -1,0 +1,30 @@
+package com.course.cleanarchitecture.domain.analysis.core.application.queries;
+
+import com.course.cleanarchitecture.domain.analysis.core.ports.AnalysisRepository;
+import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
+import com.course.cleanarchitecture.domain.pet.exceptions.MedicalCardNotFoundException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class GetAnalysisByMedicalCardIdQueryHandlerImpl implements GetAnalysisByMedicalCardIdQueryHandler {
+
+    private final PetRepository petRepository;
+    private final AnalysisRepository analysisRepository;
+
+    @Override
+    public List<GetAnalysisByMedicalCardIdResult> execute(GetAnalysisByMedicalCardIdQuery query) throws NoSuchFieldException {
+
+        if (!petRepository.existsPetByMedicalCardId(query.getMedicalCardId())) {
+            throw new MedicalCardNotFoundException("Medical card not found with id: " + query.getMedicalCardId());
+        }
+
+        return analysisRepository.findAllByMedicalCardId(query.getMedicalCardId())
+                .stream()
+                .map(analyses -> new GetAnalysisByMedicalCardIdResult(analyses.getName(), analyses.getDescription(), analyses.getExecutionTime(), analyses.getMedicalCardId(), analyses.getTimeAppointment()))
+                .toList();
+    }
+}

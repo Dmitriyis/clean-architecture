@@ -24,7 +24,7 @@ public class PetRepositoryImpl implements PetRepository {
 
     @Override
     public UUID save(Pet pet) {
-        PetEntity petEntity = petToPetEntity(pet);
+        PetEntity petEntity = PetEntityToPetMapper.petToPetEntity(pet);
         return petRepositoryJpa.save(petEntity).getId();
     }
 
@@ -55,6 +55,11 @@ public class PetRepositoryImpl implements PetRepository {
 
         Pet petReStore = Pet.reStore(pet.getId(), age, pet.getName(), pet.getWeight(), pet.getOwnerPet().getId(), medicalCard, pet.getRegistrationDate());
         return petReStore;
+    }
+
+    @Override
+    public boolean existsPetByMedicalCardId(UUID medicalCardId) {
+        return false;
     }
 
     @Override

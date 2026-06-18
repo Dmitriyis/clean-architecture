@@ -9,5 +9,7 @@ public interface PetRepository {
 
     Pet findByMedicalCardId(UUID id);
 
+    boolean existsPetByMedicalCardId(UUID medicalCardId);
+
     void update(Pet pet);
 }
