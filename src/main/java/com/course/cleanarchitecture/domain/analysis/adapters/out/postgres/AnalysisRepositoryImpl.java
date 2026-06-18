@@ -27,7 +27,14 @@ public class AnalysisRepositoryImpl implements AnalysisRepository {
         return analysisRepositoryJpa.findAllByMedicalCardId(medicalCardId)
                 .stream()
                 .map(analysesEntity -> {
-                    return Analysis.reStore(analysesEntity.getId(), analysesEntity.getName(), analysesEntity.getDescription(), analysesEntity.getExecutionTime(), analysesEntity.getMedicalCard().getId(), analysesEntity.getCreateDate());
+                    return Analysis.reStore(
+                            analysesEntity.getId(),
+                            analysesEntity.getName(),
+                            analysesEntity.getDescription(),
+                            analysesEntity.getExecutionTime(),
+                            analysesEntity.getMedicalCard().getId(),
+                            analysesEntity.getTimeAppointment()
+                    );
                 })
                 .toList();
     }

@@ -9,16 +9,25 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import static com.course.cleanarchitecture.domain.analysis.core.model.Analysis.createAnalysis;
+
 @Service
 @RequiredArgsConstructor
-public class AddAnalysisCommandHandlerImpl implements AddAnalysisCommandHandler {
+public class SaveAnalysisCommandHandlerImpl implements SaveAnalysisCommandHandler {
 
     private final AnalysisRepository analysisRepository;
 
     @Override
     @Transactional
-    public UUID execute(AddAnalysisCommand addAnalysisCommand) throws NoSuchFieldException {
-        Analysis analysis = new Analysis(UUID.randomUUID(), addAnalysisCommand.getName(), addAnalysisCommand.getDescription(), addAnalysisCommand.getExecutionTime(), addAnalysisCommand.getMedicalCard(), LocalDateTime.now());
+    public UUID execute(SaveAnalysisCommand saveAnalysisCommand) {
+        Analysis analysis = createAnalysis(
+                UUID.randomUUID(),
+                saveAnalysisCommand.getName(),
+                saveAnalysisCommand.getDescription(),
+                saveAnalysisCommand.getExecutionTime(),
+                saveAnalysisCommand.getMedicalCard(),
+                LocalDateTime.now()
+        );
 
         return analysisRepository.save(analysis);
     }

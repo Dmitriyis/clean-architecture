@@ -6,7 +6,7 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Getter
-public class AddAnalysisCommand {
+public class SaveAnalysisCommand {
     private String name;
 
     private String description;
@@ -15,14 +15,15 @@ public class AddAnalysisCommand {
 
     private UUID medicalCard;
 
-    private AddAnalysisCommand() {
+    private SaveAnalysisCommand() {
 
     }
 
-    public AddAnalysisCommand(String name, String description, Integer executionTime, UUID medicalCard) {
-        ValidationValueUtils.againstNull(name, "name");
-        ValidationValueUtils.againstNull(description, "description");
+    public SaveAnalysisCommand(String name, String description, Integer executionTime, UUID medicalCard) {
+        ValidationValueUtils.againstNullOrEmpty(name, "name");
+        ValidationValueUtils.againstNullOrEmpty(description, "description");
         ValidationValueUtils.againstNull(executionTime, "executionTime");
+        ValidationValueUtils.againstNegative(executionTime, "executionTime");
         ValidationValueUtils.againstNull(medicalCard, "medicalCard");
 
         this.name = name;

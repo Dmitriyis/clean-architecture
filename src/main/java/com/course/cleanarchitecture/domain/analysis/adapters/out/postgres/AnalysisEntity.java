@@ -1,8 +1,6 @@
 package com.course.cleanarchitecture.domain.analysis.adapters.out.postgres;
 
 import com.course.cleanarchitecture.domain.pet.adapters.out.postgres.MedicalCardEntity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -33,6 +31,7 @@ public class AnalysisEntity {
 
     @Id
     @Column(name = "id")
+    @EqualsAndHashCode.Include
     private UUID id;
 
     @Column(name = "name")
@@ -44,15 +43,10 @@ public class AnalysisEntity {
     @Column(name = "execution_time")
     private Integer executionTime;
 
-    @Column(name = "create_date")
-    private LocalDateTime createDate;
+    @Column(name = "time_appointment")
+    private LocalDateTime timeAppointment;
 
     @ManyToOne
     @JoinColumn(name = "medical_card_id")
     private MedicalCardEntity medicalCard;
 }
-//AnalysisEntity.java
-//@JsonInclude и @JsonIgnoreProperties на JPA-сущности
-//        JPA-сущность не должна знать о сериализации JSON. @JsonInclude(NON_NULL),
-//@JsonIgnoreProperties(ignoreUnknown=true) на AnalysisEntity — смешение ответственностей.
-//        JSON-аннотации принадлежат DTO (Response/Request объектам), не JPA-сущностям и тем более не доменным объектам.

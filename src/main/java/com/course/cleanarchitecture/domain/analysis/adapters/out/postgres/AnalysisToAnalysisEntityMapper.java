@@ -17,7 +17,7 @@ public class AnalysisToAnalysisEntityMapper {
                 .description(analysis.getDescription())
                 .medicalCard(medicalCardEntity)
                 .executionTime(analysis.getExecutionTime())
-                .createDate(analysis.getCreateDate())
+                .timeAppointment(analysis.getTimeAppointment())
                 .build();
 
         return analysisEntity;

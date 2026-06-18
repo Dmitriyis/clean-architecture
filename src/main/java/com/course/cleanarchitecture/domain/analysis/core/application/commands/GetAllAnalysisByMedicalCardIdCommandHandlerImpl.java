@@ -16,7 +16,7 @@ public class GetAllAnalysisByMedicalCardIdCommandHandlerImpl implements GetAllAn
     public List<GetAllAnalysisByMedicalCardIdResponse> execute(GetAllAnalysisByMedicalCardIdCommand getAllAnalysisByMedicalCardIdCommand) throws NoSuchFieldException {
         return analysisRepository.findAllByMedicalCardId(getAllAnalysisByMedicalCardIdCommand.getMedicalCardId())
                 .stream()
-                .map(analyses -> new GetAllAnalysisByMedicalCardIdResponse(analyses.getName(), analyses.getDescription(), analyses.getExecutionTime(), analyses.getMedicalCardId(), analyses.getCreateDate()))
+                .map(analyses -> new GetAllAnalysisByMedicalCardIdResponse(analyses.getName(), analyses.getDescription(), analyses.getExecutionTime(), analyses.getMedicalCardId(), analyses.getTimeAppointment()))
                 .toList();
     }
 }

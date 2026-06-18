@@ -2,11 +2,14 @@ package com.course.cleanarchitecture.domain.analysis.core.application.commands;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 public class GetAllAnalysisByMedicalCardIdResponse {
     private String name;
@@ -17,5 +20,5 @@ public class GetAllAnalysisByMedicalCardIdResponse {
 
     private UUID medicalCardId;
 
-    private LocalDateTime createDate;
+    private LocalDateTime timeAppointment;
 }
