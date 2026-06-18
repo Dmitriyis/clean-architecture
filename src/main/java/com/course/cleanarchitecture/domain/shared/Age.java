@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.domain.karnel;
+package com.course.cleanarchitecture.domain.shared;
 
 
 import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils;

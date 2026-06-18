@@ -21,3 +21,7 @@ public class CreateOwnerPetCommandHandlerImpl implements CreateOwnerPetCommandHa
         return ownerPetRepository.save(ownerPet);
     }
 }
+//CreatePetCommandHandlerImpl.java
+//        Создание доменных объектов прямо в use case — нет Factory
+//        Age age = new Age(...); MedicalCard medicalCard = new MedicalCard(UUID.randomUUID(), ...); Pet pet = new Pet(...) — сборка агрегата разбросана по use case.
+//        Сложная логика создания должна быть в PetFactory. Use case должен вызывать petFactory.create(command).

@@ -1,7 +1,7 @@
 package com.course.cleanarchitecture.domain.pet.adapters.out.postgres;
 
 import com.course.cleanarchitecture.domain.analysis.adapters.out.postgres.AnalysisEntity;
-import com.course.cleanarchitecture.domain.karnel.Age;
+import com.course.cleanarchitecture.domain.shared.Age;
 import com.course.cleanarchitecture.domain.pet.core.model.MedicalCard;
 import com.course.cleanarchitecture.domain.pet.core.model.Pet;
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
@@ -63,3 +63,8 @@ public class PetRepositoryImpl implements PetRepository {
         petRepositoryJpa.save(petEntity);
     }
 }
+//PetRepositoryImpl.java
+//        Маппинг из JPA в домен — прямо в репозитории
+//        В методе findByMedicalCardId() — 20 строк ручного маппинга. Это логика маппера, а не репозитория.
+//        Репозиторий должен делегировать маппинг отдельному классу PetMapper.
+//        Сейчас репозиторий знает и о структуре JPA-сущностей, и о доменных конструкторах — нарушение Single Responsibility.

@@ -1,11 +1,10 @@
 package com.course.cleanarchitecture.domain.pet.core.model;
 
 import com.course.cleanarchitecture.ddd.Aggregate;
-import com.course.cleanarchitecture.domain.karnel.Age;
+import com.course.cleanarchitecture.domain.shared.Age;
 import lombok.Getter;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter

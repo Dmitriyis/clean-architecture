@@ -28,8 +28,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table(name = "analysis")
 @ToString(onlyExplicitlyIncluded = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class AnalysisEntity {
 
@@ -53,3 +51,8 @@ public class AnalysisEntity {
     @JoinColumn(name = "medical_card_id")
     private MedicalCardEntity medicalCard;
 }
+//AnalysisEntity.java
+//@JsonInclude и @JsonIgnoreProperties на JPA-сущности
+//        JPA-сущность не должна знать о сериализации JSON. @JsonInclude(NON_NULL),
+//@JsonIgnoreProperties(ignoreUnknown=true) на AnalysisEntity — смешение ответственностей.
+//        JSON-аннотации принадлежат DTO (Response/Request объектам), не JPA-сущностям и тем более не доменным объектам.

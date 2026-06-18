@@ -57,3 +57,8 @@ public class OwnerPetEntity {
     @OneToMany(mappedBy = "ownerPet")
     List<PetEntity> pets = new ArrayList<>();
 }
+//OwnerPetEntity.java
+//        JPA-сущность использует доменный Value Object Address
+//@Embedded private Address address — JPA-сущность напрямую встраивает доменный Address.
+//        Это возможно только потому что Address содержит @Column аннотации (проблема 1).
+//        Правильно: отдельный AddressJpa в адаптере, маппинг через маппер.

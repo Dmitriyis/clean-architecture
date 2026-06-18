@@ -16,8 +16,8 @@ public class OutboxDomainEventPublisherImpl implements DomainEventPublisher {
 
     private final OutboxJpaRepository jpa;
     private final ObjectMapper objectMapper;
-    @PersistenceContext
-    private final EntityManager entityManager;
+//    @PersistenceContext
+//    private final EntityManager entityManager;
     @Override
     public void publish(Iterable<Aggregate<?>> aggregates) {
         try {
@@ -46,3 +46,9 @@ public class OutboxDomainEventPublisherImpl implements DomainEventPublisher {
         }
     }
 }
+
+//DomainEventPublisher.java
+//        Порт принимает Aggregate — утечка доменной абстракции
+//        void publish(Iterable<Aggregate<?>> aggregates) — порт принимает не события, а сами агрегаты. Use Case передаёт агрегаты в издатель,
+//        который сам вытаскивает события. Это неправильная инверсия ответственности. Агрегат должен отдавать события (pullDomainEvents()),
+//        use case их публиковать через порт EventPublisher.publishAll(List<DomainEvent>).

@@ -7,13 +7,10 @@ import lombok.Getter;
 @Getter
 public class Address {
 
-    @Column(name = "city")
     private String city;
 
-    @Column(name = "street")
     private String street;
 
-    @Column(name = "number_house")
     private String numberHouse;
 
     private Address() {

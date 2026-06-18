@@ -24,6 +24,6 @@ public class GlobalExceptionHandler {
         log.error("Authentication failed: {}", ex.getMessage());
 
         ErrorResponse errorResponse = ErrorResponse.builder(ex, HttpStatus.NOT_FOUND, ex.getMessage()).build();
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 }

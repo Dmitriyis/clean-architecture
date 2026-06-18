@@ -16,13 +16,13 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class GetPetByIdQueryCommandHandlerImpl implements GetPetByIdQueryCommandHandler {
+public class GetPetByIdQueryHandlerImpl implements GetPetByIdQueryHandler {
 
     @PersistenceContext
     private final EntityManager entityManager;
 
     @Override
-    public GetPetByIdQueryResponse execute(GetPetByIdQueryCommand getPetByIdQueryCommand) throws NoSuchFieldException {
+    public GetPetByIdQueryResponse execute(GetPetByIdQuery getPetByIdQueryCommand) throws NoSuchFieldException {
 
         GetPetByIdQueryResponse getPetByIdQueryResponse = findPetById(getPetByIdQueryCommand.getId());
 

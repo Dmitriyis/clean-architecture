@@ -1,6 +1,6 @@
 package com.course.cleanarchitecture.domain.pet.core.application.commands;
 
-import com.course.cleanarchitecture.domain.karnel.Age;
+import com.course.cleanarchitecture.domain.shared.Age;
 import com.course.cleanarchitecture.domain.pet.core.model.MedicalCard;
 import com.course.cleanarchitecture.domain.pet.core.model.Pet;
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;

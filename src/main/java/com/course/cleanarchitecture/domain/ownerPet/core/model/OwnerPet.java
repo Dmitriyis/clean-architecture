@@ -48,3 +48,7 @@ public class OwnerPet extends Aggregate<UUID> {
         return new OwnerPet(uuid, name, registrationDate, address, petsId);
     }
 }
+//OwnerPet.java
+//        Агрегат без валидации полей
+//        OwnerPet принимает name, phone, address без единой проверки.
+//        Можно создать владельца питомца с null именем и пустым телефоном. Нет также метода для добавления питомца — только конструктор со списком UUID.
