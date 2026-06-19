@@ -2,6 +2,8 @@ package com.course.cleanarchitecture.domain.analysis.core.application.commands;
 
 import com.course.cleanarchitecture.domain.analysis.core.model.Analysis;
 import com.course.cleanarchitecture.domain.analysis.core.ports.AnalysisRepository;
+import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
+import com.course.cleanarchitecture.domain.pet.exceptions.MedicalCardNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,19 +15,24 @@ import static com.course.cleanarchitecture.domain.analysis.core.model.Analysis.c
 
 @Service
 @RequiredArgsConstructor
-public class SaveAnalysisCommandHandlerImpl implements SaveAnalysisCommandHandler {
+public class CreateAnalysisCommandHandlerImpl implements CreateAnalysisCommandHandler {
 
+    private final PetRepository petRepository;
     private final AnalysisRepository analysisRepository;
 
     @Override
     @Transactional
-    public UUID execute(SaveAnalysisCommand saveAnalysisCommand) {
+    public UUID execute(CreateAnalysisCommand command) {
+        if (!petRepository.existsPetByMedicalCardId(command.getMedicalCardId())) {
+            throw new MedicalCardNotFoundException("Medical card not found with id: " + command.getMedicalCardId());
+        }
+
         Analysis analysis = createAnalysis(
                 UUID.randomUUID(),
-                saveAnalysisCommand.getName(),
-                saveAnalysisCommand.getDescription(),
-                saveAnalysisCommand.getExecutionTime(),
-                saveAnalysisCommand.getMedicalCard(),
+                command.getName(),
+                command.getDescription(),
+                command.getExecutionTime(),
+                command.getMedicalCardId(),
                 LocalDateTime.now()
         );
 

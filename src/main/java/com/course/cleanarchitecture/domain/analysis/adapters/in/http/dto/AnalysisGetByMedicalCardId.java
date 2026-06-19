@@ -12,7 +12,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AnalysisGet {
+public class AnalysisGetByMedicalCardId {
     private String name;
 
     private String description;

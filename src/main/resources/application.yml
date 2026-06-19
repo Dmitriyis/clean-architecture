@@ -41,7 +41,7 @@ server:
   port: 8080
 
 jwt:
-  secret: wdsfwsfdwsed
+  secret: e4ijq31hn3Dgs49
   expiration: 600000
 
 

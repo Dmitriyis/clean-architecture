@@ -16,8 +16,8 @@ public class CreateDoctorCommandHandlerImpl implements CreateDoctorCommandHandle
 
     @Override
     @Transactional
-    public UUID execute(CreateDoctorCommand createPetCommand) {
-        Doctor doctor = new Doctor(UUID.randomUUID(), createPetCommand.getName(), createPetCommand.getProfession(), createPetCommand.getWorkExperience(), null);
+    public UUID execute(CreateDoctorCommand command) {
+        Doctor doctor = new Doctor(UUID.randomUUID(), command.getName(), command.getProfession(), command.getWorkExperience(), null);
 
         return doctorRepository.save(doctor);
     }

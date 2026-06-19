@@ -1,17 +1,10 @@
 package com.course.cleanarchitecture.domain.ownerPet.adapters.in.http;
 
-import com.course.cleanarchitecture.domain.doctor.adapters.in.http.dto.DoctorCreate;
-import com.course.cleanarchitecture.domain.doctor.core.application.commands.CreateDoctorCommand;
-import com.course.cleanarchitecture.domain.doctor.core.application.commands.GetDoctorByIdCommand;
-import com.course.cleanarchitecture.domain.doctor.core.model.Doctor;
 import com.course.cleanarchitecture.domain.ownerPet.adapters.in.http.dto.OwnerPetCreate;
 import com.course.cleanarchitecture.domain.ownerPet.core.application.commands.CreateOwnerPetCommand;
 import com.course.cleanarchitecture.domain.ownerPet.core.application.commands.CreateOwnerPetCommandHandler;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

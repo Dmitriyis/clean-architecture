@@ -29,13 +29,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table(name = "doctor")
 @ToString(onlyExplicitlyIncluded = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class DoctorEntity {
 
     @Id
     @Column(name = "id")
+    @EqualsAndHashCode.Include
     private UUID id;
 
     @Column(name = "name")

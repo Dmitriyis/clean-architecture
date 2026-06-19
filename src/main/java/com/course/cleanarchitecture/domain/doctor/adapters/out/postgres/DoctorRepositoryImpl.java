@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -20,23 +20,22 @@ public class DoctorRepositoryImpl implements DoctorRepository {
 
     @Override
     public UUID save(Doctor doctor) {
-        DoctorEntity doctorEntity = DoctorToDoctorEntityMapper.doctorToDoctorEntity(doctor);
+        DoctorEntity doctorEntity = DoctorEntityMapper.toDoctorEntity(doctor);
         return doctorRepositoryJpa.save(doctorEntity).getId();
     }
 
     @Override
-    public Doctor findById(UUID id) {
-        DoctorEntity doctorEntity = doctorRepositoryJpa.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Not found Doctor by id: " + id + "."));
+    public Optional<Doctor> findById(UUID id) {
+        Optional<DoctorEntity> doctorEntityOptional = doctorRepositoryJpa.findById(id);
 
-        List<UUID> receptionsId = new ArrayList<>();
-        if (doctorEntity.getReceptions() != null) {
-            receptionsId = doctorEntity.getReceptions()
-                    .stream().map(ReceptionEntity::getId)
-                    .collect(Collectors.toList());
+        if (doctorEntityOptional.isEmpty()) {
+            return Optional.empty();
         }
 
-        Doctor doctor = new Doctor(doctorEntity.getId(), doctorEntity.getName(), doctorEntity.getProfession(), doctorEntity.getWorkExperience(), receptionsId);
-        return doctor;
+        DoctorEntity doctorEntity = doctorEntityOptional.get();
+
+        Doctor doctor = DoctorEntityMapper.toDoctor(doctorEntity);
+
+        return Optional.of(doctor);
     }
 }

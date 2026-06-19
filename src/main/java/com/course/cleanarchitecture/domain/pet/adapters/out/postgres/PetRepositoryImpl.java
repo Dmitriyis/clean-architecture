@@ -49,11 +49,25 @@ public class PetRepositoryImpl implements PetRepository {
                     .collect(Collectors.toList());
         }
 
-        MedicalCard medicalCard = MedicalCard.reStore(medicalCardEntity.getId(), medicalCardEntity.getUpdateTime(), receptionsId, analysesId);
+        MedicalCard medicalCard = MedicalCard.reStore(
+                medicalCardEntity.getId(),
+                medicalCardEntity.getUpdateTime(),
+                receptionsId,
+                analysesId
+        );
 
         Age age = new Age(pet.getAge());
 
-        Pet petReStore = Pet.reStore(pet.getId(), age, pet.getName(), pet.getWeight(), pet.getOwnerPet().getId(), medicalCard, pet.getRegistrationDate());
+        Pet petReStore = Pet.reStore(
+                pet.getId(),
+                age,
+                pet.getName(),
+                pet.getWeight(),
+                pet.getOwnerPet().getId(),
+                medicalCard,
+                pet.getRegistrationDate()
+        );
+
         return petReStore;
     }
 

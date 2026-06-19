@@ -6,29 +6,29 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Getter
-public class SaveAnalysisCommand {
+public class CreateAnalysisCommand {
     private String name;
 
     private String description;
 
     private Integer executionTime;
 
-    private UUID medicalCard;
+    private UUID medicalCardId;
 
-    private SaveAnalysisCommand() {
+    private CreateAnalysisCommand() {
 
     }
 
-    public SaveAnalysisCommand(String name, String description, Integer executionTime, UUID medicalCard) {
+    public CreateAnalysisCommand(String name, String description, Integer executionTime, UUID medicalCardId) {
         ValidationValueUtils.againstNullOrEmpty(name, "name");
         ValidationValueUtils.againstNullOrEmpty(description, "description");
         ValidationValueUtils.againstNull(executionTime, "executionTime");
         ValidationValueUtils.againstNegative(executionTime, "executionTime");
-        ValidationValueUtils.againstNull(medicalCard, "medicalCard");
+        ValidationValueUtils.againstNull(medicalCardId, "medicalCardId");
 
         this.name = name;
         this.description = description;
         this.executionTime = executionTime;
-        this.medicalCard = medicalCard;
+        this.medicalCardId = medicalCardId;
     }
 }

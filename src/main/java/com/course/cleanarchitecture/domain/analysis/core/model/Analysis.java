@@ -4,6 +4,7 @@ import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils
 import com.course.cleanarchitecture.ddd.Aggregate;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -32,7 +33,7 @@ public class Analysis extends Aggregate<UUID> {
         this.timeAppointment = timeAppointment;
     }
 
-    public static Analysis createAnalysis(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime createDate) {
+    public static Analysis createAnalysis(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime timeAppointment) {
         ValidationValueUtils.againstNull(id, "id");
         ValidationValueUtils.againstNullOrEmpty(name, "name");
         ValidationValueUtils.againstNullOrEmpty(description, "description");
@@ -40,10 +41,10 @@ public class Analysis extends Aggregate<UUID> {
         ValidationValueUtils.againstNegative(executionTime, "executionTime");
         ValidationValueUtils.againstNull(medicalCardId, "medicalCardId");
 
-        return new Analysis(id, name, description, executionTime, medicalCardId, createDate);
+        return new Analysis(id, name, description, executionTime, medicalCardId, timeAppointment);
     }
 
-    public static Analysis reStore(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime createDate) {
-        return new Analysis(id, name, description, executionTime, medicalCardId, createDate);
+    public static Analysis reStore(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime timeAppointment) {
+        return new Analysis(id, name, description, executionTime, medicalCardId, timeAppointment);
     }
 }
