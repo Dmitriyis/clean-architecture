@@ -1,11 +1,10 @@
 package com.course.cleanarchitecture.domain.pet.adapters.out.postgres;
 
-import com.course.cleanarchitecture.domain.analysis.adapters.out.postgres.AnalysisEntity;
-import com.course.cleanarchitecture.domain.reception.adapters.out.postgres.ReceptionEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,8 +13,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -31,22 +28,13 @@ public class MedicalCardEntity {
     @Column(name = "id")
     private UUID id;
 
+    @Column(name = "create_time")
+    private LocalDateTime createTime;
+
     @Column(name = "update_time")
     private LocalDateTime updateTime;
 
-    @Builder.Default
-    @OneToMany(mappedBy = "medicalCard")
-    private List<AnalysisEntity> analysis = new ArrayList<>();
-
-    @OneToMany(mappedBy = "medicalCard")
-    private List<ReceptionEntity> reception;
-
-    public void setAnalysis(List<AnalysisEntity> analysis) {
-        if (analysis != null) {
-            analysis.forEach(analysisEntity -> {
-                analysisEntity.setMedicalCard(this);
-                this.analysis.add(analysisEntity);
-            });
-        }
-    }
+    @OneToOne
+    @JoinColumn(name = "pet_id")
+    private PetEntity pet;
 }

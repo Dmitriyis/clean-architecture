@@ -18,7 +18,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1/pet")
+@RequestMapping(PetConstantsHttp.URL_ROOT)
 public class PetRestController {
 
     private final CreatePetCommandHandler createPetCommandHandler;
@@ -26,15 +26,20 @@ public class PetRestController {
 
     @PostMapping
     public UUID createPet(@RequestBody PetCreate petCreate) {
-        CreatePetCommand createPetCommand = new CreatePetCommand(petCreate.getAge(), petCreate.getName(), petCreate.getWeight(), petCreate.getOwnerPetId());
+        CreatePetCommand command = new CreatePetCommand(
+                petCreate.age(),
+                petCreate.name(),
+                petCreate.weight(),
+                petCreate.ownerPetId()
+        );
 
-        return createPetCommandHandler.execute(createPetCommand);
+        return createPetCommandHandler.execute(command);
     }
 
     @GetMapping("/{id}")
     public GetPetByIdQueryResponse getPet(@PathVariable(name = "id") UUID id) throws NoSuchFieldException {
-        GetPetByIdQuery getPetByIdQueryCommand = new GetPetByIdQuery(id);
+        GetPetByIdQuery query = new GetPetByIdQuery(id);
 
-        return getPetByIdQueryCommandHandler.execute(getPetByIdQueryCommand);
+        return getPetByIdQueryCommandHandler.execute(query);
     }
 }

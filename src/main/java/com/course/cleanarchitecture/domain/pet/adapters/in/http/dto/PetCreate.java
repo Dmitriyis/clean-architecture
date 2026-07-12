@@ -1,19 +1,9 @@
 package com.course.cleanarchitecture.domain.pet.adapters.in.http.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 import java.util.UUID;
 
-@Getter
-@NoArgsConstructor
-public class PetCreate {
 
-    private Integer age;
+public record PetCreate(Integer age, String name, Integer weight, UUID ownerPetId) {
 
-    private String name;
 
-    private Integer weight;
-
-    private UUID ownerPetId;
 }

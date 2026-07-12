@@ -11,7 +11,9 @@ import java.util.UUID;
 
 @Repository
 public interface ReceptionRepositoryJpa extends JpaRepository<ReceptionEntity, UUID>, JpaSpecificationExecutor<ReceptionEntity> {
+    List<ReceptionEntity> findAllByPetId(UUID petId);
+    List<ReceptionEntity> findAllByDoctorId(UUID doctorId);
 
-    @Query(value = "select * from reception r where r.pet_id = :petId", nativeQuery = true)
-    List<ReceptionEntity> findAllByPetId(@Param("petId") UUID petId);
+    @Query("select r.id FROM ReceptionEntity r where r.doctorId = :doctorId")
+    List<UUID> findAllReceptionIdsByDoctorId(@Param("doctorId") UUID doctorId);
 }

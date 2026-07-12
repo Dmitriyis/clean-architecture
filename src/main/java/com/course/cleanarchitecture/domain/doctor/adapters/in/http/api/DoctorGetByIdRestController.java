@@ -16,12 +16,12 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(DoctorConstantsHttp.ROOT_URL)
-public class GetByIdDoctorRestController {
+public class DoctorGetByIdRestController {
 
     private final GetDoctorByIdQueryHandler getDoctorByIdQueryHandler;
 
     @GetMapping("/{id}")
-    public Doctor getDoctor(@PathVariable("id") UUID id) throws NoSuchFieldException {
+    public Doctor getDoctor(@PathVariable("id") UUID id) {
         GetDoctorByIdQuery query = new GetDoctorByIdQuery(id);
         return getDoctorByIdQueryHandler.execute(query);
     }

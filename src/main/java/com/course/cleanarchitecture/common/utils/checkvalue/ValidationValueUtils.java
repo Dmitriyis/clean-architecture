@@ -1,6 +1,8 @@
 package com.course.cleanarchitecture.common.utils.checkvalue;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -122,5 +124,19 @@ public final class ValidationValueUtils {
         if (value == null || value.compareTo(min) < 0 || value.compareTo(max) > 0)
             throw new IllegalArgumentException(paramName + " must be in range [" + min + ", " + max + "]");
         return value;
+    }
+
+    public static LocalDate againstDateGreaterOrEqualCurrent(LocalDate date, String paramName) {
+        if (date.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException(paramName + " must be today or in the future");
+        }
+        return date;
+    }
+
+    public static LocalDateTime againstDateTimeGreaterOrEqualCurrent(LocalDateTime dateTime, String paramName) {
+        if (dateTime.isBefore(LocalDateTime.now())) {
+            throw new IllegalArgumentException(paramName + " must be today or in the future");
+        }
+        return dateTime;
     }
 }

@@ -17,7 +17,7 @@ public class CreateReceptionCommandHandlerImpl implements CreateReceptionCommand
 
     private final ReceptionRepository receptionRepository;
 
-    @Qualifier("outboxDomainEventPublisherImpl")
+    @Qualifier("domainEventOutboxPublisherImpl")
     private final DomainEventPublisher domainEventPublisher;
 
     @Override

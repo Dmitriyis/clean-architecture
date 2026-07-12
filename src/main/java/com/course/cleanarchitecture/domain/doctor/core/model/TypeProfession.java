@@ -8,7 +8,7 @@ import lombok.Getter;
 public enum TypeProfession {
     THERAPIST("Терапевт"),
     RADIOLOGIST("Рентгенолог"),
-    REHABILITOLOGIST("Реабилитолог ");
+    REHABILITATIONIST("Реабилитолог");
 
     private final String name;
 }

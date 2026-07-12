@@ -5,16 +5,14 @@ import com.course.cleanarchitecture.domain.DomainEventPublisher;
 import com.course.cleanarchitecture.ddd.Aggregate;
 import com.course.cleanarchitecture.ddd.AggregateRoot;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class OutboxDomainEventPublisherImpl implements DomainEventPublisher {
+public class DomainEventOutboxPublisherImpl implements DomainEventPublisher {
 
-    private final OutboxJpaRepository jpa;
+    private final DomainEventOutboxJpaRepository jpa;
     private final ObjectMapper objectMapper;
 //    @PersistenceContext
 //    private final EntityManager entityManager;
@@ -26,7 +24,7 @@ public class OutboxDomainEventPublisherImpl implements DomainEventPublisher {
                     try {
                         var payload = objectMapper.writeValueAsString(domainEvent);
 
-                        var outboxMessage = new OutboxMessage(
+                        var outboxMessage = new MessageDomainEventOutbox(
                                 domainEvent.getEventId(),
                                 domainEvent.getClass().getName(),
                                 aggregate.getId().toString(),

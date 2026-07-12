@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface OutboxJpaRepository extends JpaRepository<OutboxMessage, UUID> {
+public interface DomainEventOutboxJpaRepository extends JpaRepository<MessageDomainEventOutbox, UUID> {
 
     @Query(value =
             "select " +
@@ -21,5 +21,5 @@ public interface OutboxJpaRepository extends JpaRepository<OutboxMessage, UUID> 
                     " processed_on_utc" +
                     " from outbox " +
                     "where processed_on_utc is null", nativeQuery = true)
-    List<OutboxMessage> findUnprocessedMessages();
+    List<MessageDomainEventOutbox> findUnprocessedMessages();
 }

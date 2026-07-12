@@ -10,12 +10,16 @@ public class SendNotificationsOwnerPetCommand {
 
     private UUID medicalCardId;
 
+    private String message;
+
     private SendNotificationsOwnerPetCommand() {
 
     }
 
-    public SendNotificationsOwnerPetCommand(UUID medicalCardId) {
+    public SendNotificationsOwnerPetCommand(UUID medicalCardId, String message) {
         ValidationValueUtils.againstNull(medicalCardId, "medicalCardId");
+        ValidationValueUtils.againstNullOrEmpty(message, "message");
         this.medicalCardId = medicalCardId;
+        this.message = message;
     }
 }

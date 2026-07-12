@@ -15,13 +15,15 @@ public class CreateOwnerPetCommandHandlerImpl implements CreateOwnerPetCommandHa
     private final OwnerPetRepository ownerPetRepository;
 
     @Override
-    public UUID execute(CreateOwnerPetCommand createOwnerPetCommand) {
-        OwnerPet ownerPet = new OwnerPet(UUID.randomUUID(), createOwnerPetCommand.getName(), LocalDate.now(), createOwnerPetCommand.getAddress(), null);
+    public UUID execute(CreateOwnerPetCommand command) {
+        OwnerPet ownerPet = OwnerPet.createOwnerPet(
+                UUID.randomUUID(),
+                command.getName(),
+                command.getPhone(),
+                LocalDate.now(),
+                command.getAddress()
+        );
 
         return ownerPetRepository.save(ownerPet);
     }
 }
-//CreatePetCommandHandlerImpl.java
-//        Создание доменных объектов прямо в use case — нет Factory
-//        Age age = new Age(...); MedicalCard medicalCard = new MedicalCard(UUID.randomUUID(), ...); Pet pet = new Pet(...) — сборка агрегата разбросана по use case.
-//        Сложная логика создания должна быть в PetFactory. Use case должен вызывать petFactory.create(command).

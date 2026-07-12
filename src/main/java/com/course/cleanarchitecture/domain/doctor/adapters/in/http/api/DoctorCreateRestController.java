@@ -15,15 +15,16 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(DoctorConstantsHttp.ROOT_URL)
-public class CreateDoctorRestController {
+public class DoctorCreateRestController {
 
     private final CreateDoctorCommandHandler createDoctorCommandHandler;
 
     @PostMapping
     public UUID createDoctor(@RequestBody DoctorCreate doctorCreate) {
-        CreateDoctorCommand command = new CreateDoctorCommand(doctorCreate.getName(),
-                doctorCreate.getProfession(),
-                doctorCreate.getWorkExperience()
+        CreateDoctorCommand command = new CreateDoctorCommand(
+                doctorCreate.name(),
+                doctorCreate.profession(),
+                doctorCreate.workExperience()
         );
 
         return createDoctorCommandHandler.execute(command);

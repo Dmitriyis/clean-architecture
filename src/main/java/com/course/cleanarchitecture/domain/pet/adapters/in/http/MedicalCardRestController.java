@@ -1,7 +1,5 @@
 package com.course.cleanarchitecture.domain.pet.adapters.in.http;
 
-import com.course.cleanarchitecture.domain.pet.adapters.in.http.dto.MedicalCardUpdate;
-import com.course.cleanarchitecture.domain.pet.core.model.Pet;
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
 import com.course.cleanarchitecture.domain.reception.adapters.in.http.dto.ReceptionCreate;
 import lombok.RequiredArgsConstructor;
@@ -14,16 +12,12 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1/medical-card")
+@RequestMapping(MedicalCardConstantsHttp.URL_ROOT)
 public class MedicalCardRestController {
 
     private final PetRepository petRepository;
 
     public UUID updateMedicalCard(@RequestBody ReceptionCreate receptionCreate, @RequestParam UUID id) {
-
-
-//        Pet pet = petRepository.findById(id);
-
 
 
         return null;

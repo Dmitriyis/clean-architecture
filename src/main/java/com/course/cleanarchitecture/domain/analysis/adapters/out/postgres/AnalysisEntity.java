@@ -1,11 +1,9 @@
 package com.course.cleanarchitecture.domain.analysis.adapters.out.postgres;
 
-import com.course.cleanarchitecture.domain.pet.adapters.out.postgres.MedicalCardEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -46,7 +44,6 @@ public class AnalysisEntity {
     @Column(name = "time_appointment")
     private LocalDateTime timeAppointment;
 
-    @ManyToOne
     @JoinColumn(name = "medical_card_id")
-    private MedicalCardEntity medicalCard;
+    private UUID medicalCardId;
 }

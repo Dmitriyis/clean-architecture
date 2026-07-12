@@ -1,7 +1,6 @@
 package com.course.cleanarchitecture.common.postgres.outbox.domainevents;
 
 
-
 import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,8 +15,8 @@ import java.util.UUID;
 @Getter
 @Entity
 @NoArgsConstructor
-@Table(name = "outbox")
-public class OutboxMessage {
+@Table(name = "message-domain-event-outbox")
+public class MessageDomainEventOutbox {
 
     @Id
     @Column(name = "id", nullable = false)
@@ -41,7 +40,7 @@ public class OutboxMessage {
     @Column(name = "processed_on_utc")
     private Instant processedOnUtc;
 
-    public OutboxMessage(UUID id, String eventType, String aggregateId, String aggregateType, String payload, Instant occurredOnUtc) {
+    public MessageDomainEventOutbox(UUID id, String eventType, String aggregateId, String aggregateType, String payload, Instant occurredOnUtc) {
         this.id = ValidationValueUtils.againstNullOrEmpty(id, "id");
         this.eventType = ValidationValueUtils.againstNullOrEmpty(eventType, "eventType");
         this.aggregateId = ValidationValueUtils.againstNullOrEmpty(aggregateId, "aggregateId");

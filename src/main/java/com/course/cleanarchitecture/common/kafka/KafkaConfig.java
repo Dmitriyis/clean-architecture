@@ -16,4 +16,13 @@ public class KafkaConfig {
                 .config("retention.ms", "604800000")
                 .build();
     }
+
+    @Bean
+    public NewTopic notificationMessageTopic() {
+        return TopicBuilder.name("notification-message")
+                .partitions(3)
+                .replicas(1)
+                .config("retention.ms", "604800000")
+                .build();
+    }
 }

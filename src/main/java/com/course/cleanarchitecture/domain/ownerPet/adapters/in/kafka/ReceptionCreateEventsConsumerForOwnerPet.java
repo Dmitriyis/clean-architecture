@@ -12,16 +12,19 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class ReceptionsEventsConsumerForOwnerPet {
+public class ReceptionCreateEventsConsumerForOwnerPet {
 
     private final ObjectMapper objectMapper;
     private final SendNotificationsOwnerPetCommandHandler sendNotificationsOwnerPetCommandHandler;
 
     @KafkaListener(topics = "create-reception", groupId = "owner-pet")
-    public void updateMedicalCard(String message) {
+    public void createReception(String message) {
         try {
             ReceptionCreateDomainEvent receptionCreateDomainEvent = objectMapper.readValue(message, ReceptionCreateDomainEvent.class);
-            SendNotificationsOwnerPetCommand sendNotificationsOwnerPetCommand = new SendNotificationsOwnerPetCommand(UUID.fromString(receptionCreateDomainEvent.getMedicalCardId()));
+
+            UUID medicalCardId = UUID.fromString(receptionCreateDomainEvent.getMedicalCardId());
+
+            SendNotificationsOwnerPetCommand sendNotificationsOwnerPetCommand = new SendNotificationsOwnerPetCommand(medicalCardId, "Оставьте отзыв после приема.");
             sendNotificationsOwnerPetCommandHandler.execute(sendNotificationsOwnerPetCommand);
         } catch (Exception ex) {
             throw new RuntimeException("Failed to parse protobuf message", ex);

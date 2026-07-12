@@ -4,7 +4,6 @@ import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils
 import com.course.cleanarchitecture.ddd.Aggregate;
 import lombok.Getter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -19,18 +18,18 @@ public class Analysis extends Aggregate<UUID> {
 
     private UUID medicalCardId;
 
-    private LocalDateTime timeAppointment;
+    private LocalDateTime appointmentTime;
 
     private Analysis() {
     }
 
-    private Analysis(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime timeAppointment) {
+    private Analysis(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime appointmentTime) {
         super(id);
         this.name = name;
         this.description = description;
         this.executionTime = executionTime;
         this.medicalCardId = medicalCardId;
-        this.timeAppointment = timeAppointment;
+        this.appointmentTime = appointmentTime;
     }
 
     public static Analysis createAnalysis(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime timeAppointment) {

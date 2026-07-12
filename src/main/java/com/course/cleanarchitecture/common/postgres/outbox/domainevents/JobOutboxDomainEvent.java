@@ -11,16 +11,16 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class Job {
+public class JobOutboxDomainEvent {
 
-    private final OutboxJpaRepository jpa;
+    private final DomainEventOutboxJpaRepository jpa;
     private final ObjectMapper objectMapper;
     private final ApplicationEventPublisher publisher;
 
     @Scheduled(fixedDelay = 1000)
     public void run() {
-        List<OutboxMessage> outboxMessages = jpa.findUnprocessedMessages();
-        for (OutboxMessage outboxMessage : outboxMessages) {
+        List<MessageDomainEventOutbox> outboxMessages = jpa.findUnprocessedMessages();
+        for (MessageDomainEventOutbox outboxMessage : outboxMessages) {
             try {
 
                 String eventClassName = outboxMessage.getEventType();

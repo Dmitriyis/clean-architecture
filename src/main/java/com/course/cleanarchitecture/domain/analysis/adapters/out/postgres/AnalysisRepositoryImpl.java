@@ -12,11 +12,12 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class AnalysisRepositoryImpl implements AnalysisRepository {
 
+    private final AnalysisJpaMapper analysisJpaMapper;
     private final AnalysisRepositoryJpa analysisRepositoryJpa;
 
     @Override
     public UUID save(Analysis analysis) {
-        AnalysisEntity analysisEntity = AnalysisToAnalysisEntityMapper.analysisToAnalysisEntityMapper(analysis);
+        AnalysisEntity analysisEntity = analysisJpaMapper.toAnalysisEntity(analysis);
         analysisRepositoryJpa.save(analysisEntity);
 
         return analysisEntity.getId();
@@ -24,18 +25,8 @@ public class AnalysisRepositoryImpl implements AnalysisRepository {
 
     @Override
     public List<Analysis> findAllByMedicalCardId(UUID medicalCardId) {
-        return analysisRepositoryJpa.findAllByMedicalCardId(medicalCardId)
-                .stream()
-                .map(analysesEntity -> {
-                    return Analysis.reStore(
-                            analysesEntity.getId(),
-                            analysesEntity.getName(),
-                            analysesEntity.getDescription(),
-                            analysesEntity.getExecutionTime(),
-                            analysesEntity.getMedicalCard().getId(),
-                            analysesEntity.getTimeAppointment()
-                    );
-                })
-                .toList();
+        List<AnalysisEntity> analysisEntities = analysisRepositoryJpa.findAllByMedicalCardId(medicalCardId);
+
+        return analysisJpaMapper.toAnalysisList(analysisEntities);
     }
 }

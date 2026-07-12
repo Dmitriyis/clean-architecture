@@ -1,6 +1,6 @@
 package com.course.cleanarchitecture.domain.analysis.adapters.in.http;
 
-import com.course.cleanarchitecture.domain.analysis.adapters.in.http.dto.AnalysisCreate;
+import com.course.cleanarchitecture.domain.analysis.adapters.in.http.dto.AnalysisDtoCreate;
 import com.course.cleanarchitecture.domain.analysis.core.application.commands.CreateAnalysisCommand;
 import com.course.cleanarchitecture.domain.analysis.core.application.commands.CreateAnalysisCommandHandler;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @RestController
@@ -19,9 +20,15 @@ public class AnalysisCreateRestController {
     private final CreateAnalysisCommandHandler createAnalysisCommandHandler;
 
     @PostMapping
-    public UUID createAnalysis(@RequestBody AnalysisCreate analysisCreate) {
+    public UUID createAnalysis(@RequestBody AnalysisDtoCreate analysisCreate) {
 
-        CreateAnalysisCommand command = new CreateAnalysisCommand(analysisCreate.getName(), analysisCreate.getDescription(), analysisCreate.getExecutionTime(), analysisCreate.getMedicalCard());
+        CreateAnalysisCommand command = new CreateAnalysisCommand(
+                analysisCreate.name(),
+                analysisCreate.description(),
+                analysisCreate.executionTime(),
+                analysisCreate.medicalCard(),
+                LocalDateTime.now()
+        );
 
         return createAnalysisCommandHandler.execute(command);
     }

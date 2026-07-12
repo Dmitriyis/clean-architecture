@@ -6,13 +6,13 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Getter
-public class GetAnalysisByMedicalCardIdQuery {
+public class GetAllAnalysisByMedicalCardIdQuery {
     private UUID medicalCardId;
 
-    private GetAnalysisByMedicalCardIdQuery() {
+    private GetAllAnalysisByMedicalCardIdQuery() {
     }
 
-    public GetAnalysisByMedicalCardIdQuery(UUID medicalCardId) {
+    public GetAllAnalysisByMedicalCardIdQuery(UUID medicalCardId) {
         ValidationValueUtils.againstNull(medicalCardId, "medicalCardId");
         this.medicalCardId = medicalCardId;
     }

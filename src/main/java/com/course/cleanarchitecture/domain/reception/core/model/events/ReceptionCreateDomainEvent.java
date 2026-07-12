@@ -17,7 +17,7 @@ public class ReceptionCreateDomainEvent extends DomainEvent {
         super(reception);
 
         ValidationValueUtils.againstNull(reception.getMedicalCardId(), "medicalCardId");
-        ValidationValueUtils.againstNull(reception.getEndReception(), "receptionId");
+        ValidationValueUtils.againstNull(reception.getEndReception(), "endReception");
 
         this.medicalCardId = reception.getMedicalCardId().toString();
         this.receptionId = reception.getId().toString();

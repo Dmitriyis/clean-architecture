@@ -1,6 +1,6 @@
 package com.course.cleanarchitecture.domain.ownerPet.adapters.in.http;
 
-import com.course.cleanarchitecture.domain.ownerPet.adapters.in.http.dto.OwnerPetCreate;
+import com.course.cleanarchitecture.domain.ownerPet.adapters.in.http.dto.OwnerPetDtoCreate;
 import com.course.cleanarchitecture.domain.ownerPet.core.application.commands.CreateOwnerPetCommand;
 import com.course.cleanarchitecture.domain.ownerPet.core.application.commands.CreateOwnerPetCommandHandler;
 import lombok.RequiredArgsConstructor;
@@ -14,16 +14,22 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1/owner-pet")
+@RequestMapping(OwnerPetConstantsHttp.ROOT_URL)
 public class OwnerPetController {
 
     private final CreateOwnerPetCommandHandler createOwnerPetCommandHandler;
 
     @PostMapping
-    public UUID createOwnerPet(@RequestBody OwnerPetCreate ownerPetCreate) {
-        CreateOwnerPetCommand createOwnerPetCommand = new CreateOwnerPetCommand(ownerPetCreate.getPhone(), ownerPetCreate.getName(), ownerPetCreate.getAddress());
+    public UUID createOwnerPet(@RequestBody OwnerPetDtoCreate ownerPetCreate) {
+        CreateOwnerPetCommand command = new CreateOwnerPetCommand(
+                ownerPetCreate.phone(),
+                ownerPetCreate.name(),
+                ownerPetCreate.addressDto().city(),
+                ownerPetCreate.addressDto().street(),
+                ownerPetCreate.addressDto().numberHouse()
+        );
 
-        return createOwnerPetCommandHandler.execute(createOwnerPetCommand);
+        return createOwnerPetCommandHandler.execute(command);
     }
 
 //    @GetMapping("/{id}")

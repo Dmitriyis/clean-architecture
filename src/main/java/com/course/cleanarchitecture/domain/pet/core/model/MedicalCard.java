@@ -5,43 +5,38 @@ import com.course.cleanarchitecture.ddd.BaseEntity;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Getter
 public class MedicalCard extends BaseEntity<UUID> {
 
-    private List<UUID> receptionsId = new ArrayList<>();
+    private LocalDateTime createTime;
 
     private LocalDateTime updateTime;
-
-    private List<UUID> analyses = new ArrayList<>();
 
     private MedicalCard() {
 
     }
 
-    public MedicalCard(UUID uuid, LocalDateTime updateTime, List<UUID> receptionsId, List<UUID> analyses) {
+    private MedicalCard(UUID uuid, LocalDateTime createTime, LocalDateTime updateTime) {
         super(uuid);
+        this.createTime = createTime;
         this.updateTime = updateTime;
-        this.receptionsId = receptionsId;
-        this.analyses = new ArrayList<>();
     }
 
-    public void addReception(UUID id) {
-        ValidationValueUtils.againstNull(id, "id reception");
-        receptionsId.add(id);
-        this.updateTime = LocalDateTime.now();
+    public static MedicalCard createMedicalCard(UUID id, LocalDateTime createTime, LocalDateTime updateTime) {
+        ValidationValueUtils.againstNull(id, "id");
+        ValidationValueUtils.againstNull(createTime, "createTime");
+        ValidationValueUtils.againstDateTimeGreaterOrEqualCurrent(createTime, "createTime");
+
+        if (updateTime != null) {
+            ValidationValueUtils.againstDateTimeGreaterOrEqualCurrent(updateTime, "updateTime");
+        }
+
+        return new MedicalCard(id, createTime, updateTime);
     }
 
-    public static MedicalCard reStore(UUID uuid, LocalDateTime updateTime, List<UUID> receptionsId, List<UUID> analyses) {
-        return new MedicalCard(uuid, updateTime, receptionsId, analyses);
+    public static MedicalCard reStore(UUID id, LocalDateTime createTime, LocalDateTime updateTime) {
+        return new MedicalCard(id, createTime, updateTime);
     }
 }
-
-//MedicalCard.java
-//        Конструктор теряет данные — баг в коде
-//public MedicalCard(UUID uuid, LocalDateTime updateTime, List<UUID> receptionsId, List<UUID> analyses) — принимает 4 параметра,
-//        но в теле конструктора this.analyses не присваивается.
-//        Параметр analyses игнорируется. Это реальный баг, а не только архитектурная проблема. Данные теряются при создании.

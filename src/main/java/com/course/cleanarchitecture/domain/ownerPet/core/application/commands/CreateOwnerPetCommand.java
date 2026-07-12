@@ -1,10 +1,10 @@
 package com.course.cleanarchitecture.domain.ownerPet.core.application.commands;
 
 import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils;
-import com.course.cleanarchitecture.domain.ownerPet.core.model.valueObject.Address;
-import lombok.Data;
+import com.course.cleanarchitecture.domain.shared.Address;
+import lombok.Getter;
 
-@Data
+@Getter
 public class CreateOwnerPetCommand {
 
     private String phone;
@@ -16,13 +16,11 @@ public class CreateOwnerPetCommand {
     private CreateOwnerPetCommand() {
     }
 
-    public CreateOwnerPetCommand(String phone, String name, Address address) {
+    public CreateOwnerPetCommand(String phone, String name, String city, String street, String numberHouse) {
         ValidationValueUtils.againstNull(phone, "phone");
         ValidationValueUtils.againstNull(name, "name");
-        ValidationValueUtils.againstNull(address, "address");
-        ValidationValueUtils.againstNull(address.getCity(), "address.city");
-        ValidationValueUtils.againstNull(address.getStreet(), "address.street");
-        ValidationValueUtils.againstNull(address.getNumberHouse(), "address.numberHouse");
+
+        Address address = Address.createAddress(city, street, numberHouse);
 
         this.phone = phone;
         this.name = name;

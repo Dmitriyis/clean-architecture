@@ -19,10 +19,10 @@ public class ReceptionToReceptionEntityMapper {
         return ReceptionEntity
                 .builder()
                 .id(reception.getId())
-                .medicalCard(medicalCardEntity)
-                .doctor(doctorEntity)
+//                .medicalCard(medicalCardEntity)
+//                .doctor(doctorEntity)
                 .analyses(reception.getAnalyses())
-                .conclusions(reception.getConclusions())
+//                .conclusions(reception.getConclusions())
                 .startReception(reception.getStartReception())
                 .endReception(reception.getEndReception())
                 .build();

@@ -2,7 +2,9 @@ package com.course.cleanarchitecture.domain.ownerPet.core.application.commands;
 
 import com.course.cleanarchitecture.domain.ownerPet.core.ports.OwnerPetNotificationSender;
 import com.course.cleanarchitecture.domain.ownerPet.core.ports.OwnerPetRepository;
+import com.course.cleanarchitecture.domain.ownerPet.exceptions.OwnerPetNotFoundException;
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
+import com.course.cleanarchitecture.domain.pet.exceptions.MedicalCardNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,11 +21,15 @@ public class SendNotificationsOwnerPetCommandHandlerImpl implements SendNotifica
 
     @Override
     @Transactional
-    public void execute(SendNotificationsOwnerPetCommand sendNotificationsOwnerPetCommand) {
-        UUID ownerPetId = petRepository.findByMedicalCardId(sendNotificationsOwnerPetCommand.getMedicalCardId()).getOwnerPetId();
+    public void execute(SendNotificationsOwnerPetCommand command) {
+        String messagePet = MedicalCardNotFoundException.prepareMessage("MedicalCard", "id", command.getMedicalCardId().toString());
+        UUID ownerPetId = petRepository.findOwnerPetIdByMedicalCardId(command.getMedicalCardId())
+                .orElseThrow(() -> new MedicalCardNotFoundException(messagePet));
 
-        String phone = ownerPetRepository.findById(ownerPetId).getPhone();
+        String messageOwnerPet = OwnerPetNotFoundException.prepareMessage("OwnerPet", "id", ownerPetId.toString());
+        String phone = ownerPetRepository.findOwnerPetPhoneByPetId(ownerPetId)
+                .orElseThrow(() -> new OwnerPetNotFoundException(messageOwnerPet));
 
-        ownerPetNotificationSender.send("Оставьте отзыв о докторе.", phone);
+        ownerPetNotificationSender.send(command.getMessage(), phone);
     }
 }

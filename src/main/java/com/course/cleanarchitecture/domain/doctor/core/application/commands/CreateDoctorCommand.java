@@ -17,13 +17,20 @@ public class CreateDoctorCommand {
 
     }
 
-    public CreateDoctorCommand(String name, TypeProfession profession, Integer workExperience) {
+    public CreateDoctorCommand(String name, String profession, Integer workExperience) {
         ValidationValueUtils.againstNull(name, "name");
         ValidationValueUtils.againstNull(profession, "profession");
         ValidationValueUtils.againstNull(workExperience, "workExperience");
 
+        TypeProfession professionEnum;
+        try {
+            professionEnum = TypeProfession.valueOf(profession);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Invalid profession: " + profession, e);
+        }
+
         this.name = name;
-        this.profession = profession;
+        this.profession = professionEnum;
         this.workExperience = workExperience;
     }
 }

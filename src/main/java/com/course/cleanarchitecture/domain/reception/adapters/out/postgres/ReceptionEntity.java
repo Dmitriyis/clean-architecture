@@ -1,7 +1,5 @@
 package com.course.cleanarchitecture.domain.reception.adapters.out.postgres;
 
-import com.course.cleanarchitecture.domain.doctor.adapters.out.postgres.DoctorEntity;
-import com.course.cleanarchitecture.domain.pet.adapters.out.postgres.MedicalCardEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.vladmihalcea.hibernate.type.array.ListArrayType;
@@ -9,7 +7,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,8 +27,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table(name = "reception")
 @ToString(onlyExplicitlyIncluded = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class ReceptionEntity {
 
@@ -39,20 +34,18 @@ public class ReceptionEntity {
     @Column(name = "id")
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "medical_card_id")
-    private MedicalCardEntity medicalCard;
-
-    @ManyToOne
     @JoinColumn(name = "doctor_id")
-    private DoctorEntity doctor;
+    private UUID doctorId;
+
+    @JoinColumn(name = "pet_id")
+    private UUID petId;
 
     @Column(name = "analyses", columnDefinition = "text[]")
     @Type(ListArrayType.class)
     private List<String> analyses;
 
-    @Column(name = "conclusions")
-    private String conclusions;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "start_reception")
     private LocalDateTime startReception;

@@ -1,5 +1,6 @@
 package com.course.cleanarchitecture.domain.analysis.core.application.queries;
 
+import com.course.cleanarchitecture.domain.analysis.core.application.AnalysisAppMapper;
 import com.course.cleanarchitecture.domain.analysis.core.ports.AnalysisRepository;
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
 import com.course.cleanarchitecture.domain.pet.exceptions.MedicalCardNotFoundException;
@@ -10,13 +11,14 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class GetAnalysisByMedicalCardIdQueryHandlerImpl implements GetAnalysisByMedicalCardIdQueryHandler {
+public class GetAllAnalysisByMedicalCardIdQueryHandlerImpl implements GetAllAnalysisByMedicalCardIdQueryHandler {
 
+    private final AnalysisAppMapper analysisAppMapper;
     private final PetRepository petRepository;
     private final AnalysisRepository analysisRepository;
 
     @Override
-    public List<GetAnalysisByMedicalCardIdResult> execute(GetAnalysisByMedicalCardIdQuery query) throws NoSuchFieldException {
+    public List<GetAllAnalysisByMedicalCardIdResult> execute(GetAllAnalysisByMedicalCardIdQuery query) {
 
         if (!petRepository.existsPetByMedicalCardId(query.getMedicalCardId())) {
             throw new MedicalCardNotFoundException("Medical card not found with id: " + query.getMedicalCardId());
@@ -24,7 +26,7 @@ public class GetAnalysisByMedicalCardIdQueryHandlerImpl implements GetAnalysisBy
 
         return analysisRepository.findAllByMedicalCardId(query.getMedicalCardId())
                 .stream()
-                .map(analyses -> new GetAnalysisByMedicalCardIdResult(analyses.getName(), analyses.getDescription(), analyses.getExecutionTime(), analyses.getMedicalCardId(), analyses.getTimeAppointment()))
+                .map(analysisAppMapper::toGetAnalysisByMedicalCardIdResult)
                 .toList();
     }
 }

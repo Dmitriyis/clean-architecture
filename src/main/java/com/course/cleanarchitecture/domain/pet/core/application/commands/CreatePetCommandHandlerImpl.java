@@ -1,9 +1,10 @@
 package com.course.cleanarchitecture.domain.pet.core.application.commands;
 
-import com.course.cleanarchitecture.domain.shared.Age;
+import com.course.cleanarchitecture.domain.pet.core.application.PetAppMapper;
 import com.course.cleanarchitecture.domain.pet.core.model.MedicalCard;
 import com.course.cleanarchitecture.domain.pet.core.model.Pet;
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
+import com.course.cleanarchitecture.domain.shared.Age;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,15 +17,31 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CreatePetCommandHandlerImpl implements CreatePetCommandHandler {
 
+    private final PetAppMapper petAppMapper;
     private final PetRepository petRepository;
 
     @Override
     @Transactional
-    public UUID execute(CreatePetCommand createPetCommand) {
-        Age age = new Age(createPetCommand.getAge());
-        MedicalCard medicalCard = new MedicalCard(UUID.randomUUID(), LocalDateTime.now(), null, null);
+    public UUID execute(CreatePetCommand command) {
+        Age age = new Age(command.getAge());
 
-        Pet pet = new Pet(UUID.randomUUID(), age, createPetCommand.getName(), createPetCommand.getWeight(), createPetCommand.getOwnerPetId(), medicalCard, LocalDate.now());
+        UUID petId = UUID.randomUUID();
+
+        MedicalCard medicalCard = MedicalCard.createMedicalCard(
+                UUID.randomUUID(),
+                LocalDateTime.now(),
+                LocalDateTime.now()
+        );
+
+        Pet pet = new Pet(
+                petId,
+                age,
+                command.getName(),
+                command.getWeight(),
+                command.getOwnerPetId(),
+                medicalCard,
+                LocalDate.now()
+        );
 
         return petRepository.save(pet);
     }

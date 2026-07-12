@@ -1,27 +1,17 @@
 package com.course.cleanarchitecture.domain.ownerPet.adapters.out.postgres;
 
-import com.course.cleanarchitecture.domain.ownerPet.core.model.valueObject.Address;
-import com.course.cleanarchitecture.domain.pet.adapters.out.postgres.PetEntity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -29,11 +19,8 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter(AccessLevel.NONE)
 @Table(name = "owner_pet")
 @ToString(onlyExplicitlyIncluded = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class OwnerPetEntity {
 
@@ -51,14 +38,12 @@ public class OwnerPetEntity {
     @Column(name = "registration_date")
     private LocalDate registrationDate;
 
-    @Embedded
-    private Address address;
+    @Column(name = "city")
+    private String city;
 
-    @OneToMany(mappedBy = "ownerPet")
-    List<PetEntity> pets = new ArrayList<>();
+    @Column(name = "street")
+    private String street;
+
+    @Column(name = "numberHouse")
+    private String numberHouse;
 }
-//OwnerPetEntity.java
-//        JPA-сущность использует доменный Value Object Address
-//@Embedded private Address address — JPA-сущность напрямую встраивает доменный Address.
-//        Это возможно только потому что Address содержит @Column аннотации (проблема 1).
-//        Правильно: отдельный AddressJpa в адаптере, маппинг через маппер.

@@ -1,8 +1,7 @@
-package com.course.cleanarchitecture.domain.analysis.adapters.in.http.dto;
+package com.course.cleanarchitecture.domain.analysis.core.application.queries;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -10,16 +9,15 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class AnalysisGetByMedicalCardId {
+public class GetAllAnalysisByMedicalCardIdResult {
+    private UUID id;
+
     private String name;
 
     private String description;
 
     private Integer executionTime;
-
-    private UUID medicalCardId;
 
     private LocalDateTime timeAppointment;
 }

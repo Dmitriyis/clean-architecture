@@ -1,9 +1,9 @@
 package com.course.cleanarchitecture.domain.analysis.adapters.in.http;
 
-import com.course.cleanarchitecture.domain.analysis.adapters.in.http.dto.AnalysisGetByMedicalCardId;
+import com.course.cleanarchitecture.domain.analysis.adapters.in.http.dto.AnalysisDtoGetByMedicalCardId;
 import com.course.cleanarchitecture.domain.analysis.adapters.in.http.mapper.AnalysisMapper;
-import com.course.cleanarchitecture.domain.analysis.core.application.queries.GetAnalysisByMedicalCardIdQuery;
-import com.course.cleanarchitecture.domain.analysis.core.application.queries.GetAnalysisByMedicalCardIdQueryHandler;
+import com.course.cleanarchitecture.domain.analysis.core.application.queries.GetAllAnalysisByMedicalCardIdQuery;
+import com.course.cleanarchitecture.domain.analysis.core.application.queries.GetAllAnalysisByMedicalCardIdQueryHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,16 +19,16 @@ import java.util.UUID;
 public class AnalysisGetAllByMedicalCardIdRestController {
 
     private final AnalysisMapper analysisMapper;
-    private final GetAnalysisByMedicalCardIdQueryHandler getAllAnalysisByMedicalCardIdCommandHandler;
+    private final GetAllAnalysisByMedicalCardIdQueryHandler getAnalysisByMedicalCardIdQueryHandler;
 
     @GetMapping("/medical-card/{medicalCardId}")
-    public List<AnalysisGetByMedicalCardId> getAllAnalysisByMedicalCardId(@PathVariable("medicalCardId") UUID medicalCardId) throws NoSuchFieldException {
+    public List<AnalysisDtoGetByMedicalCardId> getAllAnalysisDirectoryByMedicalCardId(@PathVariable("medicalCardId") UUID medicalCardId) {
 
-        GetAnalysisByMedicalCardIdQuery query = new GetAnalysisByMedicalCardIdQuery(medicalCardId);
+        GetAllAnalysisByMedicalCardIdQuery query = new GetAllAnalysisByMedicalCardIdQuery(medicalCardId);
 
-        return getAllAnalysisByMedicalCardIdCommandHandler.execute(query)
+        return getAnalysisByMedicalCardIdQueryHandler.execute(query)
                 .stream()
-                .map(analysisMapper::toAnalysisGet)
+                .map(analysisMapper::toAnalysisGetByMedicalCardId)
                 .toList();
     }
 }

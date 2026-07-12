@@ -31,11 +31,12 @@ public class ReceptionRepositoryImpl implements ReceptionRepository {
     public List<Reception> findAllByPetId(UUID petId) {
         List<ReceptionEntity> receptionEntities = receptionRepositoryJpa.findAllByPetId(petId);
 
-        List<Reception> receptions = receptionEntities
-                .stream()
-                .map(receptionEntity -> {
-                    return Reception.reStore(receptionEntity.getId(), receptionEntity.getMedicalCard().getId(), receptionEntity.getDoctor().getId(), receptionEntity.getAnalyses(), receptionEntity.getConclusions(), receptionEntity.getStartReception(), receptionEntity.getEndReception());
-                }).toList();
-        return receptions;
+//        List<Reception> receptions = receptionEntities
+//                .stream()
+//                .map(receptionEntity -> {
+//                    return Reception.reStore(receptionEntity.getId(), receptionEntity.getMedicalCard().getId(), receptionEntity.getDoctor().getId(), receptionEntity.getAnalyses(), receptionEntity.getConclusions(), receptionEntity.getStartReception(), receptionEntity.getEndReception());
+//                }).toList();
+//        return receptions;
+        return null;
     }
 }

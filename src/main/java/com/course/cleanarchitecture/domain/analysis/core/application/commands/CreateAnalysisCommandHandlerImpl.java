@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static com.course.cleanarchitecture.domain.analysis.core.model.Analysis.createAnalysis;
@@ -23,17 +22,16 @@ public class CreateAnalysisCommandHandlerImpl implements CreateAnalysisCommandHa
     @Override
     @Transactional
     public UUID execute(CreateAnalysisCommand command) {
-        if (!petRepository.existsPetByMedicalCardId(command.getMedicalCardId())) {
-            throw new MedicalCardNotFoundException("Medical card not found with id: " + command.getMedicalCardId());
-        }
+
+//      petRepository.findById();
 
         Analysis analysis = createAnalysis(
                 UUID.randomUUID(),
                 command.getName(),
                 command.getDescription(),
                 command.getExecutionTime(),
-                command.getMedicalCardId(),
-                LocalDateTime.now()
+                command.getMedicalCard(),
+                command.getTimeAppointment()
         );
 
         return analysisRepository.save(analysis);

@@ -2,7 +2,7 @@ package com.course.cleanarchitecture.domain.ownerPet.core.model;
 
 import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils;
 import com.course.cleanarchitecture.ddd.Aggregate;
-import com.course.cleanarchitecture.domain.ownerPet.core.model.valueObject.Address;
+import com.course.cleanarchitecture.domain.shared.Address;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -22,33 +22,39 @@ public class OwnerPet extends Aggregate<UUID> {
 
     private Address address;
 
-    List<UUID> petsId = new ArrayList<>();
+    private List<UUID> petsId = new ArrayList<>();
 
     private OwnerPet() {
     }
 
-    public OwnerPet(UUID uuid, String name, LocalDate registrationDate, Address address, List<UUID> petsId) {
-        super(uuid);
+    private OwnerPet(UUID id, String name, String phone, LocalDate registrationDate, Address address) {
+        super(id);
+        this.name = name;
+        this.registrationDate = registrationDate;
+        this.address = address;
+        this.phone = phone;
+    }
 
-        ValidationValueUtils.againstNull(uuid, "uuid");
-        ValidationValueUtils.againstNull(name, "name");
-        ValidationValueUtils.againstNull(registrationDate, "registrationDate");
-        ValidationValueUtils.againstNull(address, "address");
-        ValidationValueUtils.againstNull(address.getCity(), "address.city");
-        ValidationValueUtils.againstNull(address.getStreet(), "address.street");
-        ValidationValueUtils.againstNull(address.getNumberHouse(), "address.numberHouse");
-
+    private OwnerPet(UUID id, String name, String phone, LocalDate registrationDate, Address address, List<UUID> petsId) {
+        super(id);
         this.name = name;
         this.registrationDate = registrationDate;
         this.address = address;
         this.petsId = petsId;
+        this.phone = phone;
     }
 
-    public static OwnerPet reStore(UUID uuid, String name, LocalDate registrationDate, Address address, List<UUID> petsId) {
-        return new OwnerPet(uuid, name, registrationDate, address, petsId);
+    public static OwnerPet createOwnerPet(UUID id, String name, String phone, LocalDate registrationDate, Address address) {
+        ValidationValueUtils.againstNull(id, "uuid");
+        ValidationValueUtils.againstNull(name, "name");
+        ValidationValueUtils.againstNull(registrationDate, "registrationDate");
+        ValidationValueUtils.againstDateGreaterOrEqualCurrent(registrationDate, "registrationDate");
+        ValidationValueUtils.againstNull(address, "address");
+
+        return new OwnerPet(id, name, phone, registrationDate, address);
+    }
+
+    public static OwnerPet reStore(UUID uuid, String name, String phone, LocalDate registrationDate, Address address, List<UUID> petsId) {
+        return new OwnerPet(uuid, name, phone, registrationDate, address, petsId);
     }
 }
-//OwnerPet.java
-//        Агрегат без валидации полей
-//        OwnerPet принимает name, phone, address без единой проверки.
-//        Можно создать владельца питомца с null именем и пустым телефоном. Нет также метода для добавления питомца — только конструктор со списком UUID.
