@@ -47,7 +47,7 @@ services:
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
     depends_on:
       - kafka
-      -
+
   postgres:
     image: postgres:15
     container_name: postgres
@@ -56,4 +56,4 @@ services:
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: 12345
     ports:
-      - "5432:5432"
+      - "5433:5432"
