@@ -22,8 +22,8 @@ public class SendNotificationsOwnerPetCommandHandlerImpl implements SendNotifica
     @Override
     @Transactional
     public void execute(SendNotificationsOwnerPetCommand command) {
-        String messagePet = MedicalCardNotFoundException.prepareMessage("MedicalCard", "id", command.getMedicalCardId().toString());
-        UUID ownerPetId = petRepository.findOwnerPetIdByMedicalCardId(command.getMedicalCardId())
+        String messagePet = MedicalCardNotFoundException.prepareMessage("MedicalCard", "id", command.getPetId().toString());
+        UUID ownerPetId = petRepository.findOwnerPetIdByPetId(command.getPetId())
                 .orElseThrow(() -> new MedicalCardNotFoundException(messagePet));
 
         String messageOwnerPet = OwnerPetNotFoundException.prepareMessage("OwnerPet", "id", ownerPetId.toString());

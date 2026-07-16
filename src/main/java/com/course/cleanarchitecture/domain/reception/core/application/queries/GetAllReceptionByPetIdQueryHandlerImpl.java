@@ -15,7 +15,7 @@ public class GetAllReceptionByPetIdQueryHandlerImpl implements GetAllReceptionBy
     private final EntityManager entityManager;
 
     @Override
-    public List<GetAllReceptionByPetIdResponse> execute(GetAllReceptionByPetIdQueryCommand getAllReceptionByPetIdQueryCommand) {
+    public List<GetAllReceptionByPetIdResponse> execute(GetAllReceptionByPetIdQuery query) {
         entityManager.createNativeQuery("select * from reception r where r.pet_id = :petId").getResultList();
 
         return null;

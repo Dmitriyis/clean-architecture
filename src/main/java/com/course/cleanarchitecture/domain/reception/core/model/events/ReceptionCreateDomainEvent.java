@@ -10,16 +10,16 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(force = true)
 public class ReceptionCreateDomainEvent extends DomainEvent {
-    private String medicalCardId;
+    private String petId;
     private String receptionId;
 
     public ReceptionCreateDomainEvent(Reception reception) {
         super(reception);
 
-        ValidationValueUtils.againstNull(reception.getMedicalCardId(), "medicalCardId");
+        ValidationValueUtils.againstNull(reception.getPetId(), "petId");
         ValidationValueUtils.againstNull(reception.getEndReception(), "endReception");
 
-        this.medicalCardId = reception.getMedicalCardId().toString();
+        this.petId = reception.getPetId().toString();
         this.receptionId = reception.getId().toString();
     }
 }

@@ -18,6 +18,6 @@ public class ReceptionEventProducerImpl implements ReceptionEventProducer {
     public void publish(ReceptionCreateDomainEvent domainEvent) throws Exception {
         String value = objectMapper.writeValueAsString(domainEvent);
 
-        kafkaTemplate.send("create-reception",domainEvent.getReceptionId(), value);
+        kafkaTemplate.send("create-reception", domainEvent.getReceptionId(), value);
     }
 }

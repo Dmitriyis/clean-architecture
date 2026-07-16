@@ -1,5 +1,6 @@
 package com.course.cleanarchitecture.domain.reception.core.application.commands;
 
+import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -9,7 +10,7 @@ import java.util.UUID;
 @Getter
 public class CreateReceptionCommand {
 
-    private UUID medicalCardId;
+    private UUID petId;
 
     private UUID doctorId;
 
@@ -25,9 +26,16 @@ public class CreateReceptionCommand {
 
     }
 
-    public CreateReceptionCommand(UUID medicalCardId, UUID doctorId, List<String> analyses, String conclusions, LocalDateTime startReception, LocalDateTime endReception) {
-        ///
-        this.medicalCardId = medicalCardId;
+    public CreateReceptionCommand(UUID petId, UUID doctorId, List<String> analyses, String conclusions, LocalDateTime startReception, LocalDateTime endReception) {
+        ValidationValueUtils.againstNull(petId, "petId");
+        ValidationValueUtils.againstNull(doctorId, "doctorId");
+        ValidationValueUtils.againstNullOrEmpty(conclusions, "conclusions");
+        ValidationValueUtils.againstNull(startReception, "startReception");
+        ValidationValueUtils.againstDateTimeGreaterOrEqualCurrent(startReception, "startReception");
+        ValidationValueUtils.againstNull(endReception, "endReception");
+        ValidationValueUtils.againstDateTimeGreaterOrEqualCurrent(endReception, "endReception");
+
+        this.petId = petId;
         this.doctorId = doctorId;
         this.analyses = analyses;
         this.conclusions = conclusions;

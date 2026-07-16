@@ -13,15 +13,22 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1/reception")
+@RequestMapping(ReceptionConstantsHttp.URL_ROOT)
 public class ReceptionRestController {
 
     private final CreateReceptionCommandHandler createReceptionCommandHandler;
 
     @PostMapping
     public UUID createReception(@RequestBody ReceptionCreate receptionCreate) {
-        CreateReceptionCommand createReceptionCommand = new CreateReceptionCommand(receptionCreate.getMedicalCardId(), receptionCreate.getDoctorId(), receptionCreate.getAnalyses(), receptionCreate.getConclusions(), receptionCreate.getStartReception(), receptionCreate.getEndReception());
+        CreateReceptionCommand command = new CreateReceptionCommand(
+                receptionCreate.petId(),
+                receptionCreate.doctorId(),
+                receptionCreate.analyses(),
+                receptionCreate.conclusions(),
+                receptionCreate.startReception(),
+                receptionCreate.endReception()
+        );
 
-        return createReceptionCommandHandler.execute(createReceptionCommand);
+        return createReceptionCommandHandler.execute(command);
     }
 }

@@ -41,8 +41,8 @@ public class AnalysisEntity {
     @Column(name = "execution_time")
     private Integer executionTime;
 
-    @Column(name = "time_appointment")
-    private LocalDateTime timeAppointment;
+    @Column(name = "create_time")
+    private LocalDateTime createTime;
 
     @JoinColumn(name = "medical_card_id")
     private UUID medicalCardId;

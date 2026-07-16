@@ -24,7 +24,7 @@ public class MedicalCard extends BaseEntity<UUID> {
         this.updateTime = updateTime;
     }
 
-    public static MedicalCard createMedicalCard(UUID id, LocalDateTime createTime, LocalDateTime updateTime) {
+    public static MedicalCard create(UUID id, LocalDateTime createTime, LocalDateTime updateTime) {
         ValidationValueUtils.againstNull(id, "id");
         ValidationValueUtils.againstNull(createTime, "createTime");
         ValidationValueUtils.againstDateTimeGreaterOrEqualCurrent(createTime, "createTime");

@@ -16,7 +16,7 @@ public class CreateOwnerPetCommandHandlerImpl implements CreateOwnerPetCommandHa
 
     @Override
     public UUID execute(CreateOwnerPetCommand command) {
-        OwnerPet ownerPet = OwnerPet.createOwnerPet(
+        OwnerPet ownerPet = OwnerPet.create(
                 UUID.randomUUID(),
                 command.getName(),
                 command.getPhone(),

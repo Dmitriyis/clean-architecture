@@ -6,7 +6,6 @@ import com.course.cleanarchitecture.domain.shared.Age;
 import lombok.Getter;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -27,7 +26,19 @@ public class Pet extends Aggregate<UUID> {
     private Pet() {
     }
 
-    public Pet(UUID id, Age age, String name, Integer weight, UUID ownerPetId, MedicalCard medicalCard, LocalDate registrationDate) {
+    private Pet(UUID id, Age age, String name, Integer weight, UUID ownerPetId, MedicalCard medicalCard, LocalDate registrationDate) {
+        super(id);
+        this.id = id;
+        this.age = age;
+        this.name = name;
+        this.weight = weight;
+        this.ownerPetId = ownerPetId;
+        this.medicalCard = medicalCard;
+        this.registrationDate = registrationDate;
+    }
+
+
+    public static Pet create(UUID id, Age age, String name, Integer weight, UUID ownerPetId, MedicalCard medicalCard, LocalDate registrationDate) {
         ValidationValueUtils.againstNull(id, "id");
         ValidationValueUtils.againstNullOrEmpty(name, "name");
         ValidationValueUtils.againstNull(weight, "weight");
@@ -37,13 +48,7 @@ public class Pet extends Aggregate<UUID> {
         ValidationValueUtils.againstNull(registrationDate, "registrationDate");
         ValidationValueUtils.againstDateGreaterOrEqualCurrent(registrationDate, "registrationDate");
 
-        this.id = id;
-        this.age = age;
-        this.name = name;
-        this.weight = weight;
-        this.ownerPetId = ownerPetId;
-        this.medicalCard = medicalCard;
-        this.registrationDate = registrationDate;
+        return new Pet(id, age, name, weight, ownerPetId, medicalCard, registrationDate);
     }
 
     public static Pet reStore(UUID id, Age age, String name, Integer weight, UUID ownerPetId, MedicalCard medicalCard, LocalDate registrationDate) {

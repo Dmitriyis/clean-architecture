@@ -44,7 +44,7 @@ public class OwnerPet extends Aggregate<UUID> {
         this.phone = phone;
     }
 
-    public static OwnerPet createOwnerPet(UUID id, String name, String phone, LocalDate registrationDate, Address address) {
+    public static OwnerPet create(UUID id, String name, String phone, LocalDate registrationDate, Address address) {
         ValidationValueUtils.againstNull(id, "uuid");
         ValidationValueUtils.againstNull(name, "name");
         ValidationValueUtils.againstNull(registrationDate, "registrationDate");

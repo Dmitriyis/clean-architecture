@@ -22,5 +22,5 @@ public interface PetRepositoryJpa extends JpaRepository<PetEntity, UUID>, JpaSpe
     boolean existsByMedicalCardId(UUID medicalCardId);
 
     @Query("select p.ownerPetId from PetEntity p where p.medicalCardId = :medicalCardId")
-    Optional<UUID> findOwnerPetIdByMedicalCardId(@Param("medicalCardId") UUID medicalCardId);
+    Optional<UUID> findOwnerPetIdByPetIdId(@Param("petId") UUID petId);
 }

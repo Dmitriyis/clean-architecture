@@ -27,13 +27,13 @@ public class CreatePetCommandHandlerImpl implements CreatePetCommandHandler {
 
         UUID petId = UUID.randomUUID();
 
-        MedicalCard medicalCard = MedicalCard.createMedicalCard(
+        MedicalCard medicalCard = MedicalCard.create(
                 UUID.randomUUID(),
                 LocalDateTime.now(),
                 LocalDateTime.now()
         );
 
-        Pet pet = new Pet(
+        Pet pet = Pet.create(
                 petId,
                 age,
                 command.getName(),

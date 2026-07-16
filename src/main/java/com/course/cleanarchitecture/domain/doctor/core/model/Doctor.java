@@ -18,21 +18,21 @@ public class Doctor extends Aggregate<UUID> {
     private Doctor() {
     }
 
-    public Doctor(UUID id ,String name, TypeProfession profession, Integer workExperience) {
+    private Doctor(UUID id ,String name, TypeProfession profession, Integer workExperience) {
         super(id);
-
-        ValidationValueUtils.againstNull(id, "id");
-        ValidationValueUtils.againstNull(name, "name");
-        ValidationValueUtils.againstNull(profession, "profession");
-        ValidationValueUtils.againstNull(workExperience, "workExperience");
-
         this.name = name;
         this.profession = profession;
         this.workExperience = workExperience;
     }
 
-    public void addReception(UUID receptionId) {
-        ValidationValueUtils.againstNull(receptionId, "receptionId");
+    public static Doctor create(UUID id ,String name, TypeProfession profession, Integer workExperience) {
+        ValidationValueUtils.againstNull(id, "id");
+        ValidationValueUtils.againstNull(name, "name");
+        ValidationValueUtils.againstNull(profession, "profession");
+        ValidationValueUtils.againstNull(workExperience, "workExperience");
+        ValidationValueUtils.againstNegative(workExperience, "workExperience");
+
+        return new Doctor(id, name, profession, workExperience);
     }
 
     public static Doctor reStore(UUID id, String name, TypeProfession profession, Integer workExperience) {

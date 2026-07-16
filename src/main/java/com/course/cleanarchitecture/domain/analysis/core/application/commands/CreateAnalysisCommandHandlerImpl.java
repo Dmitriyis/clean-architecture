@@ -3,14 +3,13 @@ package com.course.cleanarchitecture.domain.analysis.core.application.commands;
 import com.course.cleanarchitecture.domain.analysis.core.model.Analysis;
 import com.course.cleanarchitecture.domain.analysis.core.ports.AnalysisRepository;
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
-import com.course.cleanarchitecture.domain.pet.exceptions.MedicalCardNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
-import static com.course.cleanarchitecture.domain.analysis.core.model.Analysis.createAnalysis;
+import static com.course.cleanarchitecture.domain.analysis.core.model.Analysis.create;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +24,7 @@ public class CreateAnalysisCommandHandlerImpl implements CreateAnalysisCommandHa
 
 //      petRepository.findById();
 
-        Analysis analysis = createAnalysis(
+        Analysis analysis = create(
                 UUID.randomUUID(),
                 command.getName(),
                 command.getDescription(),

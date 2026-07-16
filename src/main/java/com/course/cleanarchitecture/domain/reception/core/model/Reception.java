@@ -1,5 +1,6 @@
 package com.course.cleanarchitecture.domain.reception.core.model;
 
+import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils;
 import com.course.cleanarchitecture.ddd.Aggregate;
 import com.course.cleanarchitecture.domain.reception.core.model.events.ReceptionCreateDomainEvent;
 import lombok.Getter;
@@ -11,13 +12,13 @@ import java.util.UUID;
 @Getter
 public class Reception extends Aggregate<UUID> {
 
-    private UUID medicalCardId;
+    private UUID petId;
 
     private UUID doctorId;
 
-    private List<String> analyses;
+    private List<String> analysesDirection;
 
-    private String conclusions;
+    private String description;
 
     private LocalDateTime startReception;
 
@@ -26,18 +27,34 @@ public class Reception extends Aggregate<UUID> {
     private Reception() {
     }
 
-    public Reception(UUID id, UUID medicalCardId, UUID doctorId, List<String> analyses, String conclusions, LocalDateTime startReception, LocalDateTime endReception) {
+    private Reception(UUID id, UUID petId, UUID doctorId, List<String> analysesDirection, String description, LocalDateTime startReception, LocalDateTime endReception) {
         super(id);
-        this.medicalCardId = medicalCardId;
+        this.petId = petId;
         this.doctorId = doctorId;
-        this.analyses = analyses;
-        this.conclusions = conclusions;
+        this.analysesDirection = analysesDirection;
+        this.description = description;
         this.startReception = startReception;
         this.endReception = endReception;
         raiseDomainEvent(new ReceptionCreateDomainEvent(this));
     }
 
-    public static Reception reStore(UUID id, UUID medicalCardId, UUID doctorId, List<String> analyses, String conclusions, LocalDateTime startReception, LocalDateTime endReception) {
-        return new Reception(id, medicalCardId, doctorId, analyses, conclusions, startReception, endReception);
+    public static Reception create(UUID id, UUID petId, UUID doctorId, List<String> analysesDirection, String description, LocalDateTime startReception, LocalDateTime endReception) {
+        ValidationValueUtils.againstNull(id, "id,");
+        ValidationValueUtils.againstNull(petId, "petId,");
+        ValidationValueUtils.againstNull(analysesDirection, "analysesDirection,");
+        ValidationValueUtils.againstNull(startReception, "startReception,");
+        ValidationValueUtils.againstNull(endReception, "endReception,");
+
+        ValidationValueUtils.againstNullOrEmpty(analysesDirection, "analysesDirection,");
+        ValidationValueUtils.againstNullOrEmpty(description, "conclusions,");
+
+        ValidationValueUtils.againstDateTimeGreaterOrEqualCurrent(startReception, "startReception,");
+        ValidationValueUtils.againstDateTimeGreaterOrEqualCurrent(endReception, "endReception,");
+
+        return new Reception(id, petId, doctorId, analysesDirection, description, startReception, endReception);
+    }
+
+    public static Reception reStore(UUID id, UUID petId, UUID doctorId, List<String> analyses, String description, LocalDateTime startReception, LocalDateTime endReception) {
+        return new Reception(id, petId, doctorId, analyses, description, startReception, endReception);
     }
 }

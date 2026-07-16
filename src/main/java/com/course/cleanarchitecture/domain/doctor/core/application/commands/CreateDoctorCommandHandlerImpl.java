@@ -17,7 +17,8 @@ public class CreateDoctorCommandHandlerImpl implements CreateDoctorCommandHandle
     @Override
     @Transactional
     public UUID execute(CreateDoctorCommand command) {
-        Doctor doctor = new Doctor(
+
+        Doctor doctor = Doctor.create(
                 UUID.randomUUID(),
                 command.getName(),
                 command.getProfession(),

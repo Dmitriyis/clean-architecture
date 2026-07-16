@@ -37,8 +37,8 @@ public class PetRepositoryImpl implements PetRepository {
     }
 
     @Override
-    public Optional<UUID> findOwnerPetIdByMedicalCardId(UUID id) {
-        return petRepositoryJpa.findOwnerPetIdByMedicalCardId(id);
+    public Optional<UUID> findOwnerPetIdByPetId(UUID id) {
+        return petRepositoryJpa .findOwnerPetIdByPetIdId(id);
     }
 
     @Override

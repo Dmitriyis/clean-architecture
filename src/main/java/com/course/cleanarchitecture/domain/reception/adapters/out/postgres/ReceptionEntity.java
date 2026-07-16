@@ -1,7 +1,5 @@
 package com.course.cleanarchitecture.domain.reception.adapters.out.postgres;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.vladmihalcea.hibernate.type.array.ListArrayType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -40,9 +38,9 @@ public class ReceptionEntity {
     @JoinColumn(name = "pet_id")
     private UUID petId;
 
-    @Column(name = "analyses", columnDefinition = "text[]")
+    @Column(name = "analyses_direction", columnDefinition = "text[]")
     @Type(ListArrayType.class)
-    private List<String> analyses;
+    private List<String> analysesDirection;
 
     @Column(name = "description")
     private String description;

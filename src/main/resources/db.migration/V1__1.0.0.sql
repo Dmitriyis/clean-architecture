@@ -1,11 +1,20 @@
 create table if not exists owner_pet (
     id uuid,
     name varchar(255) not null,
+    phone text not null,
     city varchar(255) not null,
     street varchar(255) not null,
     number_house varchar(255) not null,
     registration_date timestamp not null,
-    phone text not null,
+
+    primary key (id)
+);
+
+create table if not exists doctor (
+    id uuid,
+    name varchar(255) not null,
+    profession varchar(255) not null,
+    work_experience integer not null,
 
     primary key (id)
 );
@@ -17,41 +26,27 @@ create table if not exists medical_card (
     primary key (id)
 );
 
-create table if not exists pet (
-    id uuid,
-    owner_pet_id uuid,
-    age integer not null,
-    weight integer not null,
-    name varchar(255) not null,
-    registration_date timestamp not null,
-    medical_card_id uuid,
-
-    foreign key (owner_pet_id) references owner_pet(id),
-    foreign key (medical_card_id) references medical_card(id),
-    primary key (id)
-);
-
-
-create table if not exists doctor (
-    id uuid,
-    name varchar(255) not null,
-    profession varchar(255) not null,
-    work_experience integer not null,
-
-    primary key (id)
-);
-
 create table if not exists reception (
     id uuid,
-    medical_card_id uuid,
     doctor_id uuid,
-    conclusions text not null,
+    pet_id uuid,
+    description text not null,
+    analyses text[],
     start_reception timestamp not null,
     end_reception timestamp not null,
-    analyses text[],
 
-    foreign key (medical_card_id) references medical_card(id),
-    foreign key (doctor_id) references doctor(id),
+    primary key (id)
+);
+
+create table if not exists pet (
+    id uuid,
+    name varchar(255) not null,
+    weight integer not null,
+    age integer not null,
+    owner_id uuid,
+    registration_date timestamp,
+    medical_card_id uuid,
+
     primary key (id)
 );
 
@@ -71,18 +66,12 @@ create table if not exists analysis (
     name varchar(255),
     description varchar(255),
     execution_time integer,
+    create_time timestamp,
     medical_card_id UUID,
-    create_date timestamp,
 
     foreign key (medical_card_id) references medical_card(id),
     primary key (id)
 );
-
-
-
-
-
-
 
 create table if not exists users (
     email varchar(255) not null primary key,

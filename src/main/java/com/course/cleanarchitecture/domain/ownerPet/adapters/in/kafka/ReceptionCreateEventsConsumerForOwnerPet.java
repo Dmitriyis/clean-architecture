@@ -22,9 +22,9 @@ public class ReceptionCreateEventsConsumerForOwnerPet {
         try {
             ReceptionCreateDomainEvent receptionCreateDomainEvent = objectMapper.readValue(message, ReceptionCreateDomainEvent.class);
 
-            UUID medicalCardId = UUID.fromString(receptionCreateDomainEvent.getMedicalCardId());
+            UUID petId = UUID.fromString(receptionCreateDomainEvent.getPetId());
 
-            SendNotificationsOwnerPetCommand sendNotificationsOwnerPetCommand = new SendNotificationsOwnerPetCommand(medicalCardId, "Оставьте отзыв после приема.");
+            SendNotificationsOwnerPetCommand sendNotificationsOwnerPetCommand = new SendNotificationsOwnerPetCommand(petId, "Оставьте отзыв после приема.");
             sendNotificationsOwnerPetCommandHandler.execute(sendNotificationsOwnerPetCommand);
         } catch (Exception ex) {
             throw new RuntimeException("Failed to parse protobuf message", ex);

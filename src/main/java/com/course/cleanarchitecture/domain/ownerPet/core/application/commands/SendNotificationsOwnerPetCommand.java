@@ -8,7 +8,7 @@ import java.util.UUID;
 @Getter
 public class SendNotificationsOwnerPetCommand {
 
-    private UUID medicalCardId;
+    private UUID petId;
 
     private String message;
 
@@ -16,10 +16,10 @@ public class SendNotificationsOwnerPetCommand {
 
     }
 
-    public SendNotificationsOwnerPetCommand(UUID medicalCardId, String message) {
-        ValidationValueUtils.againstNull(medicalCardId, "medicalCardId");
+    public SendNotificationsOwnerPetCommand(UUID petId, String message) {
+        ValidationValueUtils.againstNull(petId, "petId");
         ValidationValueUtils.againstNullOrEmpty(message, "message");
-        this.medicalCardId = medicalCardId;
+        this.petId = petId;
         this.message = message;
     }
 }

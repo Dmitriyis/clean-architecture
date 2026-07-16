@@ -28,7 +28,7 @@ public class AnalysisJpaMapper {
                 analysisEntity.getDescription(),
                 analysisEntity.getExecutionTime(),
                 analysisEntity.getMedicalCardId(),
-                analysisEntity.getTimeAppointment()
+                analysisEntity.getCreateTime()
         );
     }
 

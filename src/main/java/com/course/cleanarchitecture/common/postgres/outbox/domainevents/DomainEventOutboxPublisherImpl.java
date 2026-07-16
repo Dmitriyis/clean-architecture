@@ -14,8 +14,7 @@ public class DomainEventOutboxPublisherImpl implements DomainEventPublisher {
 
     private final DomainEventOutboxJpaRepository jpa;
     private final ObjectMapper objectMapper;
-//    @PersistenceContext
-//    private final EntityManager entityManager;
+
     @Override
     public void publish(Iterable<Aggregate<?>> aggregates) {
         try {

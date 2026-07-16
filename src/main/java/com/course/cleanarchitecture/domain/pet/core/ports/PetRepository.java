@@ -10,7 +10,7 @@ public interface PetRepository {
 
     Optional<Pet> findByMedicalCardId(UUID id);
 
-    Optional<UUID> findOwnerPetIdByMedicalCardId(UUID id);
+    Optional<UUID> findOwnerPetIdByPetId(UUID id);
 
     boolean existsPetByMedicalCardId(UUID medicalCardId);
 

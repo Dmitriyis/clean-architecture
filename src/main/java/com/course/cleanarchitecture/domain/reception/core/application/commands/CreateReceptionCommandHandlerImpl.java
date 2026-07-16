@@ -22,12 +22,20 @@ public class CreateReceptionCommandHandlerImpl implements CreateReceptionCommand
 
     @Override
     @Transactional
-    public UUID execute(CreateReceptionCommand createPetCommand) {
-        Reception reception = new Reception(UUID.randomUUID(), createPetCommand.getMedicalCardId(), createPetCommand.getDoctorId(), createPetCommand.getAnalyses(), createPetCommand.getConclusions(), createPetCommand.getStartReception(), createPetCommand.getEndReception());
+    public UUID execute(CreateReceptionCommand command) {
+        Reception reception = Reception.create(UUID.randomUUID(),
+                command.getPetId(),
+                command.getDoctorId(),
+                command.getAnalyses(),
+                command.getConclusions(),
+                command.getStartReception(),
+                command.getEndReception()
+        );
 
         UUID id = receptionRepository.save(reception);
 
         domainEventPublisher.publish(List.of(reception));
+
         return id;
     }
 }

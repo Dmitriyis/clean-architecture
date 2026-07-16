@@ -32,7 +32,7 @@ public class Analysis extends Aggregate<UUID> {
         this.appointmentTime = appointmentTime;
     }
 
-    public static Analysis createAnalysis(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime timeAppointment) {
+    public static Analysis create(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime timeAppointment) {
         ValidationValueUtils.againstNull(id, "id");
         ValidationValueUtils.againstNullOrEmpty(name, "name");
         ValidationValueUtils.againstNullOrEmpty(description, "description");
