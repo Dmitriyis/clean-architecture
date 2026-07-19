@@ -20,7 +20,7 @@ import java.util.List;
 @Entity
 @Getter
 @Table(name = "users")
-public class UserDomain implements UserDetails {
+public class UserSecurity implements UserDetails {
 
     @Id
     private String email;

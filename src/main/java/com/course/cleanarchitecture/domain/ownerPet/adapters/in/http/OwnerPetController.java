@@ -24,9 +24,9 @@ public class OwnerPetController {
         CreateOwnerPetCommand command = new CreateOwnerPetCommand(
                 ownerPetCreate.phone(),
                 ownerPetCreate.name(),
-                ownerPetCreate.addressDto().city(),
-                ownerPetCreate.addressDto().street(),
-                ownerPetCreate.addressDto().numberHouse()
+                ownerPetCreate.address().city(),
+                ownerPetCreate.address().street(),
+                ownerPetCreate.address().numberHouse()
         );
 
         return createOwnerPetCommandHandler.execute(command);

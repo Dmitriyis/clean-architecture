@@ -21,6 +21,8 @@ create table if not exists doctor (
 
 create table if not exists medical_card (
     id uuid,
+    pet_id uuid,
+    create_time timestamp not null,
     update_time timestamp not null,
 
     primary key (id)

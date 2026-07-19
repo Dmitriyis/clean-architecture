@@ -26,6 +26,8 @@ public class PetJpaMapper {
                 .registrationDate(pet.getRegistrationDate())
                 .build();
 
+        medicalCardEntity.setPet(petEntity);
+
         return petEntity;
     }
 

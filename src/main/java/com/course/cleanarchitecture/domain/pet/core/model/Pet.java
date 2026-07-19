@@ -46,7 +46,7 @@ public class Pet extends Aggregate<UUID> {
         ValidationValueUtils.againstNull(ownerPetId, "ownerPetId");
         ValidationValueUtils.againstNull(medicalCard, "medicalCard");
         ValidationValueUtils.againstNull(registrationDate, "registrationDate");
-        ValidationValueUtils.againstDateGreaterOrEqualCurrent(registrationDate, "registrationDate");
+        ValidationValueUtils.againstDateEqualCurrent(registrationDate, "registrationDate");
 
         return new Pet(id, age, name, weight, ownerPetId, medicalCard, registrationDate);
     }

@@ -1,8 +1,5 @@
 package com.course.cleanarchitecture.domain.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,20 +21,17 @@ public class UserController {
 
     @PostMapping
     public String loginUser(@RequestBody UserLoginDto userLoginDto) {
-        UserDetails userDetails = userService.loadUserByUsername(userLoginDto.getUsername());
+        UserDetails userDetails = userService.loadUserByUsername(userLoginDto.username);
 
-        Authentication authentication = new UsernamePasswordAuthenticationToken(userLoginDto.getUsername(), userLoginDto.getPassword());
+        Authentication authentication = new UsernamePasswordAuthenticationToken(userLoginDto.username, userLoginDto.password);
         authenticationManager.authenticate(authentication);
 
         String token = jwtUtil.generateToken(userDetails);
         return token;
     }
 
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Data
-    static class UserLoginDto {
-        private String username;
-        private String password;
+
+    record UserLoginDto(String username, String password) {
+
     }
 }

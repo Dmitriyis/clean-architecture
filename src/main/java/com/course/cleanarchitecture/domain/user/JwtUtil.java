@@ -31,7 +31,7 @@ public class JwtUtil {
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
 
-        UserDomain userDomain = userRepository.findById(userDetails.getUsername()).orElseGet(null);
+        UserSecurity userDomain = userRepository.findById(userDetails.getUsername()).orElseGet(null);
 
         List<String> rolesList = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)

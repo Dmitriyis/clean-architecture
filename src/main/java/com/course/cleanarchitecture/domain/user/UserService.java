@@ -16,7 +16,7 @@ public class UserService implements UserDetailsService {
     @Transactional
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDomain userDetails = userRepository.findById(username)
+        UserSecurity userDetails = userRepository.findById(username)
                 .orElseThrow(() -> new RuntimeException("ERRORS USER NOT FOUND"));
 
         return userDetails;

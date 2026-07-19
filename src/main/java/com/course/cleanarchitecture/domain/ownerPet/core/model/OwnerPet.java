@@ -48,7 +48,7 @@ public class OwnerPet extends Aggregate<UUID> {
         ValidationValueUtils.againstNull(id, "uuid");
         ValidationValueUtils.againstNull(name, "name");
         ValidationValueUtils.againstNull(registrationDate, "registrationDate");
-        ValidationValueUtils.againstDateGreaterOrEqualCurrent(registrationDate, "registrationDate");
+        ValidationValueUtils.againstDateEqualCurrent(registrationDate, "registrationDate");
         ValidationValueUtils.againstNull(address, "address");
 
         return new OwnerPet(id, name, phone, registrationDate, address);

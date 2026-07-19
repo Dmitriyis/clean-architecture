@@ -48,8 +48,8 @@ public class Reception extends Aggregate<UUID> {
         ValidationValueUtils.againstNullOrEmpty(analysesDirection, "analysesDirection,");
         ValidationValueUtils.againstNullOrEmpty(description, "conclusions,");
 
-        ValidationValueUtils.againstDateTimeGreaterOrEqualCurrent(startReception, "startReception,");
-        ValidationValueUtils.againstDateTimeGreaterOrEqualCurrent(endReception, "endReception,");
+        ValidationValueUtils.againstDateTimeEqualCurrent(startReception, "startReception,");
+        ValidationValueUtils.againstDateTimeEqualCurrent(endReception, "endReception,");
 
         return new Reception(id, petId, doctorId, analysesDirection, description, startReception, endReception);
     }
