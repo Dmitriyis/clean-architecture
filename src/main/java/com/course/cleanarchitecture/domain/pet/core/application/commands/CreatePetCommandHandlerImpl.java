@@ -1,5 +1,7 @@
 package com.course.cleanarchitecture.domain.pet.core.application.commands;
 
+import com.course.cleanarchitecture.domain.ownerPet.core.ports.OwnerPetRepository;
+import com.course.cleanarchitecture.domain.ownerPet.exceptions.OwnerPetNotFoundException;
 import com.course.cleanarchitecture.domain.pet.core.application.PetAppMapper;
 import com.course.cleanarchitecture.domain.pet.core.model.MedicalCard;
 import com.course.cleanarchitecture.domain.pet.core.model.Pet;
@@ -19,10 +21,19 @@ public class CreatePetCommandHandlerImpl implements CreatePetCommandHandler {
 
     private final PetAppMapper petAppMapper;
     private final PetRepository petRepository;
+    private final OwnerPetRepository ownerPetRepository;
 
     @Override
     @Transactional
     public UUID execute(CreatePetCommand command) {
+        boolean isExistsOwner = ownerPetRepository.isExists(command.getOwnerPetId());
+
+        if (!isExistsOwner) {
+            String message = OwnerPetNotFoundException.prepareMessage("OwnerPet", "id", command.getOwnerPetId().toString());
+
+            throw new OwnerPetNotFoundException(message);
+        }
+
         Age age = new Age(command.getAge());
 
         UUID petId = UUID.randomUUID();

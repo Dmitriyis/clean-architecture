@@ -21,6 +21,7 @@ public class DoctorGetByIdRestController {
     private final GetDoctorByIdQueryHandler getDoctorByIdQueryHandler;
 
     @GetMapping("/{id}")
+    // НАДО ВЕРНУТЬ ДТО
     public Doctor getDoctor(@PathVariable("id") UUID id) {
         GetDoctorByIdQuery query = new GetDoctorByIdQuery(id);
         return getDoctorByIdQueryHandler.execute(query);

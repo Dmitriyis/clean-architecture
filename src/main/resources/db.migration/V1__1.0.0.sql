@@ -33,7 +33,7 @@ create table if not exists reception (
     doctor_id uuid,
     pet_id uuid,
     description text not null,
-    analyses text[],
+    analyses_direction text[],
     start_reception timestamp not null,
     end_reception timestamp not null,
 
@@ -47,12 +47,11 @@ create table if not exists pet (
     age integer not null,
     owner_id uuid,
     registration_date timestamp,
-    medical_card_id uuid,
 
     primary key (id)
 );
 
-create table if not exists outbox (
+create table if not exists message_domain_event_outbox (
     id uuid,
     event_type text not null,
     aggregate_id varchar(255) not null,

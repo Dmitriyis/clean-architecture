@@ -18,21 +18,21 @@ public class Analysis extends Aggregate<UUID> {
 
     private UUID medicalCardId;
 
-    private LocalDateTime appointmentTime;
+    private LocalDateTime createTime;
 
     private Analysis() {
     }
 
-    private Analysis(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime appointmentTime) {
+    private Analysis(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime createTime) {
         super(id);
         this.name = name;
         this.description = description;
         this.executionTime = executionTime;
         this.medicalCardId = medicalCardId;
-        this.appointmentTime = appointmentTime;
+        this.createTime = createTime;
     }
 
-    public static Analysis create(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime timeAppointment) {
+    public static Analysis create(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime createTime) {
         ValidationValueUtils.againstNull(id, "id");
         ValidationValueUtils.againstNullOrEmpty(name, "name");
         ValidationValueUtils.againstNullOrEmpty(description, "description");
@@ -40,10 +40,10 @@ public class Analysis extends Aggregate<UUID> {
         ValidationValueUtils.againstNegative(executionTime, "executionTime");
         ValidationValueUtils.againstNull(medicalCardId, "medicalCardId");
 
-        return new Analysis(id, name, description, executionTime, medicalCardId, timeAppointment);
+        return new Analysis(id, name, description, executionTime, medicalCardId, createTime);
     }
 
-    public static Analysis reStore(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime timeAppointment) {
-        return new Analysis(id, name, description, executionTime, medicalCardId, timeAppointment);
+    public static Analysis reStore(UUID id, String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime createTime) {
+        return new Analysis(id, name, description, executionTime, medicalCardId, createTime);
     }
 }

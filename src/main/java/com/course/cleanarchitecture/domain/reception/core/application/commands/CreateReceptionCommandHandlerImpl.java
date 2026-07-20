@@ -29,7 +29,7 @@ public class CreateReceptionCommandHandlerImpl implements CreateReceptionCommand
                 command.getPetId(),
                 command.getDoctorId(),
                 command.getAnalyses(),
-                command.getConclusions(),
+                command.getDescription(),
                 command.getStartReception(),
                 command.getEndReception()
         );

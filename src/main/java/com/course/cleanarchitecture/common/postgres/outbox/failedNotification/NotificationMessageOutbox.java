@@ -14,8 +14,8 @@ import java.util.UUID;
 @Getter
 @Entity
 @NoArgsConstructor
-@Table(name = "message-domain-event-outbox")
-public class FailedNotificationMessageOutbox {
+//@Table(name = "message-domain-event-outbox")
+public class NotificationMessageOutbox {
 
     @Id
     @Column(name = "id", nullable = false)
@@ -33,7 +33,7 @@ public class FailedNotificationMessageOutbox {
     @Column(name = "processed_on_utc")
     private Instant processedOnUtc;
 
-    public FailedNotificationMessageOutbox(UUID id, String payload, String phone, String errorMessage) {
+    public NotificationMessageOutbox(UUID id, String payload, String phone, String errorMessage) {
         this.id = ValidationValueUtils.againstNullOrEmpty(id, "id");
         this.payload = ValidationValueUtils.againstNullOrEmpty(payload, "payload");
         this.phone = ValidationValueUtils.againstNullOrEmpty(phone, "phone");

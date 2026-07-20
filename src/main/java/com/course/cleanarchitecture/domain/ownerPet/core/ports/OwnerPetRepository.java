@@ -10,5 +10,7 @@ public interface OwnerPetRepository {
 
     Optional<OwnerPet> findById(UUID id);
 
+    boolean isExists(UUID id);
+
     Optional<String> findOwnerPetPhoneByPetId(UUID id);
 }

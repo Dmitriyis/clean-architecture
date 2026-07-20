@@ -19,7 +19,7 @@ public interface DomainEventOutboxJpaRepository extends JpaRepository<MessageDom
                     " payload," +
                     " occurred_on_utc," +
                     " processed_on_utc" +
-                    " from outbox " +
+                    " from message_domain_event_outbox " +
                     "where processed_on_utc is null", nativeQuery = true)
     List<MessageDomainEventOutbox> findUnprocessedMessages();
 }

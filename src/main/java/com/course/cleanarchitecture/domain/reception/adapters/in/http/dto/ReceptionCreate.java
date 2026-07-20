@@ -7,11 +7,11 @@ import java.util.UUID;
 public record ReceptionCreate(
         UUID petId,
         UUID doctorId,
-        List<String> analyses,
-        String conclusions,
+        List<String> analysesDirection,
+        String description,
         LocalDateTime startReception,
         LocalDateTime endReception
-) { }
+) {};
 
 
 

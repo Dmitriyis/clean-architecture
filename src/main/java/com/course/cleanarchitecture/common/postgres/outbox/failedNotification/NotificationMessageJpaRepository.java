@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface FailedNotificationMessageJpaRepository extends JpaRepository<FailedNotificationMessageOutbox, UUID> {
+public interface NotificationMessageJpaRepository extends JpaRepository<NotificationMessageOutbox, UUID> {
 }

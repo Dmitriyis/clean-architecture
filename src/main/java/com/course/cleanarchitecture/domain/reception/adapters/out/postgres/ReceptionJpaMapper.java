@@ -15,6 +15,7 @@ public class ReceptionJpaMapper {
                 .petId(reception.getPetId())
                 .doctorId(reception.getDoctorId())
                 .analysesDirection(reception.getAnalysesDirection())
+                .description(reception.getDescription())
                 .startReception(reception.getStartReception())
                 .endReception(reception.getEndReception())
                 .build();

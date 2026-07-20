@@ -12,7 +12,7 @@ public class AnalysisAppMapper {
                 analysis.getName(),
                 analysis.getDescription(),
                 analysis.getExecutionTime(),
-                analysis.getAppointmentTime()
+                analysis.getCreateTime()
         );
     }
 }

@@ -23,8 +23,8 @@ public class ReceptionRestController {
         CreateReceptionCommand command = new CreateReceptionCommand(
                 receptionCreate.petId(),
                 receptionCreate.doctorId(),
-                receptionCreate.analyses(),
-                receptionCreate.conclusions(),
+                receptionCreate.analysesDirection(),
+                receptionCreate.description(),
                 receptionCreate.startReception(),
                 receptionCreate.endReception()
         );

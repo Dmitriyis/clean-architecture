@@ -1,6 +1,7 @@
 package com.course.cleanarchitecture.domain.pet.adapters.out.postgres;
 
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -39,10 +40,9 @@ public class PetEntity {
     @Column(name = "registration_date")
     private LocalDate registrationDate;
 
-    @JoinColumn(name = "owner_id")
+    @Column(name = "owner_id")
     private UUID ownerId;
 
-    @OneToOne(mappedBy = "pet")
-    @JoinColumn(name = "medical_card_id")
+    @OneToOne(mappedBy = "pet", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
     private MedicalCardEntity medicalCard;
 }

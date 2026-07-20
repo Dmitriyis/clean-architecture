@@ -30,7 +30,7 @@ public class CreateAnalysisCommandHandlerImpl implements CreateAnalysisCommandHa
                 command.getDescription(),
                 command.getExecutionTime(),
                 command.getMedicalCard(),
-                command.getTimeAppointment()
+                command.getCreateTime()
         );
 
         return analysisRepository.save(analysis);

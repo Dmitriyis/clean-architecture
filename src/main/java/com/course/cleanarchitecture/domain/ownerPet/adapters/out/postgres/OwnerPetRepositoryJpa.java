@@ -16,4 +16,6 @@ public interface OwnerPetRepositoryJpa extends JpaRepository<OwnerPetEntity, UUI
             " left join pet p on op.id = p.owner_id" +
             " where p.id = :id", nativeQuery = true)
     Optional<String> findOwnerPetPhoneByPetId(UUID id);
+
+    boolean existsById(UUID id);
 }

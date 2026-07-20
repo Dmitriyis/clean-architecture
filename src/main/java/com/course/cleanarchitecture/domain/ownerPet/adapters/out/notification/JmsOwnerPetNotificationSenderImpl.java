@@ -1,7 +1,7 @@
 package com.course.cleanarchitecture.domain.ownerPet.adapters.out.notification;
 
-import com.course.cleanarchitecture.common.postgres.outbox.failedNotification.FailedNotificationMessageJpaRepository;
-import com.course.cleanarchitecture.common.postgres.outbox.failedNotification.FailedNotificationMessageOutbox;
+import com.course.cleanarchitecture.common.postgres.outbox.failedNotification.NotificationMessageJpaRepository;
+import com.course.cleanarchitecture.common.postgres.outbox.failedNotification.NotificationMessageOutbox;
 import com.course.cleanarchitecture.domain.ownerPet.core.ports.OwnerPetNotificationSender;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import java.util.UUID;
 public class JmsOwnerPetNotificationSenderImpl implements OwnerPetNotificationSender {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
-    private final FailedNotificationMessageJpaRepository failedNotificationMessageJpaRepository;
+    private final NotificationMessageJpaRepository failedNotificationMessageJpaRepository;
 
     @Value("${app.kafka.topic.ownerPetNotifications}")
     private String topicName;
@@ -32,7 +32,7 @@ public class JmsOwnerPetNotificationSenderImpl implements OwnerPetNotificationSe
                     } else {
                         log.error("Failed to send message to Kafka", ex);
 
-                        FailedNotificationMessageOutbox failedNotificationMessageOutbox = new FailedNotificationMessageOutbox(UUID.randomUUID(), message, phone, ex.getMessage());
+                        NotificationMessageOutbox failedNotificationMessageOutbox = new NotificationMessageOutbox(UUID.randomUUID(), message, phone, ex.getMessage());
                         failedNotificationMessageJpaRepository.save(failedNotificationMessageOutbox);
                     }
                 });

@@ -35,6 +35,12 @@ public class OwnerPetRepositoryImpl implements OwnerPetRepository {
     }
 
     @Override
+    public boolean isExists(UUID id) {
+        return ownerPetRepositoryJpa.existsById(id);
+    }
+
+
+    @Override
     public Optional<String> findOwnerPetPhoneByPetId(UUID id) {
         return ownerPetRepositoryJpa.findOwnerPetPhoneByPetId(id);
     }

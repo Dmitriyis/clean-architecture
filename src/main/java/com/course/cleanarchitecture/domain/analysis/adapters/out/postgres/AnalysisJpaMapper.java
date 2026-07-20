@@ -16,6 +16,7 @@ public class AnalysisJpaMapper {
                 .description(analysisDirectory.getDescription())
                 .executionTime(analysisDirectory.getExecutionTime())
                 .medicalCardId(analysisDirectory.getMedicalCardId())
+                .createTime(analysisDirectory.getCreateTime())
                 .build();
 
         return analysisDirectoryEntity;

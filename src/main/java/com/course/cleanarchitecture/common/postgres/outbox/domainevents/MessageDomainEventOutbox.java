@@ -15,7 +15,7 @@ import java.util.UUID;
 @Getter
 @Entity
 @NoArgsConstructor
-@Table(name = "message-domain-event-outbox")
+@Table(name = "message_domain_event_outbox")
 public class MessageDomainEventOutbox {
 
     @Id

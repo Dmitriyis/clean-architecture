@@ -16,7 +16,7 @@ public class CreateReceptionCommand {
 
     private List<String> analyses;
 
-    private String conclusions;
+    private String description;
 
     private LocalDateTime startReception;
 
@@ -26,10 +26,10 @@ public class CreateReceptionCommand {
 
     }
 
-    public CreateReceptionCommand(UUID petId, UUID doctorId, List<String> analyses, String conclusions, LocalDateTime startReception, LocalDateTime endReception) {
+    public CreateReceptionCommand(UUID petId, UUID doctorId, List<String> analyses, String description, LocalDateTime startReception, LocalDateTime endReception) {
         ValidationValueUtils.againstNull(petId, "petId");
         ValidationValueUtils.againstNull(doctorId, "doctorId");
-        ValidationValueUtils.againstNullOrEmpty(conclusions, "conclusions");
+        ValidationValueUtils.againstNullOrEmpty(description, "description");
         ValidationValueUtils.againstNull(startReception, "startReception");
         ValidationValueUtils.againstDateTimeEqualCurrent(startReception, "startReception");
         ValidationValueUtils.againstNull(endReception, "endReception");
@@ -38,7 +38,7 @@ public class CreateReceptionCommand {
         this.petId = petId;
         this.doctorId = doctorId;
         this.analyses = analyses;
-        this.conclusions = conclusions;
+        this.description = description;
         this.startReception = startReception;
         this.endReception = endReception;
     }
