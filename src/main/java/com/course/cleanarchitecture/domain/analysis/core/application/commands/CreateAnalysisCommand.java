@@ -14,7 +14,7 @@ public class CreateAnalysisCommand {
 
     private Integer executionTime;
 
-    private UUID medicalCard;
+    private UUID medicalCardId;
 
     private LocalDateTime createTime;
 
@@ -22,10 +22,10 @@ public class CreateAnalysisCommand {
 
     }
 
-    public CreateAnalysisCommand(String name, String description, Integer executionTime, UUID medicalCard, LocalDateTime createTime) {
+    public CreateAnalysisCommand(String name, String description, Integer executionTime, UUID medicalCardId, LocalDateTime createTime) {
         ValidationValueUtils.againstNullOrEmpty(name, "name");
         ValidationValueUtils.againstNullOrEmpty(description, "description");
-        ValidationValueUtils.againstNull(medicalCard, "medicalCard");
+        ValidationValueUtils.againstNull(medicalCardId, "medicalCardId");
         ValidationValueUtils.againstNull(createTime, "createDataTime");
         ValidationValueUtils.againstNull(executionTime, "executionTime");
         ValidationValueUtils.againstNegative(executionTime, "executionTime");
@@ -33,7 +33,7 @@ public class CreateAnalysisCommand {
         this.name = name;
         this.description = description;
         this.executionTime = executionTime;
-        this.medicalCard = medicalCard;
+        this.medicalCardId = medicalCardId;
         this.createTime = createTime;
     }
 }

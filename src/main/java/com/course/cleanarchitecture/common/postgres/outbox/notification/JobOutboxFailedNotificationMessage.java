@@ -1,15 +1,7 @@
-package com.course.cleanarchitecture.common.postgres.outbox.failedNotification;
+package com.course.cleanarchitecture.common.postgres.outbox.notification;
 
-import com.course.cleanarchitecture.common.postgres.outbox.domainevents.DomainEventOutboxJpaRepository;
-import com.course.cleanarchitecture.common.postgres.outbox.domainevents.MessageDomainEventOutbox;
-import com.course.cleanarchitecture.ddd.DomainEvent;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor

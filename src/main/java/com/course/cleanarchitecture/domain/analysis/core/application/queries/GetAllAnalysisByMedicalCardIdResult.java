@@ -19,5 +19,5 @@ public class GetAllAnalysisByMedicalCardIdResult {
 
     private Integer executionTime;
 
-    private LocalDateTime timeAppointment;
+    private LocalDateTime createTime;
 }

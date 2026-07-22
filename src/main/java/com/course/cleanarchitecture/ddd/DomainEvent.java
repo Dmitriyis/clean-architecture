@@ -14,7 +14,6 @@ public abstract class DomainEvent extends ApplicationEvent {
         super(source);
     }
 
-    // Fake Ctr or Jackson / JPA
     protected DomainEvent() {
         super("default");
     }

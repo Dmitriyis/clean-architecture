@@ -19,7 +19,6 @@ public class OwnerPetRepositoryImpl implements OwnerPetRepository {
     private final PetRepositoryJpa petRepositoryJpa;
     private final OwnerPetRepositoryJpa ownerPetRepositoryJpa;
 
-
     @Override
     public UUID save(OwnerPet ownerPet) {
         OwnerPetEntity ownerPetEntity = ownerPetJpaMapper.toOwnerPetEntity(ownerPet);

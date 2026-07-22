@@ -3,6 +3,7 @@ package com.course.cleanarchitecture.domain.analysis.core.application.commands;
 import com.course.cleanarchitecture.domain.analysis.core.model.Analysis;
 import com.course.cleanarchitecture.domain.analysis.core.ports.AnalysisRepository;
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
+import com.course.cleanarchitecture.domain.pet.exceptions.MedicalCardNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,14 +23,19 @@ public class CreateAnalysisCommandHandlerImpl implements CreateAnalysisCommandHa
     @Transactional
     public UUID execute(CreateAnalysisCommand command) {
 
-//      petRepository.findById();
+        boolean isExists = petRepository.existsPetByMedicalCardId(command.getMedicalCardId());
+
+        if (isExists) {
+            String message = MedicalCardNotFoundException.prepareMessage("medicalCard", "medicalCardId", command.getMedicalCardId().toString());
+            throw new MedicalCardNotFoundException(message);
+        }
 
         Analysis analysis = create(
                 UUID.randomUUID(),
                 command.getName(),
                 command.getDescription(),
                 command.getExecutionTime(),
-                command.getMedicalCard(),
+                command.getMedicalCardId(),
                 command.getCreateTime()
         );
 

@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.common.postgres.outbox.failedNotification;
+package com.course.cleanarchitecture.common.postgres.outbox.notification;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

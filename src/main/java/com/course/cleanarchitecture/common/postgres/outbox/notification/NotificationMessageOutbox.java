@@ -1,10 +1,9 @@
-package com.course.cleanarchitecture.common.postgres.outbox.failedNotification;
+package com.course.cleanarchitecture.common.postgres.outbox.notification;
 
 import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

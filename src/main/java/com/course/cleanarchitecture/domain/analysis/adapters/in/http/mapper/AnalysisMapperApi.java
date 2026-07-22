@@ -5,7 +5,7 @@ import com.course.cleanarchitecture.domain.analysis.core.application.queries.Get
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface AnalysisMapper {
+public interface AnalysisMapperApi {
 
     AnalysisDtoGetByMedicalCardId toAnalysisGetByMedicalCardId(GetAllAnalysisByMedicalCardIdResult getAnalysisByMedicalCardIdResult);
 }

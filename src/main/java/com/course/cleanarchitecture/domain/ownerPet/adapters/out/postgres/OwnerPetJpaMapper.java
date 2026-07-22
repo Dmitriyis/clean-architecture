@@ -24,7 +24,6 @@ public class OwnerPetJpaMapper {
         );
     }
 
-
     OwnerPetEntity toOwnerPetEntity(OwnerPet ownerPet) {
         OwnerPetEntity ownerPetEntity = OwnerPetEntity
                 .builder()

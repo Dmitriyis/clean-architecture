@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.common.postgres.outbox.failedNotification;
+package com.course.cleanarchitecture.common.postgres.outbox.notification;
 
 import com.course.cleanarchitecture.ddd.Aggregate;
 import com.course.cleanarchitecture.domain.DomainEventPublisher;

@@ -1,7 +1,7 @@
 package com.course.cleanarchitecture.domain.ownerPet.adapters.out.notification;
 
-import com.course.cleanarchitecture.common.postgres.outbox.failedNotification.NotificationMessageJpaRepository;
-import com.course.cleanarchitecture.common.postgres.outbox.failedNotification.NotificationMessageOutbox;
+import com.course.cleanarchitecture.common.postgres.outbox.notification.NotificationMessageJpaRepository;
+import com.course.cleanarchitecture.common.postgres.outbox.notification.NotificationMessageOutbox;
 import com.course.cleanarchitecture.domain.ownerPet.core.ports.OwnerPetNotificationSender;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

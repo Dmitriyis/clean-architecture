@@ -1,7 +1,7 @@
 package com.course.cleanarchitecture.domain.analysis.adapters.in.http;
 
 import com.course.cleanarchitecture.domain.analysis.adapters.in.http.dto.AnalysisDtoGetByMedicalCardId;
-import com.course.cleanarchitecture.domain.analysis.adapters.in.http.mapper.AnalysisMapper;
+import com.course.cleanarchitecture.domain.analysis.adapters.in.http.mapper.AnalysisMapperApi;
 import com.course.cleanarchitecture.domain.analysis.core.application.queries.GetAllAnalysisByMedicalCardIdQuery;
 import com.course.cleanarchitecture.domain.analysis.core.application.queries.GetAllAnalysisByMedicalCardIdQueryHandler;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ import java.util.UUID;
 @RequestMapping(AnalysisConstantsHttp.ROOT_URL)
 public class AnalysisGetAllByMedicalCardIdRestController {
 
-    private final AnalysisMapper analysisMapper;
+    private final AnalysisMapperApi analysisMapper;
     private final GetAllAnalysisByMedicalCardIdQueryHandler getAnalysisByMedicalCardIdQueryHandler;
 
     @GetMapping("/medical-card/{medicalCardId}")
