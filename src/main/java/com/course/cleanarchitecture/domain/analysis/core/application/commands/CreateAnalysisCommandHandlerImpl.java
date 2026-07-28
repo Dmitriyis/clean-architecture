@@ -25,7 +25,7 @@ public class CreateAnalysisCommandHandlerImpl implements CreateAnalysisCommandHa
 
         boolean isExists = petRepository.existsPetByMedicalCardId(command.getMedicalCardId());
 
-        if (isExists) {
+        if (!isExists) {
             String message = MedicalCardNotFoundException.prepareMessage("medicalCard", "medicalCardId", command.getMedicalCardId().toString());
             throw new MedicalCardNotFoundException(message);
         }

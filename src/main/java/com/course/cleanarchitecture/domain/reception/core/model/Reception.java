@@ -35,7 +35,6 @@ public class Reception extends Aggregate<UUID> {
         this.description = description;
         this.startReception = startReception;
         this.endReception = endReception;
-        raiseDomainEvent(new ReceptionCreateDomainEvent(this));
     }
 
     public static Reception create(UUID id, UUID petId, UUID doctorId, List<String> analysesDirection, String description, LocalDateTime startReception, LocalDateTime endReception) {
@@ -51,7 +50,11 @@ public class Reception extends Aggregate<UUID> {
         ValidationValueUtils.againstDateTimeEqualCurrent(startReception, "startReception,");
         ValidationValueUtils.againstDateTimeEqualCurrent(endReception, "endReception,");
 
-        return new Reception(id, petId, doctorId, analysesDirection, description, startReception, endReception);
+        Reception reception = new Reception(id, petId, doctorId, analysesDirection, description, startReception, endReception);
+
+        reception.raiseDomainEvent(new ReceptionCreateDomainEvent(reception));
+
+        return reception;
     }
 
     public static Reception reStore(UUID id, UUID petId, UUID doctorId, List<String> analyses, String description, LocalDateTime startReception, LocalDateTime endReception) {

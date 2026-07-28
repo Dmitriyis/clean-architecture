@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.domain.ownerPet.adapters.in.kafka;//package com.course.cleanarchitecture.domain.pet.adapters.in.kafka;
+package com.course.cleanarchitecture.domain.ownerPet.adapters.in.kafka;
 
 import com.course.cleanarchitecture.domain.ownerPet.core.application.commands.SendNotificationsOwnerPetCommand;
 import com.course.cleanarchitecture.domain.ownerPet.core.application.commands.SendNotificationsOwnerPetCommandHandler;

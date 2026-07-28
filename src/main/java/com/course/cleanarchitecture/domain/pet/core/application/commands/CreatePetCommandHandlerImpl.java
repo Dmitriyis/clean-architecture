@@ -2,7 +2,7 @@ package com.course.cleanarchitecture.domain.pet.core.application.commands;
 
 import com.course.cleanarchitecture.domain.ownerPet.core.ports.OwnerPetRepository;
 import com.course.cleanarchitecture.domain.ownerPet.exceptions.OwnerPetNotFoundException;
-import com.course.cleanarchitecture.domain.pet.core.application.PetAppMapper;
+import com.course.cleanarchitecture.domain.pet.core.application.PetMapperApp;
 import com.course.cleanarchitecture.domain.pet.core.model.MedicalCard;
 import com.course.cleanarchitecture.domain.pet.core.model.Pet;
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
@@ -19,7 +19,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CreatePetCommandHandlerImpl implements CreatePetCommandHandler {
 
-    private final PetAppMapper petAppMapper;
+    private final PetMapperApp petMapperApp;
     private final PetRepository petRepository;
     private final OwnerPetRepository ownerPetRepository;
 
