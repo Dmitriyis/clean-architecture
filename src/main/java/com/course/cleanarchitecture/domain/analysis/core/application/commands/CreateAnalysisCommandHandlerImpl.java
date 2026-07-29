@@ -1,9 +1,10 @@
 package com.course.cleanarchitecture.domain.analysis.core.application.commands;
 
+import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 import com.course.cleanarchitecture.domain.analysis.core.model.Analysis;
 import com.course.cleanarchitecture.domain.analysis.core.ports.AnalysisRepository;
-import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
-import com.course.cleanarchitecture.domain.pet.exceptions.MedicalCardNotFoundException;
+import com.course.cleanarchitecture.domain.analysis.core.ports.ReceptionMedicalCardChecker;
+import com.course.cleanarchitecture.domain.analysis.exceptions.MedicalCardNotFoundForAnalysisException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,18 +17,18 @@ import static com.course.cleanarchitecture.domain.analysis.core.model.Analysis.c
 @RequiredArgsConstructor
 public class CreateAnalysisCommandHandlerImpl implements CreateAnalysisCommandHandler {
 
-    private final PetRepository petRepository;
     private final AnalysisRepository analysisRepository;
+    private final ReceptionMedicalCardChecker receptionMedicalCardChecker;
 
     @Override
     @Transactional
     public UUID execute(CreateAnalysisCommand command) {
 
-        boolean isExists = petRepository.existsPetByMedicalCardId(command.getMedicalCardId());
+        boolean isExists = receptionMedicalCardChecker.isMedicalCardExists(command.getMedicalCardId());
 
         if (!isExists) {
-            String message = MedicalCardNotFoundException.prepareMessage("medicalCard", "medicalCardId", command.getMedicalCardId().toString());
-            throw new MedicalCardNotFoundException(message);
+            String message = NotFoundException.prepareMessage("medicalCard", "medicalCardId", command.getMedicalCardId().toString());
+            throw new MedicalCardNotFoundForAnalysisException(message);
         }
 
         Analysis analysis = create(

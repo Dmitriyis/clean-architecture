@@ -1,9 +1,10 @@
 package com.course.cleanarchitecture.domain.analysis.core.application.queries;
 
+import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 import com.course.cleanarchitecture.domain.analysis.core.application.AnalysisAppMapper;
 import com.course.cleanarchitecture.domain.analysis.core.ports.AnalysisRepository;
-import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
-import com.course.cleanarchitecture.domain.pet.exceptions.MedicalCardNotFoundException;
+import com.course.cleanarchitecture.domain.analysis.core.ports.ReceptionMedicalCardChecker;
+import com.course.cleanarchitecture.domain.analysis.exceptions.MedicalCardNotFoundForAnalysisException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,14 +15,17 @@ import java.util.List;
 public class GetAllAnalysisByMedicalCardIdQueryHandlerImpl implements GetAllAnalysisByMedicalCardIdQueryHandler {
 
     private final AnalysisAppMapper analysisAppMapper;
-    private final PetRepository petRepository;
     private final AnalysisRepository analysisRepository;
+    private final ReceptionMedicalCardChecker receptionMedicalCardChecker;
 
     @Override
     public List<GetAllAnalysisByMedicalCardIdResult> execute(GetAllAnalysisByMedicalCardIdQuery query) {
 
-        if (!petRepository.existsPetByMedicalCardId(query.getMedicalCardId())) {
-            throw new MedicalCardNotFoundException("Medical card not found with id: " + query.getMedicalCardId());
+        boolean isExists = receptionMedicalCardChecker.isMedicalCardExists(query.getMedicalCardId());
+
+        if (!isExists) {
+            String message = NotFoundException.prepareMessage("medicalCard", "medicalCardId", query.getMedicalCardId().toString());
+            throw new MedicalCardNotFoundForAnalysisException(message);
         }
 
         return analysisRepository.findAllByMedicalCardId(query.getMedicalCardId())

@@ -1,23 +1,12 @@
 package com.course.cleanarchitecture.domain.analysis.core.application.queries;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Getter
-@Setter
-@AllArgsConstructor
-public class GetAllAnalysisByMedicalCardIdResult {
-    private UUID id;
+public record GetAllAnalysisByMedicalCardIdResult(UUID id,
+                                                  String name,
+                                                  String description,
+                                                  Integer executionTime,
+                                                  LocalDateTime createTime) {
 
-    private String name;
-
-    private String description;
-
-    private Integer executionTime;
-
-    private LocalDateTime createTime;
 }

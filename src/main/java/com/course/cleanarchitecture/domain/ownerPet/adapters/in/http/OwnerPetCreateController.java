@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(OwnerPetConstantsHttp.ROOT_URL)
-public class OwnerPetController {
+public class OwnerPetCreateController {
 
     private final CreateOwnerPetCommandHandler createOwnerPetCommandHandler;
 
@@ -32,11 +31,7 @@ public class OwnerPetController {
         return createOwnerPetCommandHandler.execute(command);
     }
 
-//    @GetMapping("/{id}")
-//    public Doctor getOwnerPet(@PathVariable("id") UUID id) throws NoSuchFieldException {
-//        GetDoctorByIdCommand getDoctorByIdCommand = new GetDoctorByIdCommand(id);
-//        return getDoctorByIdCommandHandler.execute(getDoctorByIdCommand);
-//    }
+
 //
 //    @PutMapping("/{id}")
 //    public Doctor updateOwnerPet(@PathVariable("id") UUID id) throws NoSuchFieldException {

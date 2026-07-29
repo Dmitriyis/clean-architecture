@@ -1,6 +1,7 @@
 package com.course.cleanarchitecture.common.postgres.outbox.domainevents;
 
 
+import com.course.cleanarchitecture.ddd.DomainEvent;
 import com.course.cleanarchitecture.domain.DomainEventPublisher;
 import com.course.cleanarchitecture.ddd.Aggregate;
 import com.course.cleanarchitecture.ddd.AggregateRoot;
@@ -43,9 +44,3 @@ public class DomainEventOutboxPublisherImpl implements DomainEventPublisher {
         }
     }
 }
-
-//DomainEventPublisher.java
-//        Порт принимает Aggregate — утечка доменной абстракции
-//        void publish(Iterable<Aggregate<?>> aggregates) — порт принимает не события, а сами агрегаты. Use Case передаёт агрегаты в издатель,
-//        который сам вытаскивает события. Это неправильная инверсия ответственности. Агрегат должен отдавать события (pullDomainEvents()),
-//        use case их публиковать через порт EventPublisher.publishAll(List<DomainEvent>).

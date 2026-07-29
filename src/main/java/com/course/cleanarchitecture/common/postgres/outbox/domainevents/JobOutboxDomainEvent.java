@@ -15,6 +15,7 @@ public class JobOutboxDomainEvent {
 
     private final DomainEventOutboxJpaRepository jpa;
     private final ObjectMapper objectMapper;
+    // тут кафка
     private final ApplicationEventPublisher publisher;
 
     @Scheduled(fixedDelay = 1000)
@@ -31,6 +32,7 @@ public class JobOutboxDomainEvent {
                     throw new IllegalStateException("Invalid outbox message type: " + eventClass);
                 }
 
+                // тут кафка
                 publisher.publishEvent(domainEvent);
 
                 outboxMessage.markAsProcessed();
