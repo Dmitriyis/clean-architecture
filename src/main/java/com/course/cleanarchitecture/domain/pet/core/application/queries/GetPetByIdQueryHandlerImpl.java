@@ -22,9 +22,9 @@ public class GetPetByIdQueryHandlerImpl implements GetPetByIdQueryHandler {
     private final EntityManager entityManager;
 
     @Override
-    public GetPetByIdQueryResponse execute(GetPetByIdQuery getPetByIdQueryCommand) throws NoSuchFieldException {
+    public GetPetByIdQueryResponse execute(GetPetByIdQuery getPetByIdQuery) throws NoSuchFieldException {
 
-        GetPetByIdQueryResponse getPetByIdQueryResponse = findPetById(getPetByIdQueryCommand.getId());
+        GetPetByIdQueryResponse getPetByIdQueryResponse = findPetById(getPetByIdQuery.getId());
 
         MedicalCardGetPetByIdQueryResponse medicalCard = getPetByIdQueryResponse.getMedicalCard();
 
@@ -33,7 +33,6 @@ public class GetPetByIdQueryHandlerImpl implements GetPetByIdQueryHandler {
 
         List<UUID> receptionsId = findReceptionByMedicalCardId(medicalCard.getId());
         medicalCard.setReceptionsId(receptionsId);
-
 
         return getPetByIdQueryResponse;
     }
@@ -59,6 +58,7 @@ public class GetPetByIdQueryHandlerImpl implements GetPetByIdQueryHandler {
                     String name = (String) row[1];
                     Integer weight = (Integer) row[2];
                     Integer age = (Integer) row[3];
+
                     LocalDate registrationDate = ((Timestamp) row[4]).toInstant()
                             .atZone(ZoneId.systemDefault())
                             .toLocalDate();
@@ -66,7 +66,9 @@ public class GetPetByIdQueryHandlerImpl implements GetPetByIdQueryHandler {
                     LocalDateTime updateTime = ((Timestamp) row[6]).toInstant()
                             .atZone(ZoneId.systemDefault())
                             .toLocalDateTime();
+
                     UUID medicalCardId = (UUID) row[5];
+
                     MedicalCardGetPetByIdQueryResponse medicalCard = MedicalCardGetPetByIdQueryResponse
                             .builder()
                             .id(medicalCardId)
@@ -78,7 +80,6 @@ public class GetPetByIdQueryHandlerImpl implements GetPetByIdQueryHandler {
                     return new GetPetByIdQueryResponse(id, age, name, weight, ownerPetId, registrationDate, medicalCard);
                 })
                 .toList();
-
 
         if (getPetByIdQueryResponses.isEmpty()) {
             throw new NoSuchFieldException("Not found Pet by id: " + petId + ".");
@@ -93,6 +94,7 @@ public class GetPetByIdQueryHandlerImpl implements GetPetByIdQueryHandler {
                 "where rec.medical_card_id = ?1");
 
         queryReception.setParameter(1, medicalCardId);
+
         List<UUID> receptionsId = queryReception.getResultList();
 
         return receptionsId;
@@ -103,6 +105,7 @@ public class GetPetByIdQueryHandlerImpl implements GetPetByIdQueryHandler {
                 "from analysis as a " +
                 "where a.medical_card_id = ?1");
         queryAnalysis.setParameter(1, medicalCardId);
+
         List<UUID> analysesId = queryAnalysis.getResultList();
 
         return analysesId;

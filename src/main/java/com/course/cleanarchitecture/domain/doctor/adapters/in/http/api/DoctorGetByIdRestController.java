@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -26,8 +27,8 @@ public class DoctorGetByIdRestController {
     @GetMapping("/{id}")
     public DoctorGetByIdResponse getDoctor(@PathVariable("id") UUID id) {
         GetDoctorByIdQuery query = new GetDoctorByIdQuery(id);
-        GetDoctorByIdResult doctorResult = getDoctorByIdQueryHandler.execute(query);
+        Optional<GetDoctorByIdResult> resultOptional = getDoctorByIdQueryHandler.execute(query);
 
-        return doctorMapperApi.toDoctorGetByIdResponse(doctorResult);
+        return doctorMapperApi.toDoctorGetByIdResponse(resultOptional);
     }
 }

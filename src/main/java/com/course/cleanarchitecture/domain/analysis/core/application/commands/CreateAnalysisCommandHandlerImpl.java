@@ -3,7 +3,7 @@ package com.course.cleanarchitecture.domain.analysis.core.application.commands;
 import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 import com.course.cleanarchitecture.domain.analysis.core.model.Analysis;
 import com.course.cleanarchitecture.domain.analysis.core.ports.AnalysisRepository;
-import com.course.cleanarchitecture.domain.analysis.core.ports.ReceptionMedicalCardChecker;
+import com.course.cleanarchitecture.domain.analysis.core.ports.MedicalCardCheckerForAnalysis;
 import com.course.cleanarchitecture.domain.analysis.exceptions.MedicalCardNotFoundForAnalysisException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,18 +18,12 @@ import static com.course.cleanarchitecture.domain.analysis.core.model.Analysis.c
 public class CreateAnalysisCommandHandlerImpl implements CreateAnalysisCommandHandler {
 
     private final AnalysisRepository analysisRepository;
-    private final ReceptionMedicalCardChecker receptionMedicalCardChecker;
+    private final MedicalCardCheckerForAnalysis medicalCardCheckerForAnalysis;
 
     @Override
     @Transactional
     public UUID execute(CreateAnalysisCommand command) {
-
-        boolean isExists = receptionMedicalCardChecker.isMedicalCardExists(command.getMedicalCardId());
-
-        if (!isExists) {
-            String message = NotFoundException.prepareMessage("medicalCard", "medicalCardId", command.getMedicalCardId().toString());
-            throw new MedicalCardNotFoundForAnalysisException(message);
-        }
+        verifyMedicalCardExists(command.getMedicalCardId());
 
         Analysis analysis = create(
                 UUID.randomUUID(),
@@ -41,5 +35,14 @@ public class CreateAnalysisCommandHandlerImpl implements CreateAnalysisCommandHa
         );
 
         return analysisRepository.save(analysis);
+    }
+
+    private void verifyMedicalCardExists(UUID medicalCardId) {
+        boolean isExists = medicalCardCheckerForAnalysis.isMedicalCardExists(medicalCardId);
+
+        if (!isExists) {
+            String message = NotFoundException.prepareMessage("medicalCard", "medicalCardId", medicalCardId.toString());
+            throw new MedicalCardNotFoundForAnalysisException(message);
+        }
     }
 }

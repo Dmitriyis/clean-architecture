@@ -10,8 +10,9 @@ public record ReceptionCreate(
         List<String> analysesDirection,
         String description,
         LocalDateTime startReception,
-        LocalDateTime endReception
-) {};
+        LocalDateTime endReception) {
+
+};
 
 
 

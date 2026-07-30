@@ -1,11 +1,11 @@
 package com.course.cleanarchitecture.domain.pet.core.application.commands;
 
-import com.course.cleanarchitecture.domain.ownerPet.core.ports.OwnerPetRepository;
-import com.course.cleanarchitecture.domain.ownerPet.exceptions.OwnerPetNotFoundException;
-import com.course.cleanarchitecture.domain.pet.core.application.PetMapperApp;
+import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 import com.course.cleanarchitecture.domain.pet.core.model.MedicalCard;
 import com.course.cleanarchitecture.domain.pet.core.model.Pet;
+import com.course.cleanarchitecture.domain.pet.core.ports.OwnerPetCheckerForPet;
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
+import com.course.cleanarchitecture.domain.pet.exceptions.PetOwnerPetNotFoundException;
 import com.course.cleanarchitecture.domain.shared.Age;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,20 +19,13 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CreatePetCommandHandlerImpl implements CreatePetCommandHandler {
 
-    private final PetMapperApp petMapperApp;
     private final PetRepository petRepository;
-    private final OwnerPetRepository ownerPetRepository;
+    private final OwnerPetCheckerForPet ownerPetChecker;
 
     @Override
     @Transactional
     public UUID execute(CreatePetCommand command) {
-        boolean isExistsOwner = ownerPetRepository.isExists(command.getOwnerPetId());
-
-        if (!isExistsOwner) {
-            String message = OwnerPetNotFoundException.prepareMessage("OwnerPet", "id", command.getOwnerPetId().toString());
-
-            throw new OwnerPetNotFoundException(message);
-        }
+        verifyOwnerPetExists(command.getOwnerPetId());
 
         Age age = new Age(command.getAge());
 
@@ -55,5 +48,14 @@ public class CreatePetCommandHandlerImpl implements CreatePetCommandHandler {
         );
 
         return petRepository.save(pet);
+    }
+
+    private void verifyOwnerPetExists(UUID ownerPetId) {
+        boolean isExistsOwner = ownerPetChecker.isOwnerPetExists(ownerPetId);
+
+        if (!isExistsOwner) {
+            String message = NotFoundException.prepareMessage("OwnerPet", "id", ownerPetId.toString());
+            throw new PetOwnerPetNotFoundException(message);
+        }
     }
 }

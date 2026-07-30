@@ -1,5 +1,6 @@
-package com.course.cleanarchitecture.domain.ownerPet.adapters.in.http;
+package com.course.cleanarchitecture.domain.ownerPet.adapters.in.http.api;
 
+import com.course.cleanarchitecture.domain.ownerPet.adapters.in.http.OwnerPetConstantsHttp;
 import com.course.cleanarchitecture.domain.ownerPet.adapters.in.http.dto.GetOwnerPetByIdResponse;
 import com.course.cleanarchitecture.domain.ownerPet.adapters.in.http.mapper.OwnerPetMapperApi;
 import com.course.cleanarchitecture.domain.ownerPet.core.application.queries.GetOwnerPetByIdQuery;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -25,8 +27,8 @@ public class OwnerPetGetByIdController {
     public GetOwnerPetByIdResponse getOwnerPet(@PathVariable("id") UUID id) {
         GetOwnerPetByIdQuery query = new GetOwnerPetByIdQuery(id);
 
-        GetOwnerPetByIdResult result = getOwnerPetByIdQueryHandler.execute(query);
+        Optional<GetOwnerPetByIdResult> resultOptional = getOwnerPetByIdQueryHandler.execute(query);
 
-        return ownerPetMapperApi.toGetOwnerPetByIdResponse(result);
+        return ownerPetMapperApi.toGetOwnerPetByIdResponse(resultOptional);
     }
 }

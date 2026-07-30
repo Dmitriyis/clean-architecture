@@ -4,7 +4,7 @@ import com.course.cleanarchitecture.domain.ownerPet.core.ports.OwnerPetNotificat
 import com.course.cleanarchitecture.domain.ownerPet.core.ports.OwnerPetRepository;
 import com.course.cleanarchitecture.domain.ownerPet.exceptions.OwnerPetNotFoundException;
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
-import com.course.cleanarchitecture.domain.pet.exceptions.MedicalCardNotFoundException;
+import com.course.cleanarchitecture.domain.pet.exceptions.PetMedicalCardNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,9 +22,9 @@ public class SendNotificationsOwnerPetCommandHandlerImpl implements SendNotifica
     @Override
     @Transactional
     public void execute(SendNotificationsOwnerPetCommand command) {
-        String messagePet = MedicalCardNotFoundException.prepareMessage("MedicalCard", "id", command.getPetId().toString());
+        String messagePet = PetMedicalCardNotFoundException.prepareMessage("MedicalCard", "id", command.getPetId().toString());
         UUID ownerPetId = petRepository.findOwnerPetIdByPetId(command.getPetId())
-                .orElseThrow(() -> new MedicalCardNotFoundException(messagePet));
+                .orElseThrow(() -> new PetMedicalCardNotFoundException(messagePet));
 
         String messageOwnerPet = OwnerPetNotFoundException.prepareMessage("OwnerPet", "id", ownerPetId.toString());
         String phone = ownerPetRepository.findOwnerPetPhoneByPetId(ownerPetId)

@@ -4,9 +4,11 @@ import com.course.cleanarchitecture.domain.ownerPet.core.application.queries.Get
 import com.course.cleanarchitecture.domain.ownerPet.core.model.OwnerPet;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class OwnerPetMapper {
-    public GetOwnerPetByIdResult toGetOwnerPetByIdResult(OwnerPet ownerPet) {
+    public Optional<GetOwnerPetByIdResult> toGetOwnerPetByIdResult(OwnerPet ownerPet) {
         GetOwnerPetByIdResult getOwnerPetByIdResult = new GetOwnerPetByIdResult(ownerPet.getName(),
                 ownerPet.getPhone(),
                 ownerPet.getRegistrationDate(),
@@ -14,6 +16,6 @@ public class OwnerPetMapper {
                 ownerPet.getPetsId()
         );
 
-        return getOwnerPetByIdResult;
+        return Optional.ofNullable(getOwnerPetByIdResult);
     }
 }

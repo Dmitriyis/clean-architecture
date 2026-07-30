@@ -1,6 +1,6 @@
 package com.course.cleanarchitecture.domain.analysis.adapters.out.integration;
 
-import com.course.cleanarchitecture.domain.analysis.core.ports.ReceptionMedicalCardChecker;
+import com.course.cleanarchitecture.domain.analysis.core.ports.MedicalCardCheckerForAnalysis;
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class ReceptionMedicalCardCheckerImpl implements ReceptionMedicalCardChecker {
+public class ReceptionMedicalCardCheckerImpl implements MedicalCardCheckerForAnalysis {
 
     private final PetRepository petRepository;
 

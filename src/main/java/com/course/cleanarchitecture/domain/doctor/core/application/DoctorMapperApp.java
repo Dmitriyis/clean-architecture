@@ -4,15 +4,17 @@ import com.course.cleanarchitecture.domain.doctor.core.application.queries.GetDo
 import com.course.cleanarchitecture.domain.doctor.core.model.Doctor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class DoctorMapperApp {
-    public GetDoctorByIdResult toGetDoctorByIdResult(Doctor doctor) {
+    public Optional<GetDoctorByIdResult> toGetDoctorByIdResult(Doctor doctor) {
         GetDoctorByIdResult getDoctorByIdResult = new GetDoctorByIdResult(
                 doctor.getName(),
                 doctor.getProfession(),
                 doctor.getWorkExperience()
         );
 
-        return getDoctorByIdResult;
+        return Optional.ofNullable(getDoctorByIdResult);
     }
 }

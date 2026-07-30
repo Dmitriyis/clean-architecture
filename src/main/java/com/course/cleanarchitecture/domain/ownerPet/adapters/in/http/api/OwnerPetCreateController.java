@@ -1,5 +1,6 @@
-package com.course.cleanarchitecture.domain.ownerPet.adapters.in.http;
+package com.course.cleanarchitecture.domain.ownerPet.adapters.in.http.api;
 
+import com.course.cleanarchitecture.domain.ownerPet.adapters.in.http.OwnerPetConstantsHttp;
 import com.course.cleanarchitecture.domain.ownerPet.adapters.in.http.dto.OwnerPetDtoCreate;
 import com.course.cleanarchitecture.domain.ownerPet.core.application.commands.CreateOwnerPetCommand;
 import com.course.cleanarchitecture.domain.ownerPet.core.application.commands.CreateOwnerPetCommandHandler;
