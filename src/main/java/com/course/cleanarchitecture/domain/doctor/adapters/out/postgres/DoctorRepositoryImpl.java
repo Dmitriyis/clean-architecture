@@ -40,4 +40,9 @@ public class DoctorRepositoryImpl implements DoctorRepository {
 
         return Optional.of(doctor);
     }
+
+    @Override
+    public boolean existsById(UUID id) {
+        return doctorRepositoryJpa.existsById(id);
+    }
 }

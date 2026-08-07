@@ -15,4 +15,6 @@ public interface PetRepository {
     boolean existsPetByMedicalCardId(UUID medicalCardId);
 
     void update(Pet pet);
+
+    boolean isPetExists(UUID petId);
 }

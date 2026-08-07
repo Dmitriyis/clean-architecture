@@ -9,4 +9,6 @@ public interface DoctorRepository {
     UUID save(Doctor doctor);
 
     Optional<Doctor> findById(UUID id);
+
+    boolean existsById(UUID id);
 }

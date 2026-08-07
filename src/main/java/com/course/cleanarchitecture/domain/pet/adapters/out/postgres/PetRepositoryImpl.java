@@ -51,4 +51,9 @@ public class PetRepositoryImpl implements PetRepository {
         PetEntity petEntity = petJpaMapper.petToPetEntity(pet);
         petRepositoryJpa.save(petEntity);
     }
+
+    @Override
+    public boolean isPetExists(UUID petId) {
+        return petRepositoryJpa.existsById(petId);
+    }
 }
