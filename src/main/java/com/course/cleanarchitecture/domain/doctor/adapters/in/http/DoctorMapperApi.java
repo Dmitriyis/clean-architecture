@@ -9,13 +9,7 @@ import java.util.Optional;
 
 @Service
 public class DoctorMapperApi {
-    public DoctorGetByIdResponse toDoctorGetByIdResponse(@NotNull Optional<GetDoctorByIdResult> getDoctorByIdResultOptional) {
-
-        if (getDoctorByIdResultOptional.isEmpty()) {
-            return null;
-        }
-
-        GetDoctorByIdResult getDoctorByIdResult = getDoctorByIdResultOptional.get();
+    public DoctorGetByIdResponse toDoctorGetByIdResponse(GetDoctorByIdResult getDoctorByIdResult) {
 
         DoctorGetByIdResponse doctorGetByIdResponse = new DoctorGetByIdResponse(
                 getDoctorByIdResult.name(),

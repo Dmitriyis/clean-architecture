@@ -14,7 +14,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(ReceptionConstantsHttp.URL_ROOT)
-public class ReceptionRestController {
+public class ReceptionCreateRestController {
 
     private final CreateReceptionCommandHandler createReceptionCommandHandler;
 

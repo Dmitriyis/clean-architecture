@@ -10,14 +10,7 @@ import java.util.Optional;
 @Service
 public class OwnerPetMapperApi {
 
-    public GetOwnerPetByIdResponse toGetOwnerPetByIdResponse(@NotNull Optional<GetOwnerPetByIdResult> resultOptional) {
-
-        if (resultOptional.isEmpty()) {
-            return null;
-        }
-
-        GetOwnerPetByIdResult result = resultOptional.get();
-
+    public GetOwnerPetByIdResponse toGetOwnerPetByIdResponse(GetOwnerPetByIdResult result) {
         GetOwnerPetByIdResponse getOwnerPetByIdResponse = new GetOwnerPetByIdResponse(
                 result.name(),
                 result.phone(),

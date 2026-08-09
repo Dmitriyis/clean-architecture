@@ -8,13 +8,13 @@ import java.util.Optional;
 
 @Service
 public class DoctorMapperApp {
-    public Optional<GetDoctorByIdResult> toGetDoctorByIdResult(Doctor doctor) {
+    public GetDoctorByIdResult toGetDoctorByIdResult(Doctor doctor) {
         GetDoctorByIdResult getDoctorByIdResult = new GetDoctorByIdResult(
                 doctor.getName(),
                 doctor.getProfession(),
                 doctor.getWorkExperience()
         );
 
-        return Optional.ofNullable(getDoctorByIdResult);
+        return getDoctorByIdResult;
     }
 }

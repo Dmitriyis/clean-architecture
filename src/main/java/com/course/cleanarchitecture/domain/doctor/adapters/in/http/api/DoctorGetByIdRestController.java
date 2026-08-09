@@ -27,8 +27,8 @@ public class DoctorGetByIdRestController {
     @GetMapping("/{id}")
     public DoctorGetByIdResponse getDoctor(@PathVariable("id") UUID id) {
         GetDoctorByIdQuery query = new GetDoctorByIdQuery(id);
-        Optional<GetDoctorByIdResult> resultOptional = getDoctorByIdQueryHandler.execute(query);
+        GetDoctorByIdResult result = getDoctorByIdQueryHandler.execute(query);
 
-        return doctorMapperApi.toDoctorGetByIdResponse(resultOptional);
+        return doctorMapperApi.toDoctorGetByIdResponse(result);
     }
 }

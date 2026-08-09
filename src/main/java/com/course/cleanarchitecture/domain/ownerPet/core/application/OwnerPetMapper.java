@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Service
 public class OwnerPetMapper {
-    public Optional<GetOwnerPetByIdResult> toGetOwnerPetByIdResult(OwnerPet ownerPet) {
+    public GetOwnerPetByIdResult toGetOwnerPetByIdResult(OwnerPet ownerPet) {
         GetOwnerPetByIdResult getOwnerPetByIdResult = new GetOwnerPetByIdResult(ownerPet.getName(),
                 ownerPet.getPhone(),
                 ownerPet.getRegistrationDate(),
@@ -16,6 +16,6 @@ public class OwnerPetMapper {
                 ownerPet.getPetsId()
         );
 
-        return Optional.ofNullable(getOwnerPetByIdResult);
+        return getOwnerPetByIdResult;
     }
 }

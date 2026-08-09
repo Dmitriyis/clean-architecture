@@ -1,8 +1,10 @@
 package com.course.cleanarchitecture.domain.doctor.core.application.queries;
 
+import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 import com.course.cleanarchitecture.domain.doctor.core.application.DoctorMapperApp;
 import com.course.cleanarchitecture.domain.doctor.core.model.Doctor;
 import com.course.cleanarchitecture.domain.doctor.core.ports.DoctorRepository;
+import com.course.cleanarchitecture.domain.doctor.exceptions.DoctorNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +18,14 @@ public class GetDoctorByIdQueryHandlerImpl implements GetDoctorByIdQueryHandler 
     private final DoctorRepository doctorRepository;
 
     @Override
-    public Optional<GetDoctorByIdResult> execute(GetDoctorByIdQuery query) {
-        Optional<Doctor> doctorOptional = doctorRepository.findById(query.getId());
+    public GetDoctorByIdResult execute(GetDoctorByIdQuery query) {
+        Doctor doctor = doctorRepository.findById(query.getId())
+                .orElseThrow(() -> {
+                    String message = NotFoundException.prepareMessage("Doctor", "id", query.getId().toString());
 
-        if (doctorOptional.isPresent()) {
-            Doctor doctor = doctorOptional.get();
-            return doctorMapperApp.toGetDoctorByIdResult(doctor);
-        } else {
-            return Optional.empty();
-        }
+                    return new DoctorNotFoundException(message);
+                });
+
+        return doctorMapperApp.toGetDoctorByIdResult(doctor);
     }
 }

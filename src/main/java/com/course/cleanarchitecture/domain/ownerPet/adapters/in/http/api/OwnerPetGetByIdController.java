@@ -27,8 +27,8 @@ public class OwnerPetGetByIdController {
     public GetOwnerPetByIdResponse getOwnerPet(@PathVariable("id") UUID id) {
         GetOwnerPetByIdQuery query = new GetOwnerPetByIdQuery(id);
 
-        Optional<GetOwnerPetByIdResult> resultOptional = getOwnerPetByIdQueryHandler.execute(query);
+        GetOwnerPetByIdResult result = getOwnerPetByIdQueryHandler.execute(query);
 
-        return ownerPetMapperApi.toGetOwnerPetByIdResponse(resultOptional);
+        return ownerPetMapperApi.toGetOwnerPetByIdResponse(result);
     }
 }
