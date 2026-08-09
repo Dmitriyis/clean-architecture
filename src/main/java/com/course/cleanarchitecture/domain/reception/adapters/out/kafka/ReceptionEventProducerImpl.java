@@ -5,9 +5,10 @@ import com.course.cleanarchitecture.domain.reception.core.ports.ReceptionEventPr
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 @RequiredArgsConstructor
 public class ReceptionEventProducerImpl implements ReceptionEventProducer {
 

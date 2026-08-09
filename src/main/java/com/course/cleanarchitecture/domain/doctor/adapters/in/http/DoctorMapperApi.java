@@ -3,11 +3,12 @@ package com.course.cleanarchitecture.domain.doctor.adapters.in.http;
 import com.course.cleanarchitecture.domain.doctor.adapters.in.http.dto.DoctorGetByIdResponse;
 import com.course.cleanarchitecture.domain.doctor.core.application.queries.GetDoctorByIdResult;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
+@Component
 public class DoctorMapperApi {
     public DoctorGetByIdResponse toDoctorGetByIdResponse(GetDoctorByIdResult getDoctorByIdResult) {
 

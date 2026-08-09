@@ -6,9 +6,10 @@ import com.course.cleanarchitecture.ddd.Aggregate;
 import com.course.cleanarchitecture.ddd.AggregateRoot;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Component
 @RequiredArgsConstructor
 public class DomainEventOutboxPublisherImpl implements DomainEventPublisher {
 
