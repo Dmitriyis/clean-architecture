@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.common.postgres.outbox.domainevents;
+package com.course.cleanarchitecture.common.outbox.domainevents;
 
 
 import com.course.cleanarchitecture.common.utils.checkvalue.ValidationValueUtils;
@@ -8,15 +8,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.Instant;
 import java.util.UUID;
 
 @Getter
+@Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "message_domain_event_outbox")
-public class MessageDomainEventOutbox {
+@Table(name = "domain_event_outbox")
+public class DomainEventOutbox {
 
     @Id
     @Column(name = "id", nullable = false)
@@ -40,7 +42,16 @@ public class MessageDomainEventOutbox {
     @Column(name = "processed_on_utc")
     private Instant processedOnUtc;
 
-    public MessageDomainEventOutbox(UUID id, String eventType, String aggregateId, String aggregateType, String payload, Instant occurredOnUtc) {
+    @Column(name = "status")
+    private String status;
+
+    @Column(name = "retry_count")
+    private Integer retryCount;
+
+    @Column(name = "error_message")
+    private String errorMessage;
+
+    public DomainEventOutbox(UUID id, String eventType, String aggregateId, String aggregateType, String payload, Instant occurredOnUtc) {
         this.id = ValidationValueUtils.againstNullOrEmpty(id, "id");
         this.eventType = ValidationValueUtils.againstNullOrEmpty(eventType, "eventType");
         this.aggregateId = ValidationValueUtils.againstNullOrEmpty(aggregateId, "aggregateId");
@@ -50,6 +61,7 @@ public class MessageDomainEventOutbox {
     }
 
     public void markAsProcessed() {
+        this.status = "completed";
         this.processedOnUtc = Instant.now();
     }
 }

@@ -51,7 +51,7 @@ create table if not exists pet (
     primary key (id)
 );
 
-create table if not exists message_domain_event_outbox (
+create table if not exists domain_event_outbox (
     id uuid,
     event_type text not null,
     aggregate_id varchar(255) not null,
@@ -59,6 +59,9 @@ create table if not exists message_domain_event_outbox (
     payload text not null,
     occurred_on_utc timestamp not null,
     processed_on_utc timestamp,
+    status varchar(255),
+    retry_count integer,
+    error_message text,
     primary key (id)
 );
 

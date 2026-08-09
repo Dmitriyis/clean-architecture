@@ -1,7 +1,6 @@
-package com.course.cleanarchitecture.common.postgres.outbox.domainevents;
+package com.course.cleanarchitecture.common.outbox.domainevents;
 
 
-import com.course.cleanarchitecture.ddd.DomainEvent;
 import com.course.cleanarchitecture.domain.DomainEventPublisher;
 import com.course.cleanarchitecture.ddd.Aggregate;
 import com.course.cleanarchitecture.ddd.AggregateRoot;
@@ -24,7 +23,7 @@ public class DomainEventOutboxPublisherImpl implements DomainEventPublisher {
                     try {
                         var payload = objectMapper.writeValueAsString(domainEvent);
 
-                        var outboxMessage = new MessageDomainEventOutbox(
+                        var outboxMessage = new DomainEventOutbox(
                                 domainEvent.getEventId(),
                                 domainEvent.getClass().getName(),
                                 aggregate.getId().toString(),

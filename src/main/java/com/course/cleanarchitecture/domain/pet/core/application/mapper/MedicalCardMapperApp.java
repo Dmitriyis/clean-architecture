@@ -1,4 +1,4 @@
-package com.course.cleanarchitecture.domain.pet.core.application;
+package com.course.cleanarchitecture.domain.pet.core.application.mapper;
 
 import org.springframework.stereotype.Service;
 
