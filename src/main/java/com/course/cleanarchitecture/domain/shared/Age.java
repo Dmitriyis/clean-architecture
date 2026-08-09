@@ -17,8 +17,8 @@ public class Age extends ValueObject<Age> {
     }
 
     public Age(Integer volume) {
-        ValidationValueUtils.againstNegative(volume, "volume");
         ValidationValueUtils.againstNull(volume, "volume");
+        ValidationValueUtils.againstNegative(volume, "volume");
 
         this.volume = volume;
     }

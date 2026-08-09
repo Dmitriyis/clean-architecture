@@ -10,7 +10,7 @@ import java.util.UUID;
 @Repository
 public interface DomainEventOutboxJpaRepository extends JpaRepository<DomainEventOutbox, UUID> {
 
-    @Query(value = "select * from domain_event_outbox where status is null or status != 'FAILED'" +
+    @Query(value = "select * from domain_event_outbox where (status is null or status != 'FAILED')" +
             " and processed_on_utc is null", nativeQuery = true)
     List<DomainEventOutbox> findUnprocessedMessages();
 }

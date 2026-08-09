@@ -31,9 +31,9 @@ public class CreateReceptionCommand {
         ValidationValueUtils.againstNull(doctorId, "doctorId");
         ValidationValueUtils.againstNullOrEmpty(description, "description");
         ValidationValueUtils.againstNull(startReception, "startReception");
-        ValidationValueUtils.againstDateTimeEqualCurrent(startReception, "startReception");
+        ValidationValueUtils.againstNotDateTimeEqualCurrent(startReception, "startReception");
         ValidationValueUtils.againstNull(endReception, "endReception");
-        ValidationValueUtils.againstDateTimeEqualCurrent(endReception, "endReception");
+        ValidationValueUtils.againstNotDateTimeEqualCurrent(endReception, "endReception");
 
         this.petId = petId;
         this.doctorId = doctorId;

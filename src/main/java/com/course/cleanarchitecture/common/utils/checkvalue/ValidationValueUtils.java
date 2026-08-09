@@ -126,14 +126,14 @@ public final class ValidationValueUtils {
         return value;
     }
 
-    public static LocalDate againstDateEqualCurrent(LocalDate date, String paramName) {
+    public static LocalDate againstNotDateEqualCurrent(LocalDate date, String paramName) {
         if (!date.equals(LocalDate.now())) {
             throw new IllegalArgumentException(paramName + " must be today ");
         }
         return date;
     }
 
-    public static LocalDateTime againstDateTimeEqualCurrent(LocalDateTime dateTime, String paramName) {
+    public static LocalDateTime againstNotDateTimeEqualCurrent(LocalDateTime dateTime, String paramName) {
         LocalDate localDate = dateTime.toLocalDate();
 
         if (!localDate.equals(LocalDate.now())) {
