@@ -1,7 +1,7 @@
 package com.course.cleanarchitecture.domain.pet.adapters.out.integration;
 
 import com.course.cleanarchitecture.domain.ownerPet.core.ports.OwnerPetRepository;
-import com.course.cleanarchitecture.domain.pet.core.ports.OwnerPetCheckerForPet;
+import com.course.cleanarchitecture.domain.pet.core.ports.OwnerPetProviderForPet;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class OwnerPetCheckerImpl implements OwnerPetCheckerForPet {
+public class OwnerPetProviderForPetImpl implements OwnerPetProviderForPet {
 
     private final OwnerPetRepository ownerPetRepository;
 

@@ -18,7 +18,7 @@ public class ReceptionCreateEventsConsumerForOwnerPet {
     private final ObjectMapper objectMapper;
     private final SendNotificationsOwnerPetCommandHandler sendNotificationsOwnerPetCommandHandler;
     // TODO доработать DLQ топик.
-    @KafkaListener(topics = "create-reception", groupId = "owner-pet")
+    @KafkaListener(topics = "reception-create", groupId = "owner-pet")
     public void createReception(String message, Acknowledgment acknowledgment) {
         try {
             ReceptionCreateDomainEventForOwnerPet receptionCreateDomainEventForOwnerPet = objectMapper.readValue(message, ReceptionCreateDomainEventForOwnerPet.class);

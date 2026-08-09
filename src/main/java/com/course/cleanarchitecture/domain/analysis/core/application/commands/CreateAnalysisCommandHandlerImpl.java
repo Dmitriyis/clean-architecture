@@ -3,7 +3,7 @@ package com.course.cleanarchitecture.domain.analysis.core.application.commands;
 import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 import com.course.cleanarchitecture.domain.analysis.core.model.Analysis;
 import com.course.cleanarchitecture.domain.analysis.core.ports.AnalysisRepository;
-import com.course.cleanarchitecture.domain.analysis.core.ports.MedicalCardCheckerForAnalysis;
+import com.course.cleanarchitecture.domain.analysis.core.ports.MedicalCardProviderForAnalysis;
 import com.course.cleanarchitecture.domain.analysis.exceptions.MedicalCardNotFoundForAnalysisException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import static com.course.cleanarchitecture.domain.analysis.core.model.Analysis.c
 public class CreateAnalysisCommandHandlerImpl implements CreateAnalysisCommandHandler {
 
     private final AnalysisRepository analysisRepository;
-    private final MedicalCardCheckerForAnalysis medicalCardCheckerForAnalysis;
+    private final MedicalCardProviderForAnalysis medicalCardProviderForAnalysis;
 
     @Override
     @Transactional
@@ -38,7 +38,7 @@ public class CreateAnalysisCommandHandlerImpl implements CreateAnalysisCommandHa
     }
 
     private void verifyMedicalCardExists(UUID medicalCardId) {
-        boolean isExists = medicalCardCheckerForAnalysis.isMedicalCardExists(medicalCardId);
+        boolean isExists = medicalCardProviderForAnalysis.isMedicalCardExists(medicalCardId);
 
         if (!isExists) {
             String message = NotFoundException.prepareMessage("medicalCard", "medicalCardId", medicalCardId.toString());

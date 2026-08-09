@@ -3,8 +3,8 @@ package com.course.cleanarchitecture.domain.reception.core.application.commands;
 import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 import com.course.cleanarchitecture.domain.DomainEventPublisher;
 import com.course.cleanarchitecture.domain.reception.core.model.Reception;
-import com.course.cleanarchitecture.domain.reception.core.ports.DoctorCheckerForReception;
-import com.course.cleanarchitecture.domain.reception.core.ports.PetCheckerForReception;
+import com.course.cleanarchitecture.domain.reception.core.ports.DoctorProviderForReception;
+import com.course.cleanarchitecture.domain.reception.core.ports.PetProviderForReception;
 import com.course.cleanarchitecture.domain.reception.core.ports.ReceptionRepository;
 import com.course.cleanarchitecture.domain.reception.exceptions.DoctorNotFoundForReceptionException;
 import com.course.cleanarchitecture.domain.reception.exceptions.PetNotFoundForReceptionException;
@@ -18,17 +18,17 @@ import java.util.UUID;
 @Service
 public class CreateReceptionCommandHandlerImpl implements CreateReceptionCommandHandler {
 
-    private final DoctorCheckerForReception doctorCheckerForReception;
-    private final PetCheckerForReception petCheckerForReception;
+    private final DoctorProviderForReception doctorProviderForReception;
+    private final PetProviderForReception petProviderForReception;
     private final ReceptionRepository receptionRepository;
     private final DomainEventPublisher domainEventPublisher;
 
-    public CreateReceptionCommandHandlerImpl(DoctorCheckerForReception doctorCheckerForReception,
-                                             PetCheckerForReception petCheckerForReception,
+    public CreateReceptionCommandHandlerImpl(DoctorProviderForReception doctorProviderForReception,
+                                             PetProviderForReception petProviderForReception,
                                              ReceptionRepository receptionRepository,
-                                             @Qualifier("domainEventOutboxPublisherImpl") DomainEventPublisher domainEventPublisher) {
-        this.doctorCheckerForReception = doctorCheckerForReception;
-        this.petCheckerForReception = petCheckerForReception;
+                                             DomainEventPublisher domainEventPublisher) {
+        this.doctorProviderForReception = doctorProviderForReception;
+        this.petProviderForReception = petProviderForReception;
         this.receptionRepository = receptionRepository;
         this.domainEventPublisher = domainEventPublisher;
     }
@@ -58,7 +58,7 @@ public class CreateReceptionCommandHandlerImpl implements CreateReceptionCommand
     }
 
     private void verifyDoctorExists(UUID doctorId) {
-        boolean doctorExists = doctorCheckerForReception.isDoctorExists(doctorId);
+        boolean doctorExists = doctorProviderForReception.isDoctorExists(doctorId);
 
         if (!doctorExists) {
             String message = NotFoundException.prepareMessage("Doctor", "id", doctorId.toString());
@@ -67,7 +67,7 @@ public class CreateReceptionCommandHandlerImpl implements CreateReceptionCommand
     }
 
     private void verifyPetExists(UUID petId) {
-        boolean petExists = petCheckerForReception.isPetExists(petId);
+        boolean petExists = petProviderForReception.isPetExists(petId);
 
         if (!petExists) {
             String message = NotFoundException.prepareMessage("Pet", "id", petId.toString());

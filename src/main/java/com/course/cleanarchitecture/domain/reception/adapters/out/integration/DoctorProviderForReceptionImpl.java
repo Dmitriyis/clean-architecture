@@ -1,7 +1,7 @@
 package com.course.cleanarchitecture.domain.reception.adapters.out.integration;
 
 import com.course.cleanarchitecture.domain.doctor.core.ports.DoctorRepository;
-import com.course.cleanarchitecture.domain.reception.core.ports.DoctorCheckerForReception;
+import com.course.cleanarchitecture.domain.reception.core.ports.DoctorProviderForReception;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class DoctorCheckerForReceptionImpl implements DoctorCheckerForReception {
+public class DoctorProviderForReceptionImpl implements DoctorProviderForReception {
 
     private final DoctorRepository doctorRepository;
 

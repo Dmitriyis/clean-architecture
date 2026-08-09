@@ -3,7 +3,7 @@ package com.course.cleanarchitecture.domain.pet.core.application.commands;
 import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 import com.course.cleanarchitecture.domain.pet.core.model.MedicalCard;
 import com.course.cleanarchitecture.domain.pet.core.model.Pet;
-import com.course.cleanarchitecture.domain.pet.core.ports.OwnerPetCheckerForPet;
+import com.course.cleanarchitecture.domain.pet.core.ports.OwnerPetProviderForPet;
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
 import com.course.cleanarchitecture.domain.pet.exceptions.PetOwnerPetNotFoundException;
 import com.course.cleanarchitecture.domain.shared.Age;
@@ -20,7 +20,7 @@ import java.util.UUID;
 public class CreatePetCommandHandlerImpl implements CreatePetCommandHandler {
 
     private final PetRepository petRepository;
-    private final OwnerPetCheckerForPet ownerPetChecker;
+    private final OwnerPetProviderForPet ownerPetProviderForPet;
 
     @Override
     @Transactional
@@ -51,7 +51,7 @@ public class CreatePetCommandHandlerImpl implements CreatePetCommandHandler {
     }
 
     private void verifyOwnerPetExists(UUID ownerPetId) {
-        boolean isExistsOwner = ownerPetChecker.isOwnerPetExists(ownerPetId);
+        boolean isExistsOwner = ownerPetProviderForPet.isOwnerPetExists(ownerPetId);
 
         if (!isExistsOwner) {
             String message = NotFoundException.prepareMessage("OwnerPet", "id", ownerPetId.toString());

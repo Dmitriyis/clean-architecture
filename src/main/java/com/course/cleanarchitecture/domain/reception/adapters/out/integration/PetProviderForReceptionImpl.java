@@ -1,7 +1,7 @@
 package com.course.cleanarchitecture.domain.reception.adapters.out.integration;
 
 import com.course.cleanarchitecture.domain.pet.core.ports.PetRepository;
-import com.course.cleanarchitecture.domain.reception.core.ports.PetCheckerForReception;
+import com.course.cleanarchitecture.domain.reception.core.ports.PetProviderForReception;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class PetCheckerForReceptionImpl implements PetCheckerForReception {
+public class PetProviderForReceptionImpl implements PetProviderForReception {
 
     private final PetRepository petRepository;
 

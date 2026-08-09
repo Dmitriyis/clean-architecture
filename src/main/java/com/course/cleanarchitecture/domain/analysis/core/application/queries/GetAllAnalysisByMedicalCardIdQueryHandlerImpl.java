@@ -1,10 +1,7 @@
 package com.course.cleanarchitecture.domain.analysis.core.application.queries;
 
-import com.course.cleanarchitecture.common.exceptions.NotFoundException;
 import com.course.cleanarchitecture.domain.analysis.core.application.AnalysisAppMapper;
 import com.course.cleanarchitecture.domain.analysis.core.ports.AnalysisRepository;
-import com.course.cleanarchitecture.domain.analysis.core.ports.MedicalCardCheckerForAnalysis;
-import com.course.cleanarchitecture.domain.analysis.exceptions.MedicalCardNotFoundForAnalysisException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
